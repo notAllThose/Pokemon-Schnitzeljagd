@@ -1,5 +1,5 @@
 import { POKEMON } from '../data/pokemon';
-import type { BattleActionResult, Move } from '../domain/types';
+import type { BattleActionResult, EncounterHabitat, Move } from '../domain/types';
 import { TypeChart } from './TypeChart';
 import { TrainerProfile } from './TrainerProfile';
 
@@ -9,7 +9,7 @@ export class Battle {
   result: 'playing' | 'win' | 'lose' = 'playing';
   private avoidsNextHit = false;
 
-  constructor(readonly trainer: TrainerProfile, readonly opponentId: string) {
+  constructor(readonly trainer: TrainerProfile, readonly opponentId: string, readonly habitat: EncounterHabitat = 'meadow') {
     this.opponentHp = POKEMON[opponentId].maxHp;
   }
 

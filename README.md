@@ -23,7 +23,7 @@ Der Computer, auf dem `start-app.cmd` läuft, ist der Spielserver. Alle Geräte 
 2. Unter Windows `ipconfig` ausführen und die **IPv4-Adresse der WLAN-Verbindung** suchen, zum Beispiel `192.168.1.42`.
 3. Auf jedem Gerät einen Browser öffnen und `http://192.168.1.42:5173/` aufrufen. Ersetze die Beispiel-IP durch die lokale IPv4-Adresse des Server-Computers.
 4. Falls Windows nachfragt, Node.js den Zugriff im **privaten Netzwerk** erlauben.
-5. Trainerprofile können an jedem Gerät erstellt und in der Trainer-Auswahl aktualisiert werden. Pokémon, KP, Orden und Fortschritt werden für alle Geräte gemeinsam gespeichert.
+5. Trainerprofile können an jedem Handy erstellt und in der Trainer-Auswahl aktualisiert werden. Pokémon, KP, Orden und Fortschritt werden für alle Geräte gemeinsam gespeichert.
 
 Jedes Kind sollte während des Spiels möglichst dasselbe Gerät benutzen. Ein Trainerprofil sollte nicht gleichzeitig auf mehreren Geräten geöffnet sein; bei parallelen Änderungen gilt der zuletzt gespeicherte Stand. Die App läuft auf Handy, Tablet oder Computer im Browser. Für eine Installation als PWA ist über die lokale WLAN-Adresse normalerweise HTTPS erforderlich.
 
@@ -75,3 +75,5 @@ Die fertige Web-App liegt nach dem Build in `dist/`. `npm run preview` dient nur
 - `public/assets/sprites/` – lokal gespeicherte Pokémon-Sprites
 
 Die Sprites stammen aus dem [PokeAPI-Sprites-Repository](https://github.com/PokeAPI/sprites). Pokémon und zugehörige Namen/Marken sind Eigentum ihrer jeweiligen Rechteinhaber. Dieses Projekt ist ein privates, nicht kommerzielles Fanprojekt.
+
+Die Pokémon-Rufdateien stammen aus dem [PokeAPI Cries Repository](https://github.com/PokeAPI/cries) und werden lokal mit der App ausgeliefert. Die Wald-, Garten- und Höhlenkulissen sind eigene SVG-Grafiken für dieses Projekt.

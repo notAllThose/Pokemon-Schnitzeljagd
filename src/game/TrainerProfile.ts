@@ -12,6 +12,7 @@ export class TrainerProfile {
       collection: data.collection ?? [], badges: data.badges ?? [],
       activePokemonId: data.activePokemonId ?? data.starter ?? '',
       hpByPokemon: data.hpByPokemon ?? {},
+      habitatByPokemon: data.habitatByPokemon ?? {},
     };
     // Alte Spielstände bekommen volle KP, damit das Update niemanden benachteiligt.
     for (const id of this.data.collection) this.data.hpByPokemon[id] ??= POKEMON[id]?.maxHp ?? 0;
@@ -31,15 +32,20 @@ export class TrainerProfile {
     return this.data.hpByPokemon[pokemonId] ?? POKEMON[pokemonId]?.maxHp ?? 0;
   }
 
+  habitatOf(pokemonId: string): TrainerSave['habitatByPokemon'][string] {
+    return this.data.habitatByPokemon[pokemonId] ?? 'meadow';
+  }
+
   setHp(pokemonId: string, hp: number): void {
     const definition = POKEMON[pokemonId];
     if (definition) this.data.hpByPokemon[pokemonId] = Math.max(0, Math.min(definition.maxHp, hp));
   }
 
-  addPokemon(pokemonId: string): boolean {
+  addPokemon(pokemonId: string, habitat: TrainerSave['habitatByPokemon'][string] = 'meadow'): boolean {
     if (!POKEMON[pokemonId] || this.data.collection.includes(pokemonId)) return false;
     this.data.collection.push(pokemonId);
     this.setHp(pokemonId, POKEMON[pokemonId].maxHp);
+    this.data.habitatByPokemon[pokemonId] = habitat;
     return true;
   }
 

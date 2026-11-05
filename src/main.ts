@@ -1,5 +1,6 @@
 import { POKEMON, STARTER_IDS } from './data/pokemon';
-import { BADGES, HEAL_CODE, WILD_TOKEN_CODES } from './data/settings';
+import { BADGES, HEAL_CODE, WILD_TOKEN_CODES, WILD_TOKEN_HABITATS } from './data/settings';
+import type { EncounterHabitat } from './domain/types';
 import { Battle } from './game/Battle';
 import { ProfileRepository } from './game/ProfileRepository';
 import { TypeChart } from './game/TypeChart';
@@ -23,6 +24,7 @@ class EntdeckertourApp {
   private profile: TrainerProfile | null = this.profiles.active;
   private battle: Battle | null = null;
   private encounterPokemonId = '';
+  private currentEncounterHabitat: EncounterHabitat = 'meadow';
   private returnToEncounter = false;
   private returnPageAfterDex: AppPage = 'found';
   private turnLocked = false;
@@ -191,6 +193,7 @@ class EntdeckertourApp {
     if (this.profile.collection.includes(pokemonId)) return this.showGameMessage(`${POKEMON[pokemonId].name} ist schon im Team.`);
     if (!this.profile.livingPokemon().length) return this.showGameMessage('Dein Team braucht Erholung im Pokémon-Center.');
     this.encounterPokemonId = pokemonId;
+    this.currentEncounterHabitat = WILD_TOKEN_HABITATS[code] ?? 'meadow';
     this.input('#tokenCode').value = '';
     this.playGrassTransition(pokemonId, () => {
       this.renderEncounterChoice(pokemonId);
@@ -267,6 +270,7 @@ class EntdeckertourApp {
       $('#grassMessage').textContent = pokemonId
         ? `Ein wildes ${POKEMON[pokemonId].name} taucht auf!`
         : 'Hier könnte sich ein Pokémon verstecken!';
+      if (pokemonId) this.playPokemonCry(pokemonId);
     }, 520);
     window.setTimeout(() => {
       overlay.classList.add('fade-out');
@@ -278,6 +282,17 @@ class EntdeckertourApp {
     }, 1030);
   }
 
+  /** Spielt den lokalen PokéAPI-Ruf ab, sobald das wilde Pokémon erscheint. */
+  private playPokemonCry(pokemonId: string): void {
+    const pokemon = POKEMON[pokemonId];
+    if (!pokemon) return;
+    const cry = new Audio(`assets/cries/${pokemon.dexNumber}.ogg`);
+    cry.volume = 0.55;
+    void cry.play().catch(() => {
+      // Der Fund bleibt spielbar, falls ein Gerät Audio blockiert oder stumm ist.
+    });
+  }
+
   private beginBattle(pokemonId: string): void {
     this.encounterPokemonId = pokemonId;
     if (this.returnToEncounter) {
@@ -285,7 +300,7 @@ class EntdeckertourApp {
       this.showPage(this.returnPageAfterDex);
     }
     this.dialog('#encounterDialog').close();
-    this.battle = new Battle(this.profile!, pokemonId);
+    this.battle = new Battle(this.profile!, pokemonId, this.currentEncounterHabitat);
     this.turnLocked = false;
     this.renderBattle('Ein wildes Pokémon taucht auf!');
     this.dialog('#battleDialog').showModal();
@@ -347,13 +362,16 @@ class EntdeckertourApp {
     const actions = this.returnToEncounter ? '<div class="pokedex-actions"><button class="primary-button" data-pokedex-action="fight" type="button">Kampf starten ⚔️</button></div>' : '';
     const team = this.profile?.collection ?? [];
     const teamIndex = team.indexOf(pokemonId);
+    const habitat = this.returnToEncounter
+      ? this.currentEncounterHabitat
+      : this.profile?.habitatOf(pokemonId) ?? 'meadow';
     const motionClass = playMotion ? `dex-motion-${pokemonId}` : '';
     const teamNavigation = !this.returnToEncounter && teamIndex >= 0
       ? `<nav class="dex-team-nav" aria-label="Pokémon im Team"><button class="dex-team-button" data-pokedex-action="previous" type="button" aria-label="Vorheriges Pokémon" ${teamIndex === 0 ? 'disabled' : ''}>◀ Zurück</button><span>${teamIndex + 1} / ${team.length}</span><button class="dex-team-button" data-pokedex-action="next" type="button" aria-label="Nächstes Pokémon" ${teamIndex === team.length - 1 ? 'disabled' : ''}>Weiter ▶</button></nav>`
       : '';
     $('#pokedexContent').innerHTML = `<div class="dex-detail-content"><div class="pokedex-topline"><button class="dex-detail-back" data-pokedex-action="back" type="button">${backLabel}</button><strong>Nr. ${String(pokemon.dexNumber).padStart(4, '0')}</strong></div>
       ${teamNavigation}
-      <div class="pokedex-hero ${pokemon.color} ${motionClass}"><img src="assets/sprites/${pokemonId}.png" alt="${pokemon.name}"></div>
+      <div class="pokedex-hero ${pokemon.color} ${motionClass} habitat-${habitat}"><img src="assets/sprites/${pokemonId}.png" alt="${pokemon.name}"></div>
       <div class="pokedex-title"><div><h2>${pokemon.name}</h2><span>${pokemon.category}</span></div><div class="pokedex-types">${types}</div></div>
       <p class="pokedex-description">${pokemon.description}</p>
       <div class="pokedex-facts"><div><small>GRÖSSE</small><strong>${pokemon.height}</strong></div><div><small>GEWICHT</small><strong>${pokemon.weight}</strong></div></div>
@@ -449,7 +467,7 @@ class EntdeckertourApp {
   private addVictoryToTeam(battle: Battle): void {
     if (!this.profile || this.battle !== battle) return;
     const pokemon = battle.opponent;
-    this.profile.addPokemon(pokemon.id);
+    this.profile.addPokemon(pokemon.id, battle.habitat);
     this.profiles.save();
     this.dialog('#battleDialog').close();
     this.battle = null;
@@ -585,7 +603,7 @@ class EntdeckertourApp {
       ? `<div class="attack-effect type-${typeClass[moveType ?? 'Normal'] ?? 'normal'} ${effect === 'trainer' ? 'from-trainer' : 'from-wild'}" aria-hidden="true"><i></i><i></i><i></i></div>`
       : '';
     $('#battleContent').innerHTML = `<div class="battle-heading"><span>WILDE BEGEGNUNG</span><h2>Ein wildes ${wild.name}!</h2></div>
-      <div class="battlefield ${effect ? `turn-${effect}` : ''}">
+      <div class="battlefield habitat-${battle.habitat} ${effect ? `turn-${effect}` : ''}">
         <div class="battle-platform platform-wild"></div><div class="battle-platform platform-trainer"></div>
         <div class="battle-status status-wild"><div><strong>${wild.name}</strong><small>${wild.types.join(' · ')}</small></div><div class="status-hp"><span>KP</span><i><b style="width:${Math.max(0, battle.opponentHp / wild.maxHp * 100)}%"></b></i></div><small>${battle.opponentHp} / ${wild.maxHp}</small></div>
         <div class="battle-status status-trainer"><div><strong>${mine.name}</strong><small>${mine.types.join(' · ')}</small></div><div class="status-hp"><span>KP</span><i><b style="width:${Math.max(0, profile.hpOf(mine.id) / mine.maxHp * 100)}%"></b></i></div><small>${profile.hpOf(mine.id)} / ${mine.maxHp}</small></div>

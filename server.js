@@ -137,7 +137,7 @@ async function handleApi(request, response, pathname, trace) {
 const contentTypes = {
   '.css': 'text/css; charset=utf-8', '.gif': 'image/gif', '.html': 'text/html; charset=utf-8',
   '.ico': 'image/x-icon', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8',
-  '.manifest': 'application/manifest+json', '.png': 'image/png', '.svg': 'image/svg+xml', '.webmanifest': 'application/manifest+json',
+  '.manifest': 'application/manifest+json', '.ogg': 'audio/ogg', '.png': 'image/png', '.svg': 'image/svg+xml', '.webmanifest': 'application/manifest+json',
 };
 
 function serveStatic(response, pathname) {
@@ -204,4 +204,3 @@ server.listen(port, '0.0.0.0', () => {
   console.log('API-Protokoll: Anfragen und Statuscodes erscheinen in diesem Fenster.');
   if (!apiOnly) console.log(`Gemeinsame Datenbank: ${databasePath}`);
 });
-

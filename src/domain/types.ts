@@ -4,6 +4,9 @@ export type PokemonType =
   | 'Fee' | 'Gift' | 'Flug' | 'Unlicht' | 'Boden' | 'Gestein'
   | 'Kampf' | 'Psycho' | 'Eis' | 'Drache' | 'Stahl' | 'Geist';
 
+/** Fundorte bestimmen die Kulisse für Kämpfe und Pokédex-Einträge. */
+export type EncounterHabitat = 'meadow' | 'forest' | 'garden' | 'cave';
+
 export interface Move {
   name: string;
   /** null bedeutet: Die Attacke hat keinen Elementtyp. */
@@ -36,6 +39,8 @@ export interface TrainerSave {
   activePokemonId: string;
   /** Verbleibende KP je Pokémon; deshalb bleiben Wunden nach Gerätewechsel erhalten. */
   hpByPokemon: Record<string, number>;
+  /** Wo jedes Team-Pokémon beim Abenteuer gefunden wurde. */
+  habitatByPokemon: Record<string, EncounterHabitat>;
 }
 
 export interface BattleActionResult {
