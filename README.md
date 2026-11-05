@@ -5,8 +5,12 @@ Eine kleine lokale Web-App für eine Pokémon-Schnitzeljagd. Sie läuft auf eine
 ## Schnellstart unter Windows
 
 1. **Node.js (LTS)** installieren: <https://nodejs.org/>
-2. Dieses Repository herunterladen oder klonen.
-3. Im Ordner `pokemon-entdeckertour` die Datei **`start-app.cmd`** doppelklicken.
+2. Das Repository auf GitHub über **Code → Download ZIP** herunterladen und entpacken. Alternativ per Git klonen:
+
+   ```powershell
+   git clone https://github.com/notAllThose/Pokemon-Schnitzeljagd.git pokemon-entdeckertour
+   ```
+3. Im entpackten Projektordner die Datei **`start-app.cmd`** doppelklicken.
 4. Beim ersten Start lädt das Skript die nötigen Pakete herunter. Das kann einen Moment dauern.
 5. Das schwarze Fenster geöffnet lassen. In Chrome oder Edge am Computer diese Adresse öffnen: **http://localhost:5173/**
 
@@ -74,4 +78,5 @@ Die fertige statische App liegt nach dem Build in `dist/`.
 - `public/assets/sprites/` – lokal gespeicherte Pokémon-Sprites
 
 Die Sprites stammen aus dem [PokeAPI-Sprites-Repository](https://github.com/PokeAPI/sprites). Pokémon und zugehörige Namen/Marken sind Eigentum ihrer jeweiligen Rechteinhaber. Dieses Projekt ist ein privates, nicht kommerzielles Fanprojekt.
+
 
