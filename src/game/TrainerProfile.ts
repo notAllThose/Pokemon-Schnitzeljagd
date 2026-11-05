@@ -27,6 +27,10 @@ export class TrainerProfile {
     // Alte Spielstände bekommen volle KP, damit das Update niemanden benachteiligt.
     for (const id of this.data.collection) {
       this.data.hpByPokemon[id] ??= POKEMON[id]?.maxHp ?? 0;
+      // Namen aus der ersten Fundort-Version auf die neuen Spielszenen abbilden.
+      const oldHabitat = this.data.habitatByPokemon[id] as string | undefined;
+      if (oldHabitat === 'garden') this.data.habitatByPokemon[id] = 'meadow';
+      if (oldHabitat === 'cave') this.data.habitatByPokemon[id] = 'dampcave';
       this.data.habitatByPokemon[id] ??= LEGACY_CAPTURE_HABITATS[id] ?? DEFAULT_HABITATS[id] ?? 'meadow';
     }
     if (!this.data.collection.includes(this.data.activePokemonId)) {
@@ -76,3 +80,4 @@ export class TrainerProfile {
     for (const id of this.data.collection) this.setHp(id, POKEMON[id]?.maxHp ?? 0);
   }
 }
+
