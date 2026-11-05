@@ -131,6 +131,13 @@ function serveStatic(response, pathname) {
 
 const server = createServer(async (request, response) => {
   const pathname = new URL(request.url, 'http://localhost').pathname;
+  if (pathname.startsWith('/api/')) {
+    const startedAt = Date.now();
+    response.on('finish', () => {
+      const time = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      console.log(`[API ${time}] ${request.method} ${pathname} → ${response.statusCode} (${Date.now() - startedAt} ms)`);
+    });
+  }
   try {
     if (pathname.startsWith('/api/')) await handleApi(request, response, pathname);
     else if (!apiOnly && request.method === 'GET') serveStatic(response, pathname);
@@ -143,5 +150,7 @@ const server = createServer(async (request, response) => {
 
 server.listen(port, '0.0.0.0', () => {
   console.log(`Pokémon-Entdeckertour läuft auf http://localhost:${port}/`);
+  console.log('API-Protokoll: Anfragen und Statuscodes erscheinen in diesem Fenster.');
   if (!apiOnly) console.log(`Gemeinsame Datenbank: ${databasePath}`);
 });
+
