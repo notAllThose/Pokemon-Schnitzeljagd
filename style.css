@@ -104,14 +104,33 @@ body{background-color:#dce9f6;background-image:radial-gradient(circle at 12% 10%
 .pokedex-detail-view .pokedex-hero{position:relative;height:208px;overflow:hidden;background-size:cover;background-position:center;border:2px solid #405b53;border-radius:4px;box-shadow:inset 0 -24px 0 #173f3344,0 3px 0 #c2d09c}
 .pokedex-detail-view .pokedex-hero:after{content:"";position:absolute;left:8%;right:8%;bottom:12px;height:20px;border-radius:50%;background:#162d2b55;filter:blur(5px)}
 .pokedex-detail-view .pokedex-hero img{position:relative;z-index:1;width:184px;height:184px;max-width:90%;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 5px 2px #17292270)}
-.pokedex-detail-view .pokedex-hero.habitat-meadow{background-image:url('/assets/backgrounds/forest.svg')}
-.pokedex-detail-view .pokedex-hero.habitat-forest{background-image:url('/assets/backgrounds/forest.svg')}
-.pokedex-detail-view .pokedex-hero.habitat-garden{background-image:url('/assets/backgrounds/garden.svg')}
-.pokedex-detail-view .pokedex-hero.habitat-cave{background-image:url('/assets/backgrounds/cave.svg')}
 .battlefield[class*="habitat-"]{background-size:cover;background-position:center;background-repeat:no-repeat}
 .battlefield[class*="habitat-"]:before{display:none}
-.battlefield.habitat-meadow,.battlefield.habitat-forest{background-image:url('/assets/backgrounds/forest.svg')}
-.battlefield.habitat-garden{background-image:url('/assets/backgrounds/garden.svg')}
-.battlefield.habitat-cave{background-image:url('/assets/backgrounds/cave.svg')}
 .trainer-fighter{left:5%;width:46%;height:63%}.wild-fighter{right:7%;width:39%;height:48%}
 @media(max-width:560px){.dex-entry{min-height:72px;grid-template-columns:35px 62px minmax(0,1fr) 18px;gap:6px;padding:4px 6px}.dex-entry-sprite{width:60px;height:60px}.dex-entry-sprite img{width:57px;height:57px}.pokedex-detail-view .pokedex-hero{height:176px}.pokedex-detail-view .pokedex-hero img{width:156px;height:156px}.trainer-fighter{left:3%;width:47%;height:61%}.wild-fighter{right:4%;width:40%;height:47%}}
+
+/* Use the detailed battlebacks used by Pokémon Showdown's classic battle UI. */
+.battlefield[class*="habitat-"]{background-position:center 58%;background-size:cover;background-repeat:no-repeat}
+.battlefield .battle-platform{height:17px;border:0;border-radius:50%;box-shadow:0 5px 9px #152a2940;opacity:.6}
+.battlefield .platform-wild{width:31%;right:8%;top:55%;background:radial-gradient(ellipse,#293b2d77,#617b5555 55%,transparent 72%)}
+.battlefield .platform-trainer{width:37%;left:4%;bottom:2%;background:radial-gradient(ellipse,#293b2d88,#617b5555 55%,transparent 72%)}
+.pokedex-detail-view .pokedex-hero{background-position:center 58%;background-size:cover}
+.pokedex-detail-view .pokedex-hero.habitat-forest,.battlefield.habitat-forest{background-image:url('/assets/backgrounds/forest.png')}
+.pokedex-detail-view .pokedex-hero.habitat-route,.battlefield.habitat-route{background-image:url('/assets/backgrounds/route.png')}
+.pokedex-detail-view .pokedex-hero.habitat-meadow,.battlefield.habitat-meadow{background-image:url('/assets/backgrounds/meadow.png')}
+.pokedex-detail-view .pokedex-hero.habitat-river,.battlefield.habitat-river{background-image:url('/assets/backgrounds/river.png')}
+.pokedex-detail-view .pokedex-hero.habitat-beach,.battlefield.habitat-beach{background-image:url('/assets/backgrounds/beach.png')}
+.pokedex-detail-view .pokedex-hero.habitat-beachshore,.battlefield.habitat-beachshore{background-image:url('/assets/backgrounds/beachshore.png')}
+.pokedex-detail-view .pokedex-hero.habitat-deepsea,.battlefield.habitat-deepsea{background-image:url('/assets/backgrounds/deepsea.png')}
+.pokedex-detail-view .pokedex-hero.habitat-dampcave,.battlefield.habitat-dampcave{background-image:url('/assets/backgrounds/dampcave.png')}
+.pokedex-detail-view .pokedex-hero.habitat-earthycave,.battlefield.habitat-earthycave{background-image:url('/assets/backgrounds/earthycave.png')}
+.pokedex-detail-view .pokedex-hero.habitat-icecave,.battlefield.habitat-icecave{background-image:url('/assets/backgrounds/icecave.png')}
+.pokedex-detail-view .pokedex-hero.habitat-mountain,.battlefield.habitat-mountain{background-image:url('/assets/backgrounds/mountain.png')}
+.pokedex-detail-view .pokedex-hero.habitat-city,.battlefield.habitat-city{background-image:url('/assets/backgrounds/city.png')}
+.pokedex-detail-view .pokedex-hero.habitat-desert,.battlefield.habitat-desert{background-image:url('/assets/backgrounds/desert.png')}
+.pokedex-detail-view .pokedex-hero.habitat-volcanocave,.battlefield.habitat-volcanocave{background-image:url('/assets/backgrounds/volcanocave.png')}
+.pokedex-detail-view .pokedex-hero.habitat-thunderplains,.battlefield.habitat-thunderplains{background-image:url('/assets/backgrounds/thunderplains.png')}
+.pokedex-detail-view .pokedex-hero.habitat-gen3-arena,.battlefield.habitat-gen3-arena{background-image:url('/assets/backgrounds/gen3-arena.png')}
+.pokedex-detail-view .pokedex-hero.habitat-gen3-forest,.battlefield.habitat-gen3-forest{background-image:url('/assets/backgrounds/gen3-forest.png')}
+.pokedex-detail-view .pokedex-hero.habitat-gen3-cave,.battlefield.habitat-gen3-cave{background-image:url('/assets/backgrounds/gen3-cave.png')}
+.pokedex-detail-view .pokedex-hero.habitat-gen3-ocean,.battlefield.habitat-gen3-ocean{background-image:url('/assets/backgrounds/gen3-ocean.png')}

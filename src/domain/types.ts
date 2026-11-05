@@ -5,7 +5,10 @@ export type PokemonType =
   | 'Kampf' | 'Psycho' | 'Eis' | 'Drache' | 'Stahl' | 'Geist';
 
 /** Fundorte bestimmen die Kulisse für Kämpfe und Pokédex-Einträge. */
-export type EncounterHabitat = 'meadow' | 'forest' | 'garden' | 'cave';
+export type EncounterHabitat =
+  | 'meadow' | 'forest' | 'route' | 'river' | 'beach' | 'beachshore' | 'deepsea'
+  | 'dampcave' | 'earthycave' | 'icecave' | 'mountain' | 'city' | 'desert'
+  | 'volcanocave' | 'thunderplains' | 'gen3-arena' | 'gen3-forest' | 'gen3-cave' | 'gen3-ocean';
 
 export interface Move {
   name: string;

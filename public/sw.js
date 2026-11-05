@@ -1,9 +1,10 @@
-const CACHE = 'entdeckertour-v7';
+const CACHE = 'entdeckertour-v8';
 const spriteNames = ['pikachu','glumanda','schiggy','bulbasaur','raupy','piepi','zubat'];
 const sprites = spriteNames.flatMap(name => [`./assets/sprites/${name}.png`, `./assets/sprites/${name}-front.gif`, `./assets/sprites/${name}-back.gif`]);
 const pokemonIds = [1, 4, 7, 10, 25, 35, 41];
 const cries = pokemonIds.map(id => `./assets/cries/${id}.ogg`);
-const backgrounds = ['forest', 'garden', 'cave'].map(name => `./assets/backgrounds/${name}.svg`);
+const backgroundNames = ['forest','route','meadow','river','beach','beachshore','deepsea','dampcave','earthycave','icecave','mountain','city','desert','volcanocave','thunderplains','gen3-arena','gen3-forest','gen3-cave','gen3-ocean'];
+const backgrounds = backgroundNames.map(name => `./assets/backgrounds/${name}.png`);
 const FILES = ['./manifest.webmanifest', ...sprites, ...cries, ...backgrounds];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES))));
 self.addEventListener('activate', event => event.waitUntil(

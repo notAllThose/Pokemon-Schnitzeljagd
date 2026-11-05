@@ -25,6 +25,7 @@ class EntdeckertourApp {
   private battle: Battle | null = null;
   private encounterPokemonId = '';
   private currentEncounterHabitat: EncounterHabitat = 'meadow';
+  private currentCry: HTMLAudioElement | null = null;
   private returnToEncounter = false;
   private returnPageAfterDex: AppPage = 'found';
   private turnLocked = false;
@@ -286,8 +287,10 @@ class EntdeckertourApp {
   private playPokemonCry(pokemonId: string): void {
     const pokemon = POKEMON[pokemonId];
     if (!pokemon) return;
+    this.currentCry?.pause();
     const cry = new Audio(`assets/cries/${pokemon.dexNumber}.ogg`);
     cry.volume = 0.55;
+    this.currentCry = cry;
     void cry.play().catch(() => {
       // Der Fund bleibt spielbar, falls ein Gerät Audio blockiert oder stumm ist.
     });
@@ -295,6 +298,7 @@ class EntdeckertourApp {
 
   private beginBattle(pokemonId: string): void {
     this.encounterPokemonId = pokemonId;
+    this.playPokemonCry(pokemonId);
     if (this.returnToEncounter) {
       this.showDexList();
       this.showPage(this.returnPageAfterDex);
@@ -309,6 +313,9 @@ class EntdeckertourApp {
   private openPokedex(pokemonId: string, returnToEncounter: boolean, slideDirection?: 'previous' | 'next'): void {
     const pokemon = POKEMON[pokemonId];
     if (!pokemon) return;
+    // Der Tap auf einen Pokédex-Eintrag ist eine direkte Nutzeraktion, sodass
+    // mobile Browser den Ruf zuverlässig abspielen dürfen.
+    this.playPokemonCry(pokemonId);
     this.encounterPokemonId = pokemonId;
     this.returnToEncounter = returnToEncounter;
     this.returnPageAfterDex = this.currentPage;

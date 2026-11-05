@@ -11,8 +11,8 @@ export const WILD_TOKEN_CODES: Record<string, string> = {
 /** Jeder Token-Code merkt sich die passende Spielumgebung für Kampf und Pokédex. */
 export const WILD_TOKEN_HABITATS: Record<string, import('../domain/types').EncounterHabitat> = {
   'WALD-01': 'forest',
-  'GARTEN-02': 'garden',
-  'HÖHLE-03': 'cave',
+  'GARTEN-02': 'meadow',
+  'HÖHLE-03': 'dampcave',
 };
 
 export const BADGES = [

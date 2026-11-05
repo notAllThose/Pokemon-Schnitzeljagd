@@ -1,6 +1,16 @@
 import { POKEMON } from '../data/pokemon';
 import type { TrainerSave } from '../domain/types';
 
+// Wenn ein älterer Spielstand noch keinen Fundort enthält, zeigen wir einen
+// passenden Pokémon-Lebensraum. Neue Fänge speichern den echten Token-Fundort.
+const DEFAULT_HABITATS: Record<string, TrainerSave['habitatByPokemon'][string]> = {
+  pikachu: 'forest', glumanda: 'volcanocave', schiggy: 'river',
+  bulbasaur: 'forest', raupy: 'forest', piepi: 'mountain', zubat: 'dampcave',
+};
+const LEGACY_CAPTURE_HABITATS: Record<string, TrainerSave['habitatByPokemon'][string]> = {
+  raupy: 'forest', piepi: 'meadow', zubat: 'dampcave',
+};
+
 /** Verhält sich wie die Trainerkarte eines Kindes und verwaltet dessen Team. */
 export class TrainerProfile {
   readonly data: TrainerSave;
@@ -15,7 +25,10 @@ export class TrainerProfile {
       habitatByPokemon: data.habitatByPokemon ?? {},
     };
     // Alte Spielstände bekommen volle KP, damit das Update niemanden benachteiligt.
-    for (const id of this.data.collection) this.data.hpByPokemon[id] ??= POKEMON[id]?.maxHp ?? 0;
+    for (const id of this.data.collection) {
+      this.data.hpByPokemon[id] ??= POKEMON[id]?.maxHp ?? 0;
+      this.data.habitatByPokemon[id] ??= LEGACY_CAPTURE_HABITATS[id] ?? DEFAULT_HABITATS[id] ?? 'meadow';
+    }
     if (!this.data.collection.includes(this.data.activePokemonId)) {
       this.data.activePokemonId = this.data.collection[0] ?? this.data.starter;
     }
@@ -33,7 +46,7 @@ export class TrainerProfile {
   }
 
   habitatOf(pokemonId: string): TrainerSave['habitatByPokemon'][string] {
-    return this.data.habitatByPokemon[pokemonId] ?? 'meadow';
+    return this.data.habitatByPokemon[pokemonId] ?? DEFAULT_HABITATS[pokemonId] ?? 'meadow';
   }
 
   setHp(pokemonId: string, hp: number): void {
@@ -41,7 +54,7 @@ export class TrainerProfile {
     if (definition) this.data.hpByPokemon[pokemonId] = Math.max(0, Math.min(definition.maxHp, hp));
   }
 
-  addPokemon(pokemonId: string, habitat: TrainerSave['habitatByPokemon'][string] = 'meadow'): boolean {
+  addPokemon(pokemonId: string, habitat: TrainerSave['habitatByPokemon'][string] = DEFAULT_HABITATS[pokemonId] ?? 'meadow'): boolean {
     if (!POKEMON[pokemonId] || this.data.collection.includes(pokemonId)) return false;
     this.data.collection.push(pokemonId);
     this.setHp(pokemonId, POKEMON[pokemonId].maxHp);

@@ -76,4 +76,4 @@ Die fertige Web-App liegt nach dem Build in `dist/`. `npm run preview` dient nur
 
 Die Sprites stammen aus dem [PokeAPI-Sprites-Repository](https://github.com/PokeAPI/sprites). Pokémon und zugehörige Namen/Marken sind Eigentum ihrer jeweiligen Rechteinhaber. Dieses Projekt ist ein privates, nicht kommerzielles Fanprojekt.
 
-Die Pokémon-Rufdateien stammen aus dem [PokeAPI Cries Repository](https://github.com/PokeAPI/cries) und werden lokal mit der App ausgeliefert. Die Wald-, Garten- und Höhlenkulissen sind eigene SVG-Grafiken für dieses Projekt.
+Die Pokémon-Rufdateien stammen aus dem [PokeAPI Cries Repository](https://github.com/PokeAPI/cries) und werden lokal mit der App ausgeliefert. Die Kampfkulissen stammen aus den [Battle-Backgrounds von Pokémon Showdown](https://play.pokemonshowdown.com/fx/); sie werden lokal gespeichert, damit sie auch ohne Internet verfügbar sind. Pokémon und zugehörige Namen/Marken sind Eigentum ihrer jeweiligen Rechteinhaber. Dieses Projekt ist ein privates, nicht kommerzielles Fanprojekt.
