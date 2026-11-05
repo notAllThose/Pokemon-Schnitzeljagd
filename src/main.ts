@@ -401,8 +401,8 @@ class EntdeckertourApp {
     const actionText = action.specialEffect === 'evade'
       ? `${action.attackerName} macht sich zum Ausweichen bereit! Der nächste Treffer kann verfehlen.`
       : `${action.attackerName} setzt ${action.moveName} ein! ${damageText}${effectiveness}`;
-    this.renderBattle(actionText, 'trainer', action.damage);
-    if (battle.result === 'win') {
+    this.renderBattle(actionText, 'trainer', action.damage, battle.activePokemon.moves[index]?.type ?? null);
+    if (String(battle.result) === 'win') {
       window.setTimeout(() => {
         if (this.battle !== battle) return;
         this.renderBattle(`Das wilde ${battle.opponent.name} wurde besiegt!`);
@@ -437,7 +437,8 @@ class EntdeckertourApp {
     const actionText = action.specialEffect === 'dodged'
       ? `${action.attackerName} setzt ${action.moveName} ein, aber dein Pokémon weicht aus!`
       : `${action.attackerName} setzt ${action.moveName} ein! ${damageText}${effectiveness}`;
-    this.renderBattle(actionText, 'wild', action.damage);
+    const moveType = battle.opponent.moves.find(move => move.name === action.moveName)?.type ?? null;
+    this.renderBattle(actionText, 'wild', action.damage, moveType);
     if (battle.result !== 'playing' || battle.needsReplacement) return;
     window.setTimeout(() => {
       this.turnLocked = false;
@@ -554,13 +555,14 @@ class EntdeckertourApp {
       <span class="dex-entry-mark">${active ? '★' : '›'}</span></button>`;
   }
 
-  private renderBattle(message: string, effect: BattleEffect = '', damage: number | null = null): void {
+  private renderBattle(message: string, effect: BattleEffect = '', damage: number | null = null, moveType: string | null = null): void {
     const battle = this.battle;
     const profile = this.profile;
     if (!battle || !profile) return;
     const mine = battle.activePokemon;
     const wild = battle.opponent;
     const replacementMode = battle.needsReplacement;
+    const typeClass: Record<string, string> = { Elektro: 'electric', Feuer: 'fire', Wasser: 'water', Pflanze: 'grass', Eis: 'ice', Kampf: 'fighting', Gift: 'poison', Boden: 'ground', Flug: 'flying', Psycho: 'psychic', Käfer: 'bug', Gestein: 'rock', Geist: 'ghost', Drache: 'dragon', Unlicht: 'dark', Stahl: 'steel', Fee: 'fairy', Normal: 'normal' };
     const moves = replacementMode || battle.result !== 'playing' ? '' : mine.moves.map((move, index) => {
       const multiplier = TypeChart.multiplier(move.type, wild.types);
       const effectText = multiplier > 1 ? ' · sehr effektiv' : multiplier < 1 ? ' · wenig effektiv' : '';
@@ -579,22 +581,19 @@ class EntdeckertourApp {
     let outcome = '';
     if (battle.result === 'lose') outcome = '<p class="battle-message defeat-message">Dein Team ist erschöpft. Geh zum Pokémon-Center und hol dir neue Kraft.</p><button id="closeBattleButton" class="primary-button full">Zum Pokémon-Center gehen</button>';
     else if (replacementMode) outcome = '<p class="battle-message">Dein Pokémon ist K.O. Such ein anderes aus, Trainer!</p>';
-    $('#battleContent').innerHTML = `<p class="eyebrow">WILDE BEGEGNUNG</p>
-      <h2><img class="battle-title-sprite" src="assets/sprites/${wild.id}-front.gif" alt=""> Ein wildes ${wild.name}!</h2>
-      <div class="battlefield">
-        <div class="fighter ${mine.color} ${effect === 'wild' ? 'attacking' : ''} ${effect === 'trainer' ? 'taking-hit' : ''}">
-          <span class="fighter-art"><img class="battle-sprite" src="assets/sprites/${mine.id}-back.gif" alt="${mine.name}"></span>
-          ${effect === 'wild' && damage !== null && damage > 0 ? `<b class="damage-float">−${damage}</b>` : ''}
-          <strong>${mine.name}</strong><div class="hp-track"><i style="width:${Math.max(0, profile.hpOf(mine.id) / mine.maxHp * 100)}%"></i></div><small>KP ${profile.hpOf(mine.id)} / ${mine.maxHp}</small>
-        </div><div class="vs">VS</div>
-        <div class="fighter ${wild.color} ${effect === 'trainer' ? 'attacking' : ''} ${effect === 'wild' ? 'taking-hit' : ''}">
-          <span class="fighter-art"><img class="battle-sprite" src="assets/sprites/${wild.id}-front.gif" alt="${wild.name}"></span>
-          ${effect === 'trainer' && damage !== null && damage > 0 ? `<b class="damage-float">−${damage}</b>` : ''}
-          <strong>${wild.name}</strong><div class="hp-track wild-hp"><i style="width:${Math.max(0, battle.opponentHp / wild.maxHp * 100)}%"></i></div><small>KP ${battle.opponentHp} / ${wild.maxHp}</small>
-        </div>
+    const effectMarkup = effect && damage !== null && damage > 0
+      ? `<div class="attack-effect type-${typeClass[moveType ?? 'Normal'] ?? 'normal'} ${effect === 'trainer' ? 'from-trainer' : 'from-wild'}" aria-hidden="true"><i></i><i></i><i></i></div>`
+      : '';
+    $('#battleContent').innerHTML = `<div class="battle-heading"><span>WILDE BEGEGNUNG</span><h2>Ein wildes ${wild.name}!</h2></div>
+      <div class="battlefield ${effect ? `turn-${effect}` : ''}">
+        <div class="battle-platform platform-wild"></div><div class="battle-platform platform-trainer"></div>
+        <div class="battle-status status-wild"><div><strong>${wild.name}</strong><small>${wild.types.join(' · ')}</small></div><div class="status-hp"><span>KP</span><i><b style="width:${Math.max(0, battle.opponentHp / wild.maxHp * 100)}%"></b></i></div><small>${battle.opponentHp} / ${wild.maxHp}</small></div>
+        <div class="battle-status status-trainer"><div><strong>${mine.name}</strong><small>${mine.types.join(' · ')}</small></div><div class="status-hp"><span>KP</span><i><b style="width:${Math.max(0, profile.hpOf(mine.id) / mine.maxHp * 100)}%"></b></i></div><small>${profile.hpOf(mine.id)} / ${mine.maxHp}</small></div>
+        <div class="fighter trainer-fighter ${effect === 'wild' ? 'taking-hit' : ''} ${effect === 'trainer' ? 'attacking' : ''}"><span class="fighter-art"><img class="battle-sprite" src="assets/sprites/${mine.id}-back.gif" alt="${mine.name}"></span>${effect === 'wild' && damage !== null && damage > 0 ? `<b class="damage-float">−${damage}</b>` : ''}</div>
+        <div class="fighter wild-fighter ${effect === 'trainer' ? 'taking-hit' : ''} ${effect === 'wild' ? 'attacking' : ''}"><span class="fighter-art"><img class="battle-sprite" src="assets/sprites/${wild.id}-front.gif" alt="${wild.name}"></span>${effect === 'trainer' && damage !== null && damage > 0 ? `<b class="damage-float">−${damage}</b>` : ''}</div>
+        ${effectMarkup}
       </div>
-      <p class="battle-message">${message}</p>
-      <div class="move-grid">${moves}</div>
+      <section class="battle-command"><p class="battle-message">${message}</p><div class="move-grid">${moves}</div></section>
       <div class="battle-roster"><strong>Team wechseln</strong>${roster}</div>${outcome}`;
   }
 
