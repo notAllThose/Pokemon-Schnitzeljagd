@@ -1,6 +1,6 @@
 # Pokémon-Entdeckertour
 
-Eine kleine Web-App für eine Pokémon-Schnitzeljagd. Mehrere Trainer-Handys können dieselbe App und dieselben Trainerprofile über das WLAN benutzen. Die Spielstände liegen zentral in einer SQLite-Datei auf dem Computer, der den Server startet.
+Eine kleine Web-App für eine Pokémon-Schnitzeljagd. Mehrere Geräte im selben lokalen Netzwerk können dieselbe App und dieselben Trainerprofile nutzen. Die Spielstände liegen zentral in einer SQLite-Datei auf dem Computer, der den Server startet.
 
 ## Schnellstart unter Windows
 
@@ -15,17 +15,17 @@ Eine kleine Web-App für eine Pokémon-Schnitzeljagd. Mehrere Trainer-Handys kö
 
 Das Fenster startet den Webserver und die gemeinsame Datenbank. `index.html` bitte nicht direkt doppelklicken.
 
-## Drei Handys mit demselben Spielstand verbinden
+## Mehrere Geräte mit demselben Spielstand verbinden
 
-Der Computer, auf dem `start-app.cmd` läuft, ist der Spielserver. Alle Eltern-Handys müssen mit demselben WLAN verbunden sein.
+Der Computer, auf dem `start-app.cmd` läuft, ist der Spielserver. Alle Geräte müssen mit demselben lokalen Netzwerk (zum Beispiel demselben WLAN) verbunden sein.
 
 1. Den Server am Computer starten und das Fenster geöffnet lassen.
 2. Unter Windows `ipconfig` ausführen und die **IPv4-Adresse der WLAN-Verbindung** suchen, zum Beispiel `192.168.1.42`.
-3. Auf jedem Handy Chrome öffnen und `http://192.168.1.42:5173/` aufrufen. Die Beispiel-IP durch die Adresse des Computers ersetzen.
+3. Auf jedem Gerät einen Browser öffnen und `http://192.168.1.42:5173/` aufrufen. Ersetze die Beispiel-IP durch die lokale IPv4-Adresse des Server-Computers.
 4. Falls Windows nachfragt, Node.js den Zugriff im **privaten Netzwerk** erlauben.
-5. Trainerprofile können an jedem Handy erstellt und in der Trainer-Auswahl aktualisiert werden. Pokémon, KP, Orden und Fortschritt werden für alle Geräte gemeinsam gespeichert.
+5. Trainerprofile können an jedem Gerät erstellt und in der Trainer-Auswahl aktualisiert werden. Pokémon, KP, Orden und Fortschritt werden für alle Geräte gemeinsam gespeichert.
 
-Jedes Kind sollte während des Spiels möglichst dasselbe Handy benutzen. Ein Trainerprofil sollte nicht gleichzeitig auf mehreren Handys geöffnet sein; bei parallelen Änderungen gilt der zuletzt gespeicherte Stand. Das Handy kann die App im Browser ausführen. Für eine Installation als PWA ist über die lokale WLAN-Adresse normalerweise HTTPS erforderlich.
+Jedes Kind sollte während des Spiels möglichst dasselbe Gerät benutzen. Ein Trainerprofil sollte nicht gleichzeitig auf mehreren Geräten geöffnet sein; bei parallelen Änderungen gilt der zuletzt gespeicherte Stand. Die App läuft auf Handy, Tablet oder Computer im Browser. Für eine Installation als PWA ist über die lokale WLAN-Adresse normalerweise HTTPS erforderlich.
 
 ## Spielstände und Datenschutz
 
