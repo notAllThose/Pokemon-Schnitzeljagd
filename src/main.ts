@@ -32,6 +32,11 @@ class EntdeckertourApp {
   constructor() {
     this.bindEvents();
     this.render();
+    void this.connectToSharedGame();
+    window.setInterval(() => {
+      // Beim Trainer-Auswahlbildschirm können andere Eltern neue Profile anlegen.
+      if (!this.profile && !this.dialog('#switchDialog').open) void this.refreshTrainerList();
+    }, 5000);
     // Ein Manifest und ein Service Worker funktionieren auf einer Webadresse,
     // aber nicht, wenn die HTML-Datei direkt als file:// geöffnet wird.
     if (location.protocol === 'http:' || location.protocol === 'https:') {
@@ -75,10 +80,12 @@ class EntdeckertourApp {
     $('#beginButton').addEventListener('click', () => this.beginJourney());
     $('#newProfileButton').addEventListener('click', () => this.createProfile());
     $('#addProfileButton').addEventListener('click', () => this.createProfile());
-    $('#switchTrainer').addEventListener('click', () => {
+    $('#switchTrainer').addEventListener('click', async () => {
+      await this.refreshTrainerList();
       this.renderProfileButtons('#switchList');
       this.dialog('#switchDialog').showModal();
     });
+    $('#refreshProfilesButton').addEventListener('click', () => { void this.refreshTrainerList(); });
     $('#switchList').addEventListener('click', event => this.selectProfileFrom(event));
     $('#profileList').addEventListener('click', event => this.selectProfileFrom(event));
     $('#mainMenu').addEventListener('click', event => {
@@ -451,13 +458,37 @@ class EntdeckertourApp {
   }
 
   private resetProfiles(): void {
-    if (!confirm('Alle Trainerprofile auf diesem Gerät wirklich löschen?')) return;
+    if (!confirm('Alle gemeinsamen Trainerprofile auf allen Geräten wirklich löschen?')) return;
     this.profiles.clear();
     this.profile = null;
     this.battle = null;
     this.currentPage = 'home';
     this.render();
     this.showGameMessage('Alle Trainerkarten wurden gelöscht.');
+  }
+
+  private async connectToSharedGame(): Promise<void> {
+    try {
+      await this.profiles.connectShared();
+      this.profile = this.profiles.active;
+      $('#serverWarning').hidden = true;
+      this.render();
+    } catch (error) {
+      console.error('Gemeinsamer Spielstand ist nicht erreichbar.', error);
+      $('#serverWarning').hidden = false;
+    }
+  }
+
+  private async refreshTrainerList(): Promise<void> {
+    try {
+      await this.profiles.refreshShared(false);
+      this.profile = this.profiles.active;
+      $('#serverWarning').hidden = true;
+      this.render();
+    } catch (error) {
+      console.error('Trainerliste konnte nicht aktualisiert werden.', error);
+      $('#serverWarning').hidden = false;
+    }
   }
 
   private render(): void {

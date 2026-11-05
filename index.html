@@ -9,6 +9,7 @@
   <title>Pokémon-Entdeckertour</title>
 </head>
 <body>
+  <aside id="serverWarning" class="file-warning" hidden>Der gemeinsame Spielstand ist gerade nicht erreichbar. Dieses Handy kann vorübergehend nur lokal speichern.</aside>
   <aside id="fileWarning" class="file-warning" hidden>
     <strong>Die App wurde noch nicht gestartet.</strong>
     <span>Chrome kann die TypeScript-Datei nicht direkt aus dem Ordner öffnen. Schließe diesen Tab, öffne im Datei-Explorer den App-Ordner und doppelklicke auf <b>start-app.cmd</b>. Warte, bis im schwarzen Fenster eine Adresse wie <b>http://localhost:5173/</b> erscheint, und öffne diese Adresse in Chrome.</span>
@@ -19,7 +20,7 @@
       <div class="hero-copy"><p class="eyebrow">DEIN ABENTEUER BEGINNT</p><h1>Werde Pokémon-Trainer!</h1><p>Finde wilde Pokémon, tritt gegen sie an und sammle Orden auf deiner Entdeckertour.</p></div>
       <div class="hero-orb" aria-hidden="true">⚡</div>
     </section>
-    <section id="profilePicker" class="card picker-card hidden"><div class="section-heading"><div><p class="eyebrow">WEITER GEHT’S</p><h2>Wer ist jetzt dran?</h2></div><span class="step-badge">Trainer-Auswahl</span></div><div id="profileList" class="profile-list"></div><button id="newProfileButton" class="primary-button full">＋ Neues Trainerprofil</button></section>
+    <section id="profilePicker" class="card picker-card hidden"><div class="section-heading"><div><p class="eyebrow">WEITER GEHT’S</p><h2>Wer ist jetzt dran?</h2></div><span class="step-badge">Trainer-Auswahl</span></div><div id="profileList" class="profile-list"></div><button id="refreshProfilesButton" class="secondary-button full" type="button">Trainerliste aktualisieren</button><button id="newProfileButton" class="primary-button full">＋ Neues Trainerprofil</button></section>
     <section id="setup" class="card setup-card">
       <div class="section-heading"><div><p class="eyebrow">SCHRITT 1</p><h2>Wer ist heute Trainer?</h2></div><span class="step-badge">1 / 3</span></div>
       <label class="field-label" for="trainerName">Dein Name</label><input id="trainerName" maxlength="18" placeholder="Zum Beispiel: Alex" autocomplete="off">

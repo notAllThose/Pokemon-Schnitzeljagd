@@ -1,42 +1,37 @@
 # Pokémon-Entdeckertour
 
-Eine kleine lokale Web-App für eine Pokémon-Schnitzeljagd. Sie läuft auf einem Computer als Spielstation; mehrere Trainerprofile können nacheinander dasselbe Gerät benutzen.
+Eine kleine Web-App für eine Pokémon-Schnitzeljagd. Mehrere Trainer-Handys können dieselbe App und dieselben Trainerprofile über das WLAN benutzen. Die Spielstände liegen zentral in einer SQLite-Datei auf dem Computer, der den Server startet.
 
 ## Schnellstart unter Windows
 
 1. **Node.js (LTS)** installieren: <https://nodejs.org/>
-2. Das Repository auf GitHub über **Code → Download ZIP** herunterladen und entpacken. Alternativ per Git klonen:
+2. Das Repository über **Code → Download ZIP** herunterladen und entpacken. Alternativ per Git klonen:
 
    ```powershell
    git clone https://github.com/notAllThose/Pokemon-Schnitzeljagd.git pokemon-entdeckertour
    ```
-3. Im entpackten Projektordner die Datei **`start-app.cmd`** doppelklicken.
-4. Beim ersten Start lädt das Skript die nötigen Pakete herunter. Das kann einen Moment dauern.
-5. Das schwarze Fenster geöffnet lassen. In Chrome oder Edge am Computer diese Adresse öffnen: **http://localhost:5173/**
+3. Im Projektordner **`start-app.cmd`** doppelklicken. Beim ersten Start lädt das Skript die Abhängigkeiten herunter.
+4. Das schwarze Fenster geöffnet lassen. Am Computer Chrome oder Edge öffnen und **http://localhost:5173/** aufrufen.
 
-Das Skript startet einen kleinen Entwicklungs-Webserver. `index.html` bitte nicht direkt doppelklicken: Die App benötigt den Webserver, damit TypeScript und die PWA-Dateien geladen werden können.
+Das Fenster startet den Webserver und die gemeinsame Datenbank. `index.html` bitte nicht direkt doppelklicken.
 
-## Alternative: Start über PowerShell
+## Drei Handys mit demselben Spielstand verbinden
 
-Im Projektordner ein Terminal öffnen und diese Befehle ausführen:
+Der Computer, auf dem `start-app.cmd` läuft, ist der Spielserver. Alle Eltern-Handys müssen mit demselben WLAN verbunden sein.
 
-```powershell
-npm install
-npm run dev
-```
+1. Den Server am Computer starten und das Fenster geöffnet lassen.
+2. Unter Windows `ipconfig` ausführen und die **IPv4-Adresse der WLAN-Verbindung** suchen, zum Beispiel `192.168.1.42`.
+3. Auf jedem Handy Chrome öffnen und `http://192.168.1.42:5173/` aufrufen. Die Beispiel-IP durch die Adresse des Computers ersetzen.
+4. Falls Windows nachfragt, Node.js den Zugriff im **privaten Netzwerk** erlauben.
+5. Trainerprofile können an jedem Handy erstellt und in der Trainer-Auswahl aktualisiert werden. Pokémon, KP, Orden und Fortschritt werden für alle Geräte gemeinsam gespeichert.
 
-Danach **http://localhost:5173/** im Browser öffnen. Zum Beenden im Terminal `Ctrl+C` drücken.
+Jedes Kind sollte während des Spiels möglichst dasselbe Handy benutzen. Ein Trainerprofil sollte nicht gleichzeitig auf mehreren Handys geöffnet sein; bei parallelen Änderungen gilt der zuletzt gespeicherte Stand. Das Handy kann die App im Browser ausführen. Für eine Installation als PWA ist über die lokale WLAN-Adresse normalerweise HTTPS erforderlich.
 
-## Auf dem Handy im selben WLAN ausprobieren
+## Spielstände und Datenschutz
 
-Das Handy und der Computer müssen mit demselben WLAN verbunden sein.
+Die gemeinsame Datenbank ist die Datei `data/entdeckertour.sqlite` auf dem Server-Computer. Sie wird beim ersten Start automatisch angelegt, bleibt auf diesem Computer und wird nicht ins GitHub-Repository hochgeladen. Zum Sichern den Server beenden und diese Datei kopieren.
 
-1. Den Webserver am Computer starten und das Terminalfenster offen lassen.
-2. Unter Windows PowerShell oder Eingabeaufforderung `ipconfig` ausführen und die **IPv4-Adresse** der WLAN-Verbindung suchen, zum Beispiel `192.168.1.42`.
-3. Auf dem Handy Chrome öffnen und `http://192.168.1.42:5173/` aufrufen. Dabei die Beispiel-IP durch die IPv4-Adresse des Computers ersetzen.
-4. Falls Windows fragt, den Zugriff für Node.js im **privaten Netzwerk** erlauben.
-
-Das reicht zum Ausprobieren im Browser. Für eine Installation als PWA auf dem Handy wird normalerweise eine HTTPS-Adresse benötigt; HTTP über die lokale WLAN-IP ist dafür nicht ausreichend.
+Die Browser behalten zusätzlich die zuletzt ausgewählte Trainerkarte und eine lokale Kopie für den Start. Der Server ist für das private WLAN gedacht: Er hat in diesem Prototyp keine Anmeldung. Bitte den Port nicht ins öffentliche Internet weiterleiten.
 
 ## Was man ausprobieren kann
 
@@ -48,8 +43,6 @@ Das reicht zum Ausprobieren im Browser. Für eine Installation als PWA auf dem H
   - `HÖHLE-03`
 - Im Pokémon-Center heilt der Beispielcode `HEIL-001` das Team.
 
-Spielstände werden lokal im Browser auf dem jeweiligen Gerät gespeichert. Sie werden nicht automatisch zwischen Computer und Handy synchronisiert.
-
 ## Entwicklung
 
 ```powershell
@@ -57,14 +50,16 @@ npm install
 npm run dev
 ```
 
-Produktionsversion erstellen und lokal ansehen:
+`npm run dev` startet Vite und die lokale API. Die SQLite-Datei wird von `server.js` über `sql.js` (WebAssembly) gelesen und geschrieben; native C++-Buildtools sind nicht erforderlich.
+
+Produktionsversion erstellen und mit API starten:
 
 ```powershell
 npm run build
-npm run preview
+npm start
 ```
 
-Die fertige statische App liegt nach dem Build in `dist/`.
+Die fertige Web-App liegt nach dem Build in `dist/`. `npm run preview` dient nur zur Vorschau der statischen Dateien und stellt die gemeinsame Datenbank nicht bereit.
 
 ## Projektaufbau
 
@@ -72,11 +67,11 @@ Die fertige statische App liegt nach dem Build in `dist/`.
 - `src/game/Battle.ts` – Kampfregeln und Zugablauf
 - `src/game/TypeChart.ts` – Typvorteile und Resistenzen
 - `src/game/TrainerProfile.ts` – Team, Wechsel und gespeicherte KP
-- `src/game/ProfileRepository.ts` – Trainerprofile speichern und laden
+- `src/game/ProfileRepository.ts` – lokale Kopie und Synchronisierung der Trainerprofile
+- `server.js` – gemeinsame SQLite-Datenbank und Produktionsserver
+- `scripts/dev.js` – Entwicklungsserver für API und Vite
 - `src/data/pokemon.ts` – Pokémon und Attacken
 - `src/data/settings.ts` – Token- und Heilcodes sowie Orden
 - `public/assets/sprites/` – lokal gespeicherte Pokémon-Sprites
 
 Die Sprites stammen aus dem [PokeAPI-Sprites-Repository](https://github.com/PokeAPI/sprites). Pokémon und zugehörige Namen/Marken sind Eigentum ihrer jeweiligen Rechteinhaber. Dieses Projekt ist ein privates, nicht kommerzielles Fanprojekt.
-
-

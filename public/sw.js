@@ -8,6 +8,8 @@ self.addEventListener('activate', event => event.waitUntil(
     .then(() => self.clients.claim())
 ));
 self.addEventListener('fetch', event => event.respondWith((async () => {
+  // Trainerprofile sind zentral und dürfen nie aus einem Offline-Cache kommen.
+  if (new URL(event.request.url).pathname.startsWith('/api/')) return fetch(event.request);
   const cache = await caches.open(CACHE);
   const isSameOrigin = new URL(event.request.url).origin === self.location.origin;
   if (event.request.mode === 'navigate') {
