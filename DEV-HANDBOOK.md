@@ -92,7 +92,9 @@ Beispiel für den JSON-Inhalt eines `PUT`-Requests:
     "badges": ["mut"],
     "activePokemonId": "pikachu",
     "hpByPokemon": { "pikachu": 18, "raupy": 17 },
-    "habitatByPokemon": { "pikachu": "forest", "raupy": "forest" }
+    "habitatByPokemon": { "pikachu": "forest", "raupy": "forest" },
+    "movesByPokemon": { "pikachu": [{ "name": "Kristallschwert", "type": "Stahl", "power": 80 }] },
+    "declinedSpecialMovesByPokemon": { "raupy": ["Kristallschwert"] }
   }
 }
 ```
@@ -145,14 +147,16 @@ interface TrainerSave {
   activePokemonId: string;
   hpByPokemon: Record<string, number>;
   habitatByPokemon: Record<string, EncounterHabitat>;
+  movesByPokemon: Record<string, Move[]>;
+  declinedSpecialMovesByPokemon: Record<string, string[]>;
 }
 ```
 
-Die Sammlung enthält Pokémon-IDs, nicht vollständige Kopien ihrer Dexdefinitionen. Name, Bild, Typen und Attacken werden zur Laufzeit aus `POKEMON` nachgeschlagen. `hpByPokemon` speichert verbleibende KP pro Pokémon, `habitatByPokemon` merkt sich den Fangort für die Kulisse im Pokédex und Fangbildschirm.
+Die Sammlung enthält Pokémon-IDs, nicht vollständige Kopien ihrer Dexdefinitionen. Name, Bild und Typen werden zur Laufzeit aus `POKEMON` nachgeschlagen. `hpByPokemon` speichert verbleibende KP pro Pokémon, `habitatByPokemon` merkt sich den Fangort für die Kulisse im Pokédex und Fangbildschirm. `movesByPokemon` wird nur für angepasste Attacken-Sets gespeichert; ein fehlender Eintrag fällt auf die normalen Attacken aus `POKEMON` zurück. Bewusst abgelehnte Spezialattacken stehen unter `declinedSpecialMovesByPokemon`, damit ein Nein nicht bei jedem Dex-Aufruf erneut gefragt wird.
 
 ### `TrainerProfile`
 
-Diese Klasse kapselt Regeln für genau einen Trainer: fehlende IDs/Standardwerte ergänzen, ältere Spielstände auffüllen, Pokémon hinzufügen, KP begrenzen, lebende Teammitglieder auflisten, aktives Pokémon wechseln und das ganze Team heilen. Sie verändert dabei ihr `data`-Objekt; `ProfileRepository.save()` muss anschließend aufgerufen werden, damit Änderungen dauerhaft gespeichert werden.
+Diese Klasse kapselt Regeln für genau einen Trainer: fehlende IDs/Standardwerte ergänzen, ältere Spielstände auffüllen, Pokémon hinzufügen, KP begrenzen, lebende Teammitglieder auflisten, aktives Pokémon wechseln, Attacken-Sets pro Pokémon verwalten und das ganze Team heilen. Sie verändert dabei ihr `data`-Objekt; `ProfileRepository.save()` muss anschließend aufgerufen werden, damit Änderungen dauerhaft gespeichert werden.
 
 ### `ProfileRepository`
 
@@ -194,6 +198,12 @@ Der Ablauf wird in `EntdeckertourApp` koordiniert:
 4. Wenn der Gegner noch steht, folgt nach einer kurzen Pause `Battle.opponentAttack()`; auch dieser KP-Stand wird gespeichert.
 5. Ist das eigene Pokémon besiegt, kann ein lebendes Teammitglied ohne gegnerischen Gegenzug eingewechselt werden. Ein freiwilliger Wechsel verbraucht einen Zug.
 6. Bei Sieg läuft die Fangsequenz; danach nimmt `TrainerProfile.addPokemon()` das Pokémon mit vollen KP und Fundort ins Team auf und speichert das Ergebnis.
+
+### Theos Spezialattacke
+
+Wenn der Trainername nach Entfernen äußerer Leerzeichen `Theo` lautet (Groß-/Kleinschreibung wird ignoriert), bietet der Pokédex bei jedem eigenen Pokémon einmalig `Kristallschwert` an. Pokémon, die die Attacke schon kennen, bekommen das Angebot nicht erneut. Ist das Attacken-Set voll, wählt das Kind eine vorhandene Attacke aus und bestätigt den Austausch. Zurückgehen zur Ja/Nein-Frage lässt Theo weiter überlegen; eine bewusste Ablehnung wird pro Pokémon in `declinedSpecialMovesByPokemon` gespeichert und nicht erneut angeboten. Das erlernte Attackenset liegt in `movesByPokemon`; beide Felder werden mit dem Trainerprofil auf andere Geräte synchronisiert.
+
+Die Attacke ist als `THEO_SPECIAL_MOVE` in `src/data/settings.ts` definiert (Typ Stahl, Stärke 80). `Battle.activeMoves` liest das Profil-Attackenset und macht sie damit im Kampf benutzbar. `BattleView` stellt die dunkle Lichtblitz-/Schwert-Szene dar; `AudioManager` erzeugt den Kristall-Schnitt-Sound lokal mit Web Audio. Andere Trainerprofile erhalten diese Attacke nicht.
 
 `turnLocked` verhindert, dass schnelle wiederholte Klicks mehrere Aktionen während derselben Animation auslösen. `BattleView` kümmert sich um Statusanzeigen, Sprites, KP-Balken, Schaden und Attackeneffekte; `AudioManager` spielt Musik und Effekte.
 

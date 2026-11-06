@@ -1,3 +1,10 @@
+import type { Move } from '../domain/types';
+
+/** Theos geheime Spezialattacke: absurd stark und nur für sein Profil verfügbar. */
+export const THEO_SPECIAL_MOVE: Move = {
+  name: 'Kristallschwert', type: 'Stahl', power: 80,
+};
+
 /** Erwachsenen-Code fürs Pokémon-Center. Vor der Feier hier bei Bedarf ändern. */
 export const HEAL_CODE = 'HEIL-001';
 

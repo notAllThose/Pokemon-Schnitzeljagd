@@ -44,6 +44,10 @@ export interface TrainerSave {
   hpByPokemon: Record<string, number>;
   /** Wo jedes Team-Pokémon beim Abenteuer gefunden wurde. */
   habitatByPokemon: Record<string, EncounterHabitat>;
+  /** Individuelle Attacken-Sets; ohne Eintrag gelten die Attacken aus dem Pokédex. */
+  movesByPokemon: Record<string, Move[]>;
+  /** Abgelehnte Spezialattacken je Pokémon, damit eine bewusste Absage nicht erneut erscheint. */
+  declinedSpecialMovesByPokemon: Record<string, string[]>;
 }
 
 export interface BattleActionResult {

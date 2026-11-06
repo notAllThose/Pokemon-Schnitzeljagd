@@ -28,12 +28,13 @@ export class PokedexView {
     const pokemon = POKEMON[pokemonId];
     if (!pokemon) return;
     const types = pokemon.types.map(type => `<span class="type-chip ${this.typeClass(type)}">${type}</span>`).join('');
-    const moves = pokemon.moves.map(move => {
+    const knownMoves = profile?.collection.includes(pokemonId) ? profile.movesOf(pokemonId) : pokemon.moves;
+    const moves = knownMoves.map(move => {
       const moveType = move.type
         ? `<span class="type-chip ${this.typeClass(move.type)}">${move.type}</span>`
         : '<span class="type-chip type-tactic">Taktik</span>';
       const detail = move.effect === 'evade' ? 'Weicht dem nächsten Angriff aus' : `Basisstärke ${move.power}`;
-      return `<div class="pokedex-move"><div><strong>${move.name}</strong><small>${detail}</small></div>${moveType}</div>`;
+      return `<div class="pokedex-move ${move.name === 'Kristallschwert' ? 'theo-move' : ''}"><div><strong>${move.name}</strong><small>${detail}</small></div>${moveType}</div>`;
     }).join('');
 
     const backLabel = options.returnToEncounter ? '← Zurück zur Begegnung' : '← Zur Pokémon-Liste';

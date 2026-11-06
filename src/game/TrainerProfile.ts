@@ -1,5 +1,5 @@
 import { POKEMON } from '../data/pokemon';
-import type { TrainerSave } from '../domain/types';
+import type { Move, TrainerSave } from '../domain/types';
 
 // Wenn ein älterer Spielstand noch keinen Fundort enthält, zeigen wir einen
 // passenden Pokémon-Lebensraum. Neue Fänge speichern den echten Token-Fundort.
@@ -23,6 +23,8 @@ export class TrainerProfile {
       activePokemonId: data.activePokemonId ?? data.starter ?? '',
       hpByPokemon: data.hpByPokemon ?? {},
       habitatByPokemon: data.habitatByPokemon ?? {},
+      movesByPokemon: data.movesByPokemon ?? {},
+      declinedSpecialMovesByPokemon: data.declinedSpecialMovesByPokemon ?? {},
     };
     // Alte Spielstände bekommen volle KP, damit das Update niemanden benachteiligt.
     for (const id of this.data.collection) {
@@ -51,6 +53,37 @@ export class TrainerProfile {
 
   habitatOf(pokemonId: string): TrainerSave['habitatByPokemon'][string] {
     return this.data.habitatByPokemon[pokemonId] ?? DEFAULT_HABITATS[pokemonId] ?? 'meadow';
+  }
+
+  /** Gibt die gespeicherten Attacken oder für alte Spielstände die Basisattacken zurück. */
+  movesOf(pokemonId: string): Move[] {
+    return this.data.movesByPokemon[pokemonId] ?? POKEMON[pokemonId]?.moves ?? [];
+  }
+
+  hasDeclinedSpecialMove(pokemonId: string, moveName: string): boolean {
+    return this.data.declinedSpecialMovesByPokemon[pokemonId]?.includes(moveName) ?? false;
+  }
+
+  declineSpecialMove(pokemonId: string, moveName: string): void {
+    if (!this.data.collection.includes(pokemonId)) return;
+    const declinedMoves = this.data.declinedSpecialMovesByPokemon[pokemonId] ?? [];
+    if (!declinedMoves.includes(moveName)) declinedMoves.push(moveName);
+    this.data.declinedSpecialMovesByPokemon[pokemonId] = declinedMoves;
+  }
+
+  /** Ersetzt eine Attacke oder belegt einen freien Platz und speichert das Set im Profil. */
+  learnMove(pokemonId: string, move: Move, forgetIndex: number | null): boolean {
+    if (!this.data.collection.includes(pokemonId)) return false;
+    const currentMoves = this.movesOf(pokemonId);
+    if (currentMoves.some(knownMove => knownMove.name === move.name)) return false;
+    if (forgetIndex === null && currentMoves.length >= 4) return false;
+    if (forgetIndex !== null && (forgetIndex < 0 || forgetIndex >= currentMoves.length)) return false;
+
+    const updatedMoves = [...currentMoves];
+    if (forgetIndex === null) updatedMoves.push(move);
+    else updatedMoves.splice(forgetIndex, 1, move);
+    this.data.movesByPokemon[pokemonId] = updatedMoves;
+    return true;
   }
 
   setHp(pokemonId: string, hp: number): void {

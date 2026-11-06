@@ -15,13 +15,14 @@ export class Battle {
 
   get opponent() { return POKEMON[this.opponentId]; }
   get activePokemon() { return POKEMON[this.trainer.activePokemonId]; }
+  get activeMoves(): Move[] { return this.trainer.movesOf(this.trainer.activePokemonId); }
   /** Wird nach jeder Aktion neu aus dem Kampfzustand gelesen. */
   get isWon(): boolean { return this.result === 'win'; }
   get activeHp(): number { return this.trainer.hpOf(this.trainer.activePokemonId); }
   get needsReplacement(): boolean { return this.activeHp <= 0 && this.trainer.livingPokemon().length > 0; }
 
   trainerAttack(moveIndex: number): BattleActionResult {
-    const move = this.activePokemon.moves[moveIndex];
+    const move = this.activeMoves[moveIndex];
     if (move.effect === 'evade') {
       this.avoidsNextHit = true;
       return { attackerName: this.activePokemon.name, moveName: move.name, damage: 0, effectiveness: 1, specialEffect: 'evade' };

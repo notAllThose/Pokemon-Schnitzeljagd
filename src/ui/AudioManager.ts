@@ -89,6 +89,9 @@ export class AudioManager {
     const start = context.currentTime + 0.015;
 
     switch (move.name) {
+      case 'Kristallschwert':
+        this.playCrystalSword(context, start);
+        break;
       case 'Donnerschock':
       case 'Knistern':
         this.playElectricBurst(context, start);
@@ -140,7 +143,7 @@ export class AudioManager {
     }
 
     // Im Kampf läuft der gemeinsame Musik-Context weiter; Einzeltöne schließen ihren Context.
-    if (temporaryContext) this.closeAfter(context, 1000);
+    if (temporaryContext) this.closeAfter(context, move.name === 'Kristallschwert' ? 2600 : 1000);
   }
 
   /** Kurze, eigens erzeugte 8-Bit-Heilmelodie; benötigt keine Audiodatei. */
@@ -282,6 +285,21 @@ export class AudioManager {
   private playPoisonSting(context: AudioContext, at: number): void {
     this.playNoiseBurst(context, at, 0.2, 0.06, 1200, 5200);
     this.playTone(context, 1050, at + 0.04, 0.16, 'square', 0.065, 300);
+  }
+
+  /** Kristalliges Aufladen, ein scharfer Licht-Schnitt und ein tiefer Trefferklang. */
+  private playCrystalSword(context: AudioContext, at: number): void {
+    this.playTone(context, 310, at, 0.42, 'triangle', 0.1, 1240);
+    this.playTone(context, 880, at + 0.18, 0.5, 'sine', 0.1, 1760);
+    this.playNoiseBurst(context, at + 0.48, 0.38, 0.15, 900, 7200);
+    this.playTone(context, 1760, at + 0.5, 0.22, 'square', 0.09, 420);
+    this.playTone(context, 125, at + 0.68, 0.32, 'triangle', 0.16, 48);
+    [1319, 1760, 2093].forEach((frequency, index) => {
+      this.playTone(context, frequency, at + 0.72 + index * 0.045, 0.3, 'sine', 0.055, frequency * 0.72);
+    });
+    [1976, 1568, 2349, 1760].forEach((frequency, index) => {
+      this.playTone(context, frequency, at + 1.18 + index * 0.17, 0.3, 'sine', 0.045, frequency * 0.82);
+    });
   }
 
   private playTypeAccent(context: AudioContext, at: number, type: Move['type']): void {

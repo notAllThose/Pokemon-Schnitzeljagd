@@ -43,6 +43,12 @@ Die Browser behalten zusätzlich die zuletzt ausgewählte Trainerkarte und eine 
   - `HÖHLE-03`
 - Im Pokémon-Center heilt der Beispielcode `HEIL-001` das Team.
 
+### Theos Spezialprofil
+
+Für das Geburtstagskind kann ein Trainerprofil mit dem Namen **Theo** angelegt werden. Seine eigenen Pokémon bekommen beim ersten Öffnen ihres Pokédex-Eintrags die Chance, **Kristallschwert** zu lernen – eine absichtlich sehr starke Spezialattacke mit eigener Kampfanimation und eigenem Sound. Kennt ein Pokémon bereits vier Attacken, wird ausgewählt, welche Attacke es dafür vergisst; der Tausch muss bestätigt werden.
+
+Wählt Theo **„Nein, nicht erlernen“**, merkt sich das Profil diese Entscheidung für genau dieses Pokémon. Es wird dann nicht erneut gefragt. Ein erlerntes Kristallschwert und eine bewusste Ablehnung bleiben im gemeinsamen Spielstand gespeichert und werden auf den anderen Geräten übernommen. Andere Trainerprofile erhalten diese Spezialattacke nicht.
+
 ## Entwicklung
 
 ```powershell

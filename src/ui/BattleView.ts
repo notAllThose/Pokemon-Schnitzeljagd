@@ -25,6 +25,7 @@ export class BattleView {
     effect: BattleEffect = '',
     damage: number | null = null,
     moveType: PokemonType | null = null,
+    moveName = '',
   ): void {
     const trainerPokemon = battle.activePokemon;
     const wildPokemon = battle.opponent;
@@ -32,13 +33,13 @@ export class BattleView {
 
     const moves = replacementMode || battle.result !== 'playing'
       ? ''
-      : trainerPokemon.moves.map((move, index) => {
+      : battle.activeMoves.map((move, index) => {
         const multiplier = TypeChart.multiplier(move.type, wildPokemon.types);
         const effectiveness = multiplier > 1 ? ' · sehr effektiv' : multiplier < 1 ? ' · wenig effektiv' : '';
         const details = move.effect === 'evade'
           ? 'Taktik · weicht aus'
           : `${move.type} · Stärke ${move.power}${effectiveness}`;
-        return `<button class="move-button" data-move="${index}" type="button" ${turnLocked ? 'disabled' : ''}>
+        return `<button class="move-button ${move.name === 'Kristallschwert' ? 'theo-move-button' : ''}" data-move="${index}" type="button" ${turnLocked ? 'disabled' : ''}>
           <strong>${move.name}</strong><small>${details}</small></button>`;
       }).join('');
 
@@ -64,13 +65,14 @@ export class BattleView {
       : '';
 
     root.innerHTML = `<div class="battle-heading"><span>WILDE BEGEGNUNG</span><h2>Ein wildes ${wildPokemon.name}!</h2></div>
-      <div class="battlefield habitat-${battle.habitat} ${effect ? `turn-${effect}` : ''}">
+      <div class="battlefield habitat-${battle.habitat} ${effect ? `turn-${effect}` : ''} ${moveName === 'Kristallschwert' ? 'crystal-attack' : ''}">
         <div class="battle-platform platform-wild"></div><div class="battle-platform platform-trainer"></div>
         <div class="battle-status status-wild"><div><strong>${wildPokemon.name}</strong><small>${wildPokemon.types.join(' · ')}</small></div><div class="status-hp"><span>KP</span><i><b style="width:${Math.max(0, battle.opponentHp / wildPokemon.maxHp * 100)}%"></b></i></div><small>${battle.opponentHp} / ${wildPokemon.maxHp}</small></div>
         <div class="battle-status status-trainer"><div><strong>${trainerPokemon.name}</strong><small>${trainerPokemon.types.join(' · ')}</small></div><div class="status-hp"><span>KP</span><i><b style="width:${Math.max(0, profile.hpOf(trainerPokemon.id) / trainerPokemon.maxHp * 100)}%"></b></i></div><small>${profile.hpOf(trainerPokemon.id)} / ${trainerPokemon.maxHp}</small></div>
         <div class="fighter trainer-fighter ${effect === 'wild' ? 'taking-hit' : ''} ${effect === 'trainer' ? 'attacking' : ''}"><span class="fighter-art"><img class="battle-sprite" src="assets/sprites/${trainerPokemon.id}-back.gif" alt="${trainerPokemon.name}"></span>${effect === 'wild' && damage !== null && damage > 0 ? `<b class="damage-float">−${damage}</b>` : ''}</div>
         <div class="fighter wild-fighter ${effect === 'trainer' ? 'taking-hit' : ''} ${effect === 'wild' ? 'attacking' : ''}"><span class="fighter-art"><img class="battle-sprite" src="assets/sprites/${wildPokemon.id}-front.gif" alt="${wildPokemon.name}"></span>${effect === 'trainer' && damage !== null && damage > 0 ? `<b class="damage-float">−${damage}</b>` : ''}</div>
         ${effectMarkup}
+        ${moveName === 'Kristallschwert' ? '<div class="crystal-slash" aria-hidden="true"><i></i><b>◆</b></div><div class="crystal-shards" aria-hidden="true"><i>◆</i><i>◆</i><i>◇</i><i>◆</i><i>◇</i><i>◆</i><i>✦</i></div>' : ''}
       </div>
       <section class="battle-command"><p class="battle-message">${message}</p><div class="move-grid">${moves}</div></section>
       <div class="battle-roster"><strong>Team wechseln</strong>${roster}</div>${outcome}`;

@@ -73,9 +73,10 @@
   <dialog id="switchDialog" class="switch-dialog"><form method="dialog"><button class="dialog-close" aria-label="Schließen">×</button></form><div class="section-heading"><div><p class="eyebrow">TRAINERKARTE</p><h2>Wer spielt jetzt?</h2></div></div><div id="switchList" class="profile-list"></div><button id="addProfileButton" class="primary-button full">＋ Neues Trainerprofil</button></dialog>
   <dialog id="messageDialog" class="game-message-dialog" aria-labelledby="gameMessageText">
     <div class="game-message-window">
-      <div class="game-message-header"><span>POKÉMON-ABENTEUER</span><i aria-hidden="true"></i></div>
+      <div class="game-message-header"><span id="gameMessageHeader">POKÉMON-ABENTEUER</span><i aria-hidden="true"></i></div>
       <div id="captureScene" class="capture-scene hidden" aria-hidden="true"><img id="capturePokemonSprite" class="capture-pokemon-sprite" alt=""><div class="capture-pokeball" aria-hidden="true"><i></i></div><div class="capture-stars" aria-hidden="true"><i>✦</i><i>✦</i><i>✦</i></div></div>
       <p id="gameMessageText" aria-live="polite"></p>
+      <div id="gameMessageChoices" class="game-message-choices hidden"></div>
       <form method="dialog"><button id="messageContinue" class="game-message-continue" type="submit">Weiter <span aria-hidden="true">▶</span></button></form>
     </div>
   </dialog>

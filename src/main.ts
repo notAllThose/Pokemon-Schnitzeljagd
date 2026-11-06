@@ -1,5 +1,5 @@
 import { POKEMON, STARTER_IDS } from './data/pokemon';
-import { BADGES, HEAL_CODE, WILD_TOKEN_CODES, WILD_TOKEN_HABITATS } from './data/settings';
+import { BADGES, HEAL_CODE, THEO_SPECIAL_MOVE, WILD_TOKEN_CODES, WILD_TOKEN_HABITATS } from './data/settings';
 import type { EncounterHabitat, PokemonType } from './domain/types';
 import { Battle } from './game/Battle';
 import { ProfileRepository } from './game/ProfileRepository';
@@ -275,6 +275,7 @@ class EntdeckertourApp {
       encounterHabitat: this.currentEncounterHabitat,
       playMotion: true,
     });
+    this.maybeOfferTheoMove(pokemonId, returnToEncounter);
     if (slideDirection) {
       const content = $('#pokedexContent');
       content.classList.remove('dex-slide-next', 'dex-slide-previous');
@@ -293,6 +294,38 @@ class EntdeckertourApp {
     this.returnToEncounter = false;
     $('#pokedexDetailView').classList.add('hidden');
     $('#pokedexListView').classList.remove('hidden');
+  }
+
+  /** Theo's Pokémon bekommen beim ersten Öffnen ihres Dex-Eintrags eine Lernchance. */
+  private maybeOfferTheoMove(pokemonId: string, returnToEncounter: boolean): void {
+    const profile = this.profile;
+    if (returnToEncounter || !profile || profile.name.trim().toLocaleLowerCase('de-DE') !== 'theo') return;
+    if (!profile.collection.includes(pokemonId)) return;
+    const pokemon = POKEMON[pokemonId];
+    const knownMoves = profile.movesOf(pokemonId);
+    if (!pokemon || knownMoves.some(move => move.name === THEO_SPECIAL_MOVE.name)
+      || profile.hasDeclinedSpecialMove(pokemonId, THEO_SPECIAL_MOVE.name)) return;
+
+    this.messages.showMoveLearning(pokemon, THEO_SPECIAL_MOVE, knownMoves, forgetIndex => {
+      if (forgetIndex === 'decline') {
+        profile.declineSpecialMove(pokemonId, THEO_SPECIAL_MOVE.name);
+        this.profiles.save();
+        return;
+      }
+      const forgottenMove = forgetIndex === null ? null : profile.movesOf(pokemonId)[forgetIndex]?.name;
+      if (!profile.learnMove(pokemonId, THEO_SPECIAL_MOVE, forgetIndex)) {
+        this.showGameMessage(`${pokemon.name} konnte die Attacke nicht erlernen.`);
+        return;
+      }
+      this.profiles.save();
+      this.pokedexView.renderDetail(pokemonId, profile, {
+        returnToEncounter: false,
+        encounterHabitat: profile.habitatOf(pokemonId),
+        playMotion: true,
+      });
+      const forgottenText = forgottenMove ? ` ${forgottenMove} wurde vergessen.` : '';
+      this.showGameMessage(`${pokemon.name} hat Kristallschwert gelernt!${forgottenText}`);
+    });
   }
 
   private renderEncounterChoice(pokemonId: string): void {
@@ -333,7 +366,7 @@ class EntdeckertourApp {
   private chooseMove(index: number): void {
     const battle = this.battle;
     if (!battle || this.turnLocked || battle.result !== 'playing' || battle.needsReplacement) return;
-    const selectedMove = battle.activePokemon.moves[index];
+    const selectedMove = battle.activeMoves[index];
     if (!selectedMove) return;
     this.turnLocked = true;
     const action = battle.trainerAttack(index);
@@ -344,17 +377,17 @@ class EntdeckertourApp {
     const actionText = action.specialEffect === 'evade'
       ? `${action.attackerName} macht sich zum Ausweichen bereit! Der nächste Treffer kann verfehlen.`
       : `${action.attackerName} setzt ${action.moveName} ein! ${damageText}${effectiveness}`;
-    this.renderBattle(actionText, 'trainer', action.damage, battle.activePokemon.moves[index]?.type ?? null);
+    this.renderBattle(actionText, 'trainer', action.damage, selectedMove.type, selectedMove.name);
     if (battle.isWon) {
       window.setTimeout(() => {
         if (this.battle !== battle) return;
         this.renderBattle(`Das wilde ${battle.opponent.name} wurde besiegt!`);
         this.audio.playVictoryJingle();
         window.setTimeout(() => this.addVictoryToTeam(battle), 1000);
-      }, 800);
+      }, selectedMove.name === 'Kristallschwert' ? 2350 : 800);
       return;
     }
-    window.setTimeout(() => this.opponentTurn(), 850);
+    window.setTimeout(() => this.opponentTurn(), selectedMove.name === 'Kristallschwert' ? 2350 : 850);
   }
 
   private switchPokemon(pokemonId: string): void {
@@ -486,9 +519,9 @@ class EntdeckertourApp {
   }
 
   /** Übergibt den aktuellen Kampfzustand an die reine Darstellungsklasse. */
-  private renderBattle(message: string, effect: BattleEffect = '', damage: number | null = null, moveType: PokemonType | null = null): void {
+  private renderBattle(message: string, effect: BattleEffect = '', damage: number | null = null, moveType: PokemonType | null = null, moveName = ''): void {
     if (!this.battle || !this.profile) return;
-    this.battleView.render($('#battleContent'), this.battle, this.profile, message, this.turnLocked, effect, damage, moveType);
+    this.battleView.render($('#battleContent'), this.battle, this.profile, message, this.turnLocked, effect, damage, moveType, moveName);
   }
   private renderProfileButtons(target: string): void {
     $(target).innerHTML = this.profiles.all.map(profile => `<button class="profile-choice" data-profile="${profile.id}" type="button">
