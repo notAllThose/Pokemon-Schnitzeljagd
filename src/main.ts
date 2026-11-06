@@ -1,19 +1,27 @@
 import { POKEMON, STARTER_IDS } from './data/pokemon';
 import { BADGES, HEAL_CODE, WILD_TOKEN_CODES, WILD_TOKEN_HABITATS } from './data/settings';
-import type { EncounterHabitat } from './domain/types';
+import type { EncounterHabitat, PokemonType } from './domain/types';
 import { Battle } from './game/Battle';
 import { ProfileRepository } from './game/ProfileRepository';
 import { TypeChart } from './game/TypeChart';
 import { TrainerProfile } from './game/TrainerProfile';
+import { AudioManager } from './ui/AudioManager';
+import { BattleView, type BattleEffect } from './ui/BattleView';
+import { getElement as $ } from './ui/dom';
+import { GameMessageDialog } from './ui/GameMessageDialog';
+import { PokedexView } from './ui/PokedexView';
+import { SceneAnimator } from './ui/SceneAnimator';
 
-const $ = <T extends HTMLElement>(selector: string): T => {
-  const element = document.querySelector<T>(selector);
-  if (!element) throw new Error(`Element fehlt in index.html: ${selector}`);
-  return element;
-};
-
-type BattleEffect = 'trainer' | 'wild' | '';
 type AppPage = 'home' | 'pokemon' | 'found' | 'center' | 'badges';
+type MenuPage = Exclude<AppPage, 'home'>;
+
+const PAGE_SECTIONS: ReadonlyArray<readonly [MenuPage, string]> = [
+  ['pokemon', '#pokemonPage'], ['found', '#foundPage'], ['center', '#centerPage'], ['badges', '#badgesPage'],
+];
+
+function isMenuPage(page: string | undefined): page is MenuPage {
+  return page === 'pokemon' || page === 'found' || page === 'center' || page === 'badges';
+}
 
 /**
  * Die App-Klasse verbindet Oberfläche und Spielregeln.
@@ -21,16 +29,19 @@ type AppPage = 'home' | 'pokemon' | 'found' | 'center' | 'badges';
  */
 class EntdeckertourApp {
   private readonly profiles = new ProfileRepository();
+  private readonly audio = new AudioManager();
+  private readonly battleView = new BattleView();
+  private readonly scenes = new SceneAnimator(this.audio);
+  private readonly messages = new GameMessageDialog(this.audio);
+  private readonly pokedexView = new PokedexView();
   private profile: TrainerProfile | null = this.profiles.active;
   private battle: Battle | null = null;
   private encounterPokemonId = '';
   private currentEncounterHabitat: EncounterHabitat = 'meadow';
-  private currentCry: HTMLAudioElement | null = null;
   private returnToEncounter = false;
   private returnPageAfterDex: AppPage = 'found';
   private turnLocked = false;
   private currentPage: AppPage = 'home';
-  private dexLoadTimers: number[] = [];
 
   constructor() {
     this.bindEvents();
@@ -93,8 +104,8 @@ class EntdeckertourApp {
     $('#profileList').addEventListener('click', event => this.selectProfileFrom(event));
     $('#mainMenu').addEventListener('click', event => {
       const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-open-page]');
-      const page = button?.dataset.openPage as AppPage | undefined;
-      if (page && page !== 'home') this.navigateTo(page);
+      const page = button?.dataset.openPage;
+      if (isMenuPage(page)) this.navigateTo(page);
     });
     $('#game').addEventListener('click', event => {
       if ((event.target as HTMLElement).closest('[data-page-back]')) this.showPage('home');
@@ -147,6 +158,7 @@ class EntdeckertourApp {
     $('#resetButton').addEventListener('click', () => this.resetProfiles());
     $('#battleContent').addEventListener('click', event => this.handleBattleClick(event));
     this.dialog('#battleDialog').addEventListener('close', () => {
+      this.audio.stopBattleTheme();
       // Schließen per X aktualisiert ebenfalls die angezeigten Trainer-KP.
       if (this.battle) {
         this.battle = null;
@@ -196,7 +208,7 @@ class EntdeckertourApp {
     this.encounterPokemonId = pokemonId;
     this.currentEncounterHabitat = WILD_TOKEN_HABITATS[code] ?? 'meadow';
     this.input('#tokenCode').value = '';
-    this.playGrassTransition(pokemonId, () => {
+    this.scenes.playGrassTransition(pokemonId, () => {
       this.renderEncounterChoice(pokemonId);
       this.dialog('#encounterDialog').showModal();
     });
@@ -204,110 +216,45 @@ class EntdeckertourApp {
 
   private navigateTo(page: AppPage): void {
     if (page === 'found') {
-      this.playGrassTransition(null, () => this.showPage('found'));
+      this.scenes.playGrassTransition(null, () => this.showPage('found'));
       return;
     }
-    if (page === 'pokemon') {
-      this.showDexList();
-      this.showPage(page);
-      this.animatePokedexOpening();
+    if (page === 'center') {
+      this.scenes.playCenterTransition('enter', () => this.showPage(page));
       return;
     }
-    this.showPage(page);
-  }
-
-  private animatePokedexOpening(): void {
-    const device = $('#pokedexDevice');
-    const screen = $('.dex-screen-frame');
-    const loading = $('#dexLoading');
-    const bar = $('#dexLoadingBar');
-    this.dexLoadTimers.forEach(timer => window.clearTimeout(timer));
-    this.dexLoadTimers = [];
-
-    device.classList.remove('appearing');
-    void device.offsetWidth;
-    device.classList.add('appearing');
-    screen.classList.add('dex-loading');
-    $('#collection').classList.remove('entries-loaded');
-    loading.classList.remove('hidden');
-    bar.style.width = '0%';
-    $('#dexLoadingPercent').textContent = '00%';
-    $('#dexLoadingText').textContent = 'POKÉDEX WIRD GELADEN';
-
-    const progress = [
-      { percent: 24, text: 'TRAINERDATEN PRÜFEN' },
-      { percent: 53, text: 'TEAM WIRD GESUCHT' },
-      { percent: 81, text: 'POKÉMON SPRITES LADEN' },
-      { percent: 100, text: 'POKÉDEX BEREIT!' },
-    ];
-    progress.forEach((step, index) => {
-      this.dexLoadTimers.push(window.setTimeout(() => {
-        bar.style.width = `${step.percent}%`;
-        $('#dexLoadingPercent').textContent = `${String(step.percent).padStart(2, '0')}%`;
-        $('#dexLoadingText').textContent = step.text;
-        if (index === progress.length - 1) {
-          this.dexLoadTimers.push(window.setTimeout(() => {
-            loading.classList.add('hidden');
-            screen.classList.remove('dex-loading');
-            $('#collection').classList.add('entries-loaded');
-            device.classList.remove('appearing');
-          }, 320));
+    this.scenes.playPageTransition(
+      () => {
+        this.showPage(page);
+        const pageElement = $(`#${page}Page`);
+        pageElement.classList.add('page-reveal');
+      },
+      () => $(`#${page}Page`).classList.add('page-revealed'),
+      () => {
+        $(`#${page}Page`).classList.remove('page-reveal', 'page-revealed');
+        if (page === 'pokemon') {
+          this.showDexList();
+          this.scenes.animatePokedexOpening();
         }
-      }, 260 * (index + 1)));
-    });
-  }
-
-  /** Kurze, klassische Grasraschel-Szene vor der Fundseite oder einer wilden Begegnung. */
-  private playGrassTransition(pokemonId: string | null, onComplete: () => void): void {
-    const overlay = $('#grassTransition');
-    const sprite = $('#grassPokemon');
-    overlay.classList.remove('hidden', 'fade-out', 'flash', 'rustling');
-    overlay.setAttribute('aria-hidden', 'false');
-    sprite.innerHTML = pokemonId ? `<img src="assets/sprites/${pokemonId}-front.gif" alt="">` : '';
-    $('#grassMessage').textContent = pokemonId ? 'Das hohe Gras raschelt …' : 'Du gehst durch das hohe Gras …';
-    requestAnimationFrame(() => overlay.classList.add('rustling'));
-    window.setTimeout(() => {
-      overlay.classList.add('flash');
-      $('#grassMessage').textContent = pokemonId
-        ? `Ein wildes ${POKEMON[pokemonId].name} taucht auf!`
-        : 'Hier könnte sich ein Pokémon verstecken!';
-      if (pokemonId) this.playPokemonCry(pokemonId);
-    }, 520);
-    window.setTimeout(() => {
-      overlay.classList.add('fade-out');
-      window.setTimeout(() => {
-        overlay.classList.add('hidden');
-        overlay.setAttribute('aria-hidden', 'true');
-        onComplete();
-      }, 230);
-    }, 1030);
-  }
-
-  /** Spielt den lokalen PokéAPI-Ruf ab, sobald das wilde Pokémon erscheint. */
-  private playPokemonCry(pokemonId: string): void {
-    const pokemon = POKEMON[pokemonId];
-    if (!pokemon) return;
-    this.currentCry?.pause();
-    const cry = new Audio(`assets/cries/${pokemon.dexNumber}.ogg`);
-    cry.volume = 0.55;
-    this.currentCry = cry;
-    void cry.play().catch(() => {
-      // Der Fund bleibt spielbar, falls ein Gerät Audio blockiert oder stumm ist.
-    });
+      },
+    );
   }
 
   private beginBattle(pokemonId: string): void {
+    const trainerProfile = this.profile;
+    if (!trainerProfile) return;
     this.encounterPokemonId = pokemonId;
-    this.playPokemonCry(pokemonId);
+    this.audio.playPokemonCry(pokemonId);
     if (this.returnToEncounter) {
       this.showDexList();
       this.showPage(this.returnPageAfterDex);
     }
     this.dialog('#encounterDialog').close();
-    this.battle = new Battle(this.profile!, pokemonId, this.currentEncounterHabitat);
+    this.battle = new Battle(trainerProfile, pokemonId, this.currentEncounterHabitat);
     this.turnLocked = false;
     this.renderBattle('Ein wildes Pokémon taucht auf!');
     this.dialog('#battleDialog').showModal();
+    this.audio.startBattleTheme();
   }
 
   private openPokedex(pokemonId: string, returnToEncounter: boolean, slideDirection?: 'previous' | 'next'): void {
@@ -315,7 +262,7 @@ class EntdeckertourApp {
     if (!pokemon) return;
     // Der Tap auf einen Pokédex-Eintrag ist eine direkte Nutzeraktion, sodass
     // mobile Browser den Ruf zuverlässig abspielen dürfen.
-    this.playPokemonCry(pokemonId);
+    this.audio.playPokemonCry(pokemonId);
     this.encounterPokemonId = pokemonId;
     this.returnToEncounter = returnToEncounter;
     this.returnPageAfterDex = this.currentPage;
@@ -323,7 +270,11 @@ class EntdeckertourApp {
     this.showPage('pokemon');
     $('#pokedexListView').classList.add('hidden');
     $('#pokedexDetailView').classList.remove('hidden');
-    this.renderPokedex(pokemonId, true);
+    this.pokedexView.renderDetail(pokemonId, this.profile, {
+      returnToEncounter,
+      encounterHabitat: this.currentEncounterHabitat,
+      playMotion: true,
+    });
     if (slideDirection) {
       const content = $('#pokedexContent');
       content.classList.remove('dex-slide-next', 'dex-slide-previous');
@@ -355,42 +306,6 @@ class EntdeckertourApp {
       </div>`;
   }
 
-  private renderPokedex(pokemonId: string, playMotion = false): void {
-    const pokemon = POKEMON[pokemonId];
-    const types = pokemon.types.map(type => `<span class="type-chip ${this.typeClass(type)}">${type}</span>`).join('');
-    const moves = pokemon.moves.map(move => {
-      const moveType = move.type
-        ? `<span class="type-chip ${this.typeClass(move.type)}">${move.type}</span>`
-        : '<span class="type-chip type-tactic">Taktik</span>';
-      const detail = move.effect === 'evade' ? 'Weicht dem nächsten Angriff aus' : `Basisstärke ${move.power}`;
-      return `<div class="pokedex-move"><div><strong>${move.name}</strong><small>${detail}</small></div>${moveType}</div>`;
-    }).join('');
-    const backLabel = this.returnToEncounter ? '← Zurück zur Begegnung' : '← Zur Pokémon-Liste';
-    const actions = this.returnToEncounter ? '<div class="pokedex-actions"><button class="primary-button" data-pokedex-action="fight" type="button">Kampf starten ⚔️</button></div>' : '';
-    const team = this.profile?.collection ?? [];
-    const teamIndex = team.indexOf(pokemonId);
-    const habitat = this.returnToEncounter
-      ? this.currentEncounterHabitat
-      : this.profile?.habitatOf(pokemonId) ?? 'meadow';
-    const motionClass = playMotion ? `dex-motion-${pokemonId}` : '';
-    const teamNavigation = !this.returnToEncounter && teamIndex >= 0
-      ? `<nav class="dex-team-nav" aria-label="Pokémon im Team"><button class="dex-team-button" data-pokedex-action="previous" type="button" aria-label="Vorheriges Pokémon" ${teamIndex === 0 ? 'disabled' : ''}>◀ Zurück</button><span>${teamIndex + 1} / ${team.length}</span><button class="dex-team-button" data-pokedex-action="next" type="button" aria-label="Nächstes Pokémon" ${teamIndex === team.length - 1 ? 'disabled' : ''}>Weiter ▶</button></nav>`
-      : '';
-    $('#pokedexContent').innerHTML = `<div class="dex-detail-content"><div class="pokedex-topline"><button class="dex-detail-back" data-pokedex-action="back" type="button">${backLabel}</button><strong>Nr. ${String(pokemon.dexNumber).padStart(4, '0')}</strong></div>
-      ${teamNavigation}
-      <div class="pokedex-hero ${pokemon.color} ${motionClass} habitat-${habitat}"><img src="assets/sprites/${pokemonId}.png" alt="${pokemon.name}"></div>
-      <div class="pokedex-title"><div><h2>${pokemon.name}</h2><span>${pokemon.category}</span></div><div class="pokedex-types">${types}</div></div>
-      <p class="pokedex-description">${pokemon.description}</p>
-      <div class="pokedex-facts"><div><small>GRÖSSE</small><strong>${pokemon.height}</strong></div><div><small>GEWICHT</small><strong>${pokemon.weight}</strong></div></div>
-      <section class="pokedex-moves"><div class="moves-heading"><h3>Attacken</h3><small>Typ und Basisstärke</small></div><div class="pokedex-move-list">${moves}</div></section>
-      ${actions}</div>`;
-  }
-
-  private typeClass(type: string): string {
-    const names: Record<string, string> = { Elektro: 'electric', Feuer: 'fire', Wasser: 'water', Pflanze: 'grass', Käfer: 'bug', Fee: 'fairy', Gift: 'poison', Flug: 'flying', Unlicht: 'dark', Normal: 'normal' };
-    return `type-${names[type] ?? 'normal'}`;
-  }
-
   private healTeam(code: string): void {
     if (!this.profile) return;
     if (code !== HEAL_CODE) return this.showGameMessage('Der Heilcode stimmt nicht. Frag eine erwachsene Person.');
@@ -398,7 +313,7 @@ class EntdeckertourApp {
     this.profiles.save();
     this.input('#healCode').value = '';
     this.render();
-    this.showGameMessage('Dein ganzes Team ist wieder fit!');
+    this.scenes.playCenterTransition('heal', () => this.showGameMessage('Dein ganzes Team ist wieder fit!'));
   }
 
   private handleBattleClick(event: Event): void {
@@ -418,8 +333,11 @@ class EntdeckertourApp {
   private chooseMove(index: number): void {
     const battle = this.battle;
     if (!battle || this.turnLocked || battle.result !== 'playing' || battle.needsReplacement) return;
+    const selectedMove = battle.activePokemon.moves[index];
+    if (!selectedMove) return;
     this.turnLocked = true;
     const action = battle.trainerAttack(index);
+    this.audio.playMoveSound(selectedMove);
     this.profiles.save();
     const effectiveness = TypeChart.describe(action.effectiveness);
     const damageText = action.damage ? `${action.damage} KP Schaden. ` : '';
@@ -427,10 +345,11 @@ class EntdeckertourApp {
       ? `${action.attackerName} macht sich zum Ausweichen bereit! Der nächste Treffer kann verfehlen.`
       : `${action.attackerName} setzt ${action.moveName} ein! ${damageText}${effectiveness}`;
     this.renderBattle(actionText, 'trainer', action.damage, battle.activePokemon.moves[index]?.type ?? null);
-    if (String(battle.result) === 'win') {
+    if (battle.isWon) {
       window.setTimeout(() => {
         if (this.battle !== battle) return;
         this.renderBattle(`Das wilde ${battle.opponent.name} wurde besiegt!`);
+        this.audio.playVictoryJingle();
         window.setTimeout(() => this.addVictoryToTeam(battle), 1000);
       }, 800);
       return;
@@ -462,7 +381,9 @@ class EntdeckertourApp {
     const actionText = action.specialEffect === 'dodged'
       ? `${action.attackerName} setzt ${action.moveName} ein, aber dein Pokémon weicht aus!`
       : `${action.attackerName} setzt ${action.moveName} ein! ${damageText}${effectiveness}`;
-    const moveType = battle.opponent.moves.find(move => move.name === action.moveName)?.type ?? null;
+    const opponentMove = battle.opponent.moves.find(move => move.name === action.moveName);
+    const moveType = opponentMove?.type ?? null;
+    if (opponentMove) this.audio.playMoveSound(opponentMove);
     this.renderBattle(actionText, 'wild', action.damage, moveType);
     if (battle.result !== 'playing' || battle.needsReplacement) return;
     window.setTimeout(() => {
@@ -479,8 +400,7 @@ class EntdeckertourApp {
     this.dialog('#battleDialog').close();
     this.battle = null;
     this.render();
-    // Direkt den neuen Pokédex-Eintrag zeigen: Das ist der sichtbare Fang-Moment.
-    this.openPokedex(pokemon.id, false);
+    this.messages.showCapture(pokemon, battle.habitat);
   }
 
   private resetProfiles(): void {
@@ -542,8 +462,7 @@ class EntdeckertourApp {
     $('#teamSummary').textContent = `${profile.collection.length} Pokémon · ${profile.livingPokemon().length} fit`;
     $('#dexEntryCount').textContent = String(profile.collection.length).padStart(2, '0');
     $('#badgeCount').textContent = String(profile.badges.length);
-    $('#collection').innerHTML = profile.collection.map((id, index) => this.pokemonCard(id, index)).join('')
-      || '<div class="empty-state">Dein Team wartet auf das erste gefangene Pokémon. 🌟</div>';
+    this.pokedexView.renderCollection(profile);
     $('#badges').innerHTML = BADGES.map(badge => {
       const earned = profile.badges.includes(badge.id);
       return `<div class="badge ${earned ? 'earned' : ''}"><span>${earned ? badge.emoji : '🔒'}</span><div><strong>${badge.name}</strong><small>${earned ? 'Prüfung bestanden' : badge.task}</small></div></div>`;
@@ -558,70 +477,19 @@ class EntdeckertourApp {
 
   /** Zeigt immer genau einen Bereich: Startmenü oder die ausgewählte Unterseite. */
   private updatePageVisibility(): void {
+    document.body.classList.toggle('page-open', this.currentPage !== 'home');
     $('#mainMenu').classList.toggle('hidden', this.currentPage !== 'home');
     $('#trainerGreetingStrip').classList.toggle('hidden', this.currentPage !== 'home');
-    const pages: Record<Exclude<AppPage, 'home'>, string> = {
-      pokemon: '#pokemonPage', found: '#foundPage', center: '#centerPage', badges: '#badgesPage',
-    };
-    for (const [page, selector] of Object.entries(pages) as [Exclude<AppPage, 'home'>, string][]) {
+    for (const [page, selector] of PAGE_SECTIONS) {
       $(selector).classList.toggle('hidden', this.currentPage !== page);
     }
   }
 
-  private pokemonCard(id: string, index: number): string {
-    const pokemon = POKEMON[id];
-    if (!pokemon || !this.profile) return '';
-    const hp = this.profile.hpOf(id);
-    const active = id === this.profile.activePokemonId;
-    const number = String(pokemon.dexNumber).padStart(3, '0');
-    return `<button class="dex-entry ${pokemon.color} ${active ? 'active-entry' : ''}" style="--entry-index:${index}" data-pokemon="${id}" type="button" aria-label="Pokédex-Eintrag für ${pokemon.name} öffnen">
-      <span class="dex-number">${number}</span><span class="dex-entry-sprite"><img src="assets/sprites/${id}.png" alt=""></span>
-      <span class="dex-entry-data"><strong>${pokemon.name}</strong><small>${pokemon.types.join(' / ')} · KP ${hp}/${pokemon.maxHp}</small></span>
-      <span class="dex-entry-mark">${active ? '★' : '›'}</span></button>`;
+  /** Übergibt den aktuellen Kampfzustand an die reine Darstellungsklasse. */
+  private renderBattle(message: string, effect: BattleEffect = '', damage: number | null = null, moveType: PokemonType | null = null): void {
+    if (!this.battle || !this.profile) return;
+    this.battleView.render($('#battleContent'), this.battle, this.profile, message, this.turnLocked, effect, damage, moveType);
   }
-
-  private renderBattle(message: string, effect: BattleEffect = '', damage: number | null = null, moveType: string | null = null): void {
-    const battle = this.battle;
-    const profile = this.profile;
-    if (!battle || !profile) return;
-    const mine = battle.activePokemon;
-    const wild = battle.opponent;
-    const replacementMode = battle.needsReplacement;
-    const typeClass: Record<string, string> = { Elektro: 'electric', Feuer: 'fire', Wasser: 'water', Pflanze: 'grass', Eis: 'ice', Kampf: 'fighting', Gift: 'poison', Boden: 'ground', Flug: 'flying', Psycho: 'psychic', Käfer: 'bug', Gestein: 'rock', Geist: 'ghost', Drache: 'dragon', Unlicht: 'dark', Stahl: 'steel', Fee: 'fairy', Normal: 'normal' };
-    const moves = replacementMode || battle.result !== 'playing' ? '' : mine.moves.map((move, index) => {
-      const multiplier = TypeChart.multiplier(move.type, wild.types);
-      const effectText = multiplier > 1 ? ' · sehr effektiv' : multiplier < 1 ? ' · wenig effektiv' : '';
-      const moveDetail = move.effect === 'evade' ? 'Taktik · weicht aus' : `${move.type} · Stärke ${move.power}${effectText}`;
-      return `<button class="move-button" data-move="${index}" type="button" ${this.turnLocked ? 'disabled' : ''}>
-        <strong>${move.name}</strong><small>${moveDetail}</small></button>`;
-    }).join('');
-    const roster = profile.collection.map(id => {
-      const pokemon = POKEMON[id];
-      const isActive = id === profile.activePokemonId;
-      const hp = profile.hpOf(id);
-      const canSwitch = hp > 0 && !isActive && (replacementMode || !this.turnLocked);
-      return `<button class="battle-roster-choice ${isActive ? 'current' : ''}" data-switch-pokemon="${id}" type="button" ${canSwitch ? '' : 'disabled'}>
-        <img src="assets/sprites/${id}.png" alt=""><span>${pokemon.name}<small>KP ${hp}/${pokemon.maxHp}</small></span>${isActive ? '<b>Im Einsatz</b>' : ''}</button>`;
-    }).join('');
-    let outcome = '';
-    if (battle.result === 'lose') outcome = '<p class="battle-message defeat-message">Dein Team ist erschöpft. Geh zum Pokémon-Center und hol dir neue Kraft.</p><button id="closeBattleButton" class="primary-button full">Zum Pokémon-Center gehen</button>';
-    else if (replacementMode) outcome = '<p class="battle-message">Dein Pokémon ist K.O. Such ein anderes aus, Trainer!</p>';
-    const effectMarkup = effect && damage !== null && damage > 0
-      ? `<div class="attack-effect type-${typeClass[moveType ?? 'Normal'] ?? 'normal'} ${effect === 'trainer' ? 'from-trainer' : 'from-wild'}" aria-hidden="true"><i></i><i></i><i></i></div>`
-      : '';
-    $('#battleContent').innerHTML = `<div class="battle-heading"><span>WILDE BEGEGNUNG</span><h2>Ein wildes ${wild.name}!</h2></div>
-      <div class="battlefield habitat-${battle.habitat} ${effect ? `turn-${effect}` : ''}">
-        <div class="battle-platform platform-wild"></div><div class="battle-platform platform-trainer"></div>
-        <div class="battle-status status-wild"><div><strong>${wild.name}</strong><small>${wild.types.join(' · ')}</small></div><div class="status-hp"><span>KP</span><i><b style="width:${Math.max(0, battle.opponentHp / wild.maxHp * 100)}%"></b></i></div><small>${battle.opponentHp} / ${wild.maxHp}</small></div>
-        <div class="battle-status status-trainer"><div><strong>${mine.name}</strong><small>${mine.types.join(' · ')}</small></div><div class="status-hp"><span>KP</span><i><b style="width:${Math.max(0, profile.hpOf(mine.id) / mine.maxHp * 100)}%"></b></i></div><small>${profile.hpOf(mine.id)} / ${mine.maxHp}</small></div>
-        <div class="fighter trainer-fighter ${effect === 'wild' ? 'taking-hit' : ''} ${effect === 'trainer' ? 'attacking' : ''}"><span class="fighter-art"><img class="battle-sprite" src="assets/sprites/${mine.id}-back.gif" alt="${mine.name}"></span>${effect === 'wild' && damage !== null && damage > 0 ? `<b class="damage-float">−${damage}</b>` : ''}</div>
-        <div class="fighter wild-fighter ${effect === 'trainer' ? 'taking-hit' : ''} ${effect === 'wild' ? 'attacking' : ''}"><span class="fighter-art"><img class="battle-sprite" src="assets/sprites/${wild.id}-front.gif" alt="${wild.name}"></span>${effect === 'trainer' && damage !== null && damage > 0 ? `<b class="damage-float">−${damage}</b>` : ''}</div>
-        ${effectMarkup}
-      </div>
-      <section class="battle-command"><p class="battle-message">${message}</p><div class="move-grid">${moves}</div></section>
-      <div class="battle-roster"><strong>Team wechseln</strong>${roster}</div>${outcome}`;
-  }
-
   private renderProfileButtons(target: string): void {
     $(target).innerHTML = this.profiles.all.map(profile => `<button class="profile-choice" data-profile="${profile.id}" type="button">
       <span>🧢</span><strong>${this.escape(profile.name || 'Neues Profil')}</strong>
@@ -647,9 +515,7 @@ class EntdeckertourApp {
   }
 
   private showGameMessage(message: string): void {
-    $('#gameMessageText').textContent = message;
-    const dialog = this.dialog('#messageDialog');
-    if (!dialog.open) dialog.showModal();
+    this.messages.show(message);
   }
 }
 

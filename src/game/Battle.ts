@@ -15,6 +15,8 @@ export class Battle {
 
   get opponent() { return POKEMON[this.opponentId]; }
   get activePokemon() { return POKEMON[this.trainer.activePokemonId]; }
+  /** Wird nach jeder Aktion neu aus dem Kampfzustand gelesen. */
+  get isWon(): boolean { return this.result === 'win'; }
   get activeHp(): number { return this.trainer.hpOf(this.trainer.activePokemonId); }
   get needsReplacement(): boolean { return this.activeHp <= 0 && this.trainer.livingPokemon().length > 0; }
 

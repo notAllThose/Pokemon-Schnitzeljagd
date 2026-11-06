@@ -80,4 +80,3 @@ export class TrainerProfile {
     for (const id of this.data.collection) this.setHp(id, POKEMON[id]?.maxHp ?? 0);
   }
 }
-

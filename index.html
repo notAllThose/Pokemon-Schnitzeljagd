@@ -74,11 +74,14 @@
   <dialog id="messageDialog" class="game-message-dialog" aria-labelledby="gameMessageText">
     <div class="game-message-window">
       <div class="game-message-header"><span>POKÉMON-ABENTEUER</span><i aria-hidden="true"></i></div>
+      <div id="captureScene" class="capture-scene hidden" aria-hidden="true"><img id="capturePokemonSprite" class="capture-pokemon-sprite" alt=""><div class="capture-pokeball" aria-hidden="true"><i></i></div><div class="capture-stars" aria-hidden="true"><i>✦</i><i>✦</i><i>✦</i></div></div>
       <p id="gameMessageText" aria-live="polite"></p>
       <form method="dialog"><button id="messageContinue" class="game-message-continue" type="submit">Weiter <span aria-hidden="true">▶</span></button></form>
     </div>
   </dialog>
   <div id="grassTransition" class="grass-transition hidden" aria-hidden="true"><div class="grass-sky"><div class="grass-sun"></div><div class="grass-pokemon" id="grassPokemon"></div><div class="grass-blades"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><p id="grassMessage">Das hohe Gras raschelt …</p></div>
+  <div id="centerTransition" class="center-transition hidden" aria-hidden="true"><div class="center-scene"><div class="center-scene-title">POKÉMON-CENTER</div><div class="center-door"><span></span></div><div class="center-machine"><div class="center-machine-screen"></div><div class="center-balls"><i></i><i></i><i></i></div></div><div class="center-scene-message" id="centerSceneMessage">Willkommen!</div></div></div>
+  <div id="pageTransition" class="page-transition hidden" aria-hidden="true"><div class="transition-pokeball"></div></div>
   <script>
     // Bei file:// werden ES-Module vom Browser blockiert. Erkläre das direkt,
     // statt die nicht verbundene Trainer-Auswahl wie eine eingefrorene App wirken zu lassen.

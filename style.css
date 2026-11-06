@@ -1,136 +1,2448 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap');
-:root{font-family:'DM Sans',system-ui,sans-serif;color:#162844;background:#f3f6fb;font-synthesis:none;text-rendering:optimizeLegibility;--navy:#152b4a;--blue:#315be8;--muted:#6f7d92;--line:#e5eaf2;--shadow:0 10px 28px #203a5b0b}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#e5edff 0,transparent 32rem),#f3f6fb;min-height:100vh}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100% - 920px)/2));background:#ffffffd9;border-bottom:1px solid #e7ecf4;backdrop-filter:blur(12px)}.brand{text-decoration:none;color:var(--navy);font-family:Nunito,sans-serif;font-weight:900;font-size:18px;display:flex;gap:10px;align-items:center}.pokeball{width:25px;height:25px;display:inline-flex;align-items:center;justify-content:center;color:#fff;border:3px solid #253954;border-radius:50%;font-size:12px;background:linear-gradient(#ff665d 0 44%,#263854 45% 55%,#fff 56%)}.icon-button{border:1px solid var(--line);background:#fff;border-radius:10px;width:38px;height:38px;color:#58708f;font-size:20px;cursor:pointer}.shell{width:min(100% - 36px,760px);margin:28px auto 0}.card{background:#fff;border:1px solid #e8edf5;border-radius:20px;box-shadow:var(--shadow)}.hero{position:relative;overflow:hidden;padding:30px 32px;background:linear-gradient(118deg,#152b4a,#214b7e);color:white;display:flex;align-items:center;min-height:192px}.hero-copy{max-width:490px;position:relative;z-index:1}.eyebrow{margin:0 0 8px;font-weight:800;letter-spacing:.12em;font-size:10px;color:#8999b1}.hero .eyebrow{color:#a7c3ff}.hero h1{font:900 clamp(26px,5vw,36px) Nunito,sans-serif;letter-spacing:-.03em;margin:0 0 8px}.hero p:not(.eyebrow){line-height:1.6;margin:0;color:#d5e0f0;max-width:440px}.hero-orb{position:absolute;right:39px;top:28px;width:142px;height:142px;border-radius:50%;background:linear-gradient(145deg,#ffdb63,#ff9d45);display:grid;place-items:center;font-size:70px;box-shadow:inset -14px -14px 0 #e77e3844,0 14px 35px #07183355;transform:rotate(-12deg)}.setup-card{margin-top:20px;padding:26px 30px}.section-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.section-heading h2,.hunt-copy h2,.badges-card h2{font:900 20px Nunito,sans-serif;letter-spacing:-.02em;margin:0}.step-badge,.count-pill{background:#edf2ff;color:#315be8;border-radius:999px;padding:7px 11px;font-size:11px;font-weight:800}.field-label{display:block;font-size:12px;font-weight:800;color:#51617a;margin:0 0 8px}input{font:500 14px 'DM Sans',sans-serif;color:#152b4a;background:#fbfcfe;border:1px solid #dce3ed;border-radius:10px;padding:12px 13px;outline:none;width:100%;transition:.2s}input:focus{border-color:#6586ff;box-shadow:0 0 0 3px #315be81c}.starter-label{margin-top:20px}.starter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.starter-choice{border:1px solid #e0e7f1;background:#fff;border-radius:14px;padding:11px 8px 10px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;color:#213450;transition:.18s}.starter-choice:hover,.starter-choice.selected{border-color:#6684f6;box-shadow:0 0 0 2px #315be81c;transform:translateY(-1px)}.choice-emoji{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-size:28px;margin-bottom:4px}.starter-choice strong{font:800 13px Nunito,sans-serif}.starter-choice small{font-size:10px;color:#7c899a}.yellow .choice-emoji,.yellow .pokemon-art{background:#fff3c2}.orange .choice-emoji,.orange .pokemon-art{background:#ffe3d3}.blue .choice-emoji,.blue .pokemon-art{background:#dcefff}.green .choice-emoji,.green .pokemon-art{background:#dff5df}.pink .choice-emoji,.pink .pokemon-art{background:#ffe3f0}.purple .choice-emoji,.purple .pokemon-art{background:#eee3ff}.primary-button{border:0;border-radius:11px;background:#315be8;color:#fff;padding:12px 16px;font:800 13px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 5px 12px #315be82a;transition:.18s}.primary-button:hover:not(:disabled){background:#244bd3;transform:translateY(-1px)}.primary-button:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.primary-button span{padding-left:12px;font-size:17px;vertical-align:-1px}.setup-card>.primary-button{width:100%;margin-top:18px}.hidden{display:none!important}.trainer-strip{padding:15px 18px;display:flex;align-items:center;gap:13px}.trainer-avatar{width:45px;height:45px;background:#fff1cc;border-radius:14px;display:grid;place-items:center;font-size:24px}.trainer-info{display:flex;flex-direction:column;gap:2px;flex:1}.trainer-info .eyebrow{font-size:9px;margin:0}.trainer-info strong{font:900 16px Nunito,sans-serif}.trainer-info>span:last-child{font-size:11px;color:var(--muted)}.badge-count{display:grid;grid-template-columns:auto auto;column-gap:5px;align-items:center;background:#fff9e8;border-radius:12px;padding:8px 11px;color:#9f7412}.badge-count span{font-size:15px;grid-row:span 2}.badge-count strong{font:900 16px Nunito,sans-serif}.badge-count small{font-size:9px}.section-block{margin-top:26px}.section-block .section-heading{margin-bottom:12px}.collection-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.pokemon-card{min-width:0;position:relative;padding:12px;border:1px solid #e8edf5;background:white;border-radius:15px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}.pokemon-art{height:74px;width:100%;border-radius:11px;display:grid;place-items:center;font-size:40px;margin-bottom:4px}.pokemon-card .type-tag{position:absolute;right:17px;top:17px;background:#ffffffd9;padding:4px 6px;border-radius:6px;text-transform:uppercase;font-size:8px;font-weight:800;color:#687892}.pokemon-card strong{font:900 12px Nunito,sans-serif}.pokemon-card small{font-size:9px;color:#8792a3}.empty-state{grid-column:1/-1;text-align:center;padding:20px;border:1px dashed #dce3ed;border-radius:14px;color:#718099;font-size:12px;background:#ffffff91}.hunt-card{margin-top:24px;padding:23px;display:grid;grid-template-columns:47px 1fr;column-gap:14px}.hunt-icon{height:44px;width:44px;background:#e9efff;border-radius:13px;display:grid;place-items:center;font-size:22px}.hunt-copy .eyebrow{margin-bottom:5px}.hunt-copy p:not(.eyebrow){font-size:12px;line-height:1.5;color:var(--muted);margin:5px 0 0}.hunt-card form{grid-column:1/-1;margin-top:18px}.code-row{display:flex;gap:9px}.code-row input{flex:1;min-width:0}.code-row .primary-button{white-space:nowrap}.hint{margin-top:9px;color:#8a96a8;font-size:10px}.text-button{background:none;border:0;color:#315be8;font:800 10px 'DM Sans',sans-serif;padding:2px 4px;cursor:pointer}.badges-card{margin-top:15px;padding:22px 23px}.badges-card .section-heading{margin-bottom:12px}.badge-list{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.badge{display:flex;align-items:center;gap:9px;padding:10px;border-radius:12px;background:#f6f8fb;color:#9aa5b5;min-width:0}.badge>span{font-size:21px;filter:grayscale(1);opacity:.5}.badge div{display:flex;flex-direction:column;gap:2px;min-width:0}.badge strong{font:800 10px Nunito,sans-serif;white-space:nowrap}.badge small{font-size:9px;line-height:1.3}.badge.earned{background:#fff7de;color:#8f6916}.badge.earned>span{filter:none;opacity:1}footer{text-align:center;padding:24px 0 36px;font-size:10px;color:#9aa5b5}.battle-dialog{border:0;border-radius:22px;padding:28px;width:min(100% - 28px,500px);box-shadow:0 25px 80px #0e1d3566;color:#192b46}.battle-dialog::backdrop{background:#0b1c32a6;backdrop-filter:blur(3px)}.dialog-close{position:absolute;right:15px;top:11px;border:0;background:#f0f3f8;border-radius:50%;height:30px;width:30px;font-size:20px;color:#52617a;cursor:pointer}.battle-dialog h2{font:900 22px Nunito,sans-serif;margin:0}.battlefield{display:flex;align-items:center;justify-content:space-around;gap:8px;background:#f6f8fc;border-radius:16px;padding:18px 10px;margin:19px 0}.fighter{width:39%;display:flex;flex-direction:column;align-items:center;gap:6px}.fighter>span{height:75px;width:75px;border-radius:22px;background:#fff;display:grid;place-items:center;font-size:43px;box-shadow:0 3px 14px #16284412}.fighter strong{font:900 13px Nunito,sans-serif}.fighter small{font-size:9px;color:#77849a}.hp-track{width:100%;height:7px;border-radius:99px;background:#e5eaf1;overflow:hidden}.hp-track i{display:block;height:100%;border-radius:99px;background:#51bd82;transition:width .3s}.wild-hp i{background:#f39b56}.vs{font:900 11px Nunito,sans-serif;color:#9ba8ba}.battle-message{background:#edf3ff;color:#40577d;padding:11px 13px;border-radius:10px;font-size:11px;line-height:1.5;min-height:40px}.move-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.move-button{display:flex;flex-direction:column;gap:4px;text-align:left;background:white;border:1px solid #dfe6f0;border-radius:11px;padding:11px;cursor:pointer;color:#243956}.move-button:hover{border-color:#708cf3;background:#f8f9ff}.move-button strong{font:800 11px Nunito,sans-serif}.move-button small{font-size:9px;color:#79869a}.full{width:100%}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#152b4a;color:white;padding:11px 16px;border-radius:12px;box-shadow:0 8px 30px #10213c44;font-size:12px;transition:.22s;z-index:10}.toast.show{transform:translate(-50%,0);opacity:1}
-@media(max-width:560px){.shell{width:min(100% - 24px,760px);margin-top:14px}.hero{padding:24px 22px;min-height:174px}.hero-copy{max-width:75%}.hero-orb{width:95px;height:95px;right:-8px;top:52px;font-size:45px}.hero h1{font-size:26px}.hero p:not(.eyebrow){font-size:12px}.setup-card{padding:21px 19px}.collection-grid{grid-template-columns:repeat(2,1fr)}.pokemon-art{height:64px}.hunt-card{padding:18px;grid-template-columns:40px 1fr;column-gap:10px}.hunt-icon{width:38px;height:38px}.hunt-copy h2{font-size:17px}.code-row{flex-direction:column}.badge-list{grid-template-columns:1fr}.badge{padding:8px 10px}.badge small{font-size:9px}.battle-dialog{padding:24px 18px}.battlefield{padding:13px 7px}.fighter>span{height:60px;width:60px;font-size:35px}}
+
+:root {
+  font-family: 'DM Sans',system-ui,sans-serif;
+  color: #162844;
+  background: #f3f6fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --navy: #152b4a;
+  --blue: #315be8;
+  --muted: #6f7d92;
+  --line: #e5eaf2;
+  --shadow: 0 10px 28px #203a5b0b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 85% 0%,#e5edff 0,transparent 32rem),#f3f6fb;
+  min-height: 100vh;
+}
+
+.topbar {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 max(24px,calc((100% - 920px)/2));
+  background: #ffffffd9;
+  border-bottom: 1px solid #e7ecf4;
+  backdrop-filter: blur(12px);
+}
+
+.brand {
+  text-decoration: none;
+  color: var(--navy);
+  font-family: Nunito,sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.pokeball {
+  width: 25px;
+  height: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: 3px solid #253954;
+  border-radius: 50%;
+  font-size: 12px;
+  background: linear-gradient(#ff665d 0 44%,#263854 45% 55%,#fff 56%);
+}
+
+.icon-button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  color: #58708f;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.shell {
+  width: min(100% - 36px,760px);
+  margin: 28px auto 0;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e8edf5;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 30px 32px;
+  background: linear-gradient(118deg,#152b4a,#214b7e);
+  color: white;
+  display: flex;
+  align-items: center;
+  min-height: 192px;
+}
+
+.hero-copy {
+  max-width: 490px;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  font-size: 10px;
+  color: #8999b1;
+}
+
+.hero .eyebrow {
+  color: #a7c3ff;
+}
+
+.hero h1 {
+  font: 900 clamp(26px,5vw,36px) Nunito,sans-serif;
+  letter-spacing: -.03em;
+  margin: 0 0 8px;
+}
+
+.hero p:not(.eyebrow) {
+  line-height: 1.6;
+  margin: 0;
+  color: #d5e0f0;
+  max-width: 440px;
+}
+
+.hero-orb {
+  position: absolute;
+  right: 39px;
+  top: 28px;
+  width: 142px;
+  height: 142px;
+  border-radius: 50%;
+  background: linear-gradient(145deg,#ffdb63,#ff9d45);
+  display: grid;
+  place-items: center;
+  font-size: 70px;
+  box-shadow: inset -14px -14px 0 #e77e3844,0 14px 35px #07183355;
+  transform: rotate(-12deg);
+}
+
+.setup-card {
+  margin-top: 20px;
+  padding: 26px 30px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-heading h2,.hunt-copy h2,.badges-card h2 {
+  font: 900 20px Nunito,sans-serif;
+  letter-spacing: -.02em;
+  margin: 0;
+}
+
+.step-badge,.count-pill {
+  background: #edf2ff;
+  color: #315be8;
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  color: #51617a;
+  margin: 0 0 8px;
+}
+
+input {
+  font: 500 14px 'DM Sans',sans-serif;
+  color: #152b4a;
+  background: #fbfcfe;
+  border: 1px solid #dce3ed;
+  border-radius: 10px;
+  padding: 12px 13px;
+  outline: none;
+  width: 100%;
+  transition: .2s;
+}
+
+input:focus {
+  border-color: #6586ff;
+  box-shadow: 0 0 0 3px #315be81c;
+}
+
+.starter-label {
+  margin-top: 20px;
+}
+
+.starter-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+}
+
+.starter-choice {
+  border: 1px solid #e0e7f1;
+  background: #fff;
+  border-radius: 14px;
+  padding: 11px 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  color: #213450;
+  transition: .18s;
+}
+
+.starter-choice:hover,.starter-choice.selected {
+  border-color: #6684f6;
+  box-shadow: 0 0 0 2px #315be81c;
+  transform: translateY(-1px);
+}
+
+.choice-emoji {
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.starter-choice strong {
+  font: 800 13px Nunito,sans-serif;
+}
+
+.starter-choice small {
+  font-size: 10px;
+  color: #7c899a;
+}
+
+.yellow .choice-emoji,.yellow .pokemon-art {
+  background: #fff3c2;
+}
+
+.orange .choice-emoji,.orange .pokemon-art {
+  background: #ffe3d3;
+}
+
+.blue .choice-emoji,.blue .pokemon-art {
+  background: #dcefff;
+}
+
+.green .choice-emoji,.green .pokemon-art {
+  background: #dff5df;
+}
+
+.pink .choice-emoji,.pink .pokemon-art {
+  background: #ffe3f0;
+}
+
+.purple .choice-emoji,.purple .pokemon-art {
+  background: #eee3ff;
+}
+
+.primary-button {
+  border: 0;
+  border-radius: 11px;
+  background: #315be8;
+  color: #fff;
+  padding: 12px 16px;
+  font: 800 13px 'DM Sans',sans-serif;
+  cursor: pointer;
+  box-shadow: 0 5px 12px #315be82a;
+  transition: .18s;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #244bd3;
+  transform: translateY(-1px);
+}
+
+.primary-button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.primary-button span {
+  padding-left: 12px;
+  font-size: 17px;
+  vertical-align: -1px;
+}
+
+.setup-card>.primary-button {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.trainer-strip {
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.trainer-avatar {
+  width: 45px;
+  height: 45px;
+  background: #fff1cc;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+}
+
+.trainer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.trainer-info .eyebrow {
+  font-size: 9px;
+  margin: 0;
+}
+
+.trainer-info strong {
+  font: 900 16px Nunito,sans-serif;
+}
+
+.trainer-info>span:last-child {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.badge-count {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 5px;
+  align-items: center;
+  background: #fff9e8;
+  border-radius: 12px;
+  padding: 8px 11px;
+  color: #9f7412;
+}
+
+.badge-count span {
+  font-size: 15px;
+  grid-row: span 2;
+}
+
+.badge-count strong {
+  font: 900 16px Nunito,sans-serif;
+}
+
+.badge-count small {
+  font-size: 9px;
+}
+
+.section-block {
+  margin-top: 26px;
+}
+
+.section-block .section-heading {
+  margin-bottom: 12px;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+}
+
+.pokemon-card {
+  min-width: 0;
+  position: relative;
+  padding: 12px;
+  border: 1px solid #e8edf5;
+  background: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.pokemon-art {
+  height: 74px;
+  width: 100%;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  margin-bottom: 4px;
+}
+
+.pokemon-card .type-tag {
+  position: absolute;
+  right: 17px;
+  top: 17px;
+  background: #ffffffd9;
+  padding: 4px 6px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-size: 8px;
+  font-weight: 800;
+  color: #687892;
+}
+
+.pokemon-card strong {
+  font: 900 12px Nunito,sans-serif;
+}
+
+.pokemon-card small {
+  font-size: 9px;
+  color: #8792a3;
+}
+
+.empty-state {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 20px;
+  border: 1px dashed #dce3ed;
+  border-radius: 14px;
+  color: #718099;
+  font-size: 12px;
+  background: #ffffff91;
+}
+
+.hunt-card {
+  margin-top: 24px;
+  padding: 23px;
+  display: grid;
+  grid-template-columns: 47px 1fr;
+  column-gap: 14px;
+}
+
+.hunt-icon {
+  height: 44px;
+  width: 44px;
+  background: #e9efff;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+
+.hunt-copy .eyebrow {
+  margin-bottom: 5px;
+}
+
+.hunt-copy p:not(.eyebrow) {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 5px 0 0;
+}
+
+.hunt-card form {
+  grid-column: 1/-1;
+  margin-top: 18px;
+}
+
+.code-row {
+  display: flex;
+  gap: 9px;
+}
+
+.code-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.code-row .primary-button {
+  white-space: nowrap;
+}
+
+.hint {
+  margin-top: 9px;
+  color: #8a96a8;
+  font-size: 10px;
+}
+
+.text-button {
+  background: none;
+  border: 0;
+  color: #315be8;
+  font: 800 10px 'DM Sans',sans-serif;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.badges-card {
+  margin-top: 15px;
+  padding: 22px 23px;
+}
+
+.badges-card .section-heading {
+  margin-bottom: 12px;
+}
+
+.badge-list {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #f6f8fb;
+  color: #9aa5b5;
+  min-width: 0;
+}
+
+.badge>span {
+  font-size: 21px;
+  filter: grayscale(1);
+  opacity: .5;
+}
+
+.badge div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.badge strong {
+  font: 800 10px Nunito,sans-serif;
+  white-space: nowrap;
+}
+
+.badge small {
+  font-size: 9px;
+  line-height: 1.3;
+}
+
+.badge.earned {
+  background: #fff7de;
+  color: #8f6916;
+}
+
+.badge.earned>span {
+  filter: none;
+  opacity: 1;
+}
+
+footer {
+  text-align: center;
+  padding: 24px 0 36px;
+  font-size: 10px;
+  color: #9aa5b5;
+}
+
+.battle-dialog {
+  border: 0;
+  border-radius: 22px;
+  padding: 28px;
+  width: min(100% - 28px,500px);
+  box-shadow: 0 25px 80px #0e1d3566;
+  color: #192b46;
+}
+
+.battle-dialog::backdrop {
+  background: #0b1c32a6;
+  backdrop-filter: blur(3px);
+}
+
+.dialog-close {
+  position: absolute;
+  right: 15px;
+  top: 11px;
+  border: 0;
+  background: #f0f3f8;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  color: #52617a;
+  cursor: pointer;
+}
+
+.battle-dialog h2 {
+  font: 900 22px Nunito,sans-serif;
+  margin: 0;
+}
+
+.battlefield {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 8px;
+  background: #f6f8fc;
+  border-radius: 16px;
+  padding: 18px 10px;
+  margin: 19px 0;
+}
+
+.fighter {
+  width: 39%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.fighter>span {
+  height: 75px;
+  width: 75px;
+  border-radius: 22px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 43px;
+  box-shadow: 0 3px 14px #16284412;
+}
+
+.fighter strong {
+  font: 900 13px Nunito,sans-serif;
+}
+
+.fighter small {
+  font-size: 9px;
+  color: #77849a;
+}
+
+.hp-track {
+  width: 100%;
+  height: 7px;
+  border-radius: 99px;
+  background: #e5eaf1;
+  overflow: hidden;
+}
+
+.hp-track i {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: #51bd82;
+  transition: width .3s;
+}
+
+.wild-hp i {
+  background: #f39b56;
+}
+
+.vs {
+  font: 900 11px Nunito,sans-serif;
+  color: #9ba8ba;
+}
+
+.battle-message {
+  background: #edf3ff;
+  color: #40577d;
+  padding: 11px 13px;
+  border-radius: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  min-height: 40px;
+}
+
+.move-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.move-button {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  background: white;
+  border: 1px solid #dfe6f0;
+  border-radius: 11px;
+  padding: 11px;
+  cursor: pointer;
+  color: #243956;
+}
+
+.move-button:hover {
+  border-color: #708cf3;
+  background: #f8f9ff;
+}
+
+.move-button strong {
+  font: 800 11px Nunito,sans-serif;
+}
+
+.move-button small {
+  font-size: 9px;
+  color: #79869a;
+}
+
+.full {
+  width: 100%;
+}
+
+.toast {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translate(-50%,20px);
+  opacity: 0;
+  pointer-events: none;
+  background: #152b4a;
+  color: white;
+  padding: 11px 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px #10213c44;
+  font-size: 12px;
+  transition: .22s;
+  z-index: 10;
+}
+
+.toast.show {
+  transform: translate(-50%,0);
+  opacity: 1;
+}
+
+@media (max-width:560px) {
+  .shell {
+    width: min(100% - 24px,760px);
+    margin-top: 14px;
+  }
+
+  .hero {
+    padding: 24px 22px;
+    min-height: 174px;
+  }
+
+  .hero-copy {
+    max-width: 75%;
+  }
+
+  .hero-orb {
+    width: 95px;
+    height: 95px;
+    right: -8px;
+    top: 52px;
+    font-size: 45px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero p:not(.eyebrow) {
+    font-size: 12px;
+  }
+
+  .setup-card {
+    padding: 21px 19px;
+  }
+
+  .collection-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .pokemon-art {
+    height: 64px;
+  }
+
+  .hunt-card {
+    padding: 18px;
+    grid-template-columns: 40px 1fr;
+    column-gap: 10px;
+  }
+
+  .hunt-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hunt-copy h2 {
+    font-size: 17px;
+  }
+
+  .code-row {
+    flex-direction: column;
+  }
+
+  .badge-list {
+    grid-template-columns: 1fr;
+  }
+
+  .badge {
+    padding: 8px 10px;
+  }
+
+  .badge small {
+    font-size: 9px;
+  }
+
+  .battle-dialog {
+    padding: 24px 18px;
+  }
+
+  .battlefield {
+    padding: 13px 7px;
+  }
+
+  .fighter>span {
+    height: 60px;
+    width: 60px;
+    font-size: 35px;
+  }
+}
 
 /* Bright, kid-friendly PokÃ©dex styling */
-body{background-color:#dce9f6;background-image:radial-gradient(circle at 12% 10%,#ffdf74 0 4px,transparent 5px),radial-gradient(circle at 89% 18%,#ff917c 0 5px,transparent 6px),radial-gradient(circle at 9% 69%,#78c9ec 0 5px,transparent 6px),radial-gradient(circle at 94% 79%,#a4db90 0 6px,transparent 7px),linear-gradient(150deg,#edf6ff,#dce9f6);background-attachment:fixed}.topbar{background:#faffff;border-bottom:4px solid #e74744;box-shadow:0 3px 0 #b82c36}.brand{color:#173352}.pokeball{box-shadow:0 2px 4px #10223c33}.top-actions{display:flex;align-items:center;gap:9px}.switch-button{border:1px solid #d8e4f2;border-radius:11px;background:#fff;padding:9px 12px;color:#254366;font:800 11px 'DM Sans',sans-serif;cursor:pointer}.switch-button:hover{background:#edf5ff;border-color:#93b9e3}.hero{border:4px solid #f5c84c;border-radius:22px;background:linear-gradient(125deg,#1b4775,#287eac 70%,#45a8c7);box-shadow:0 7px 0 #bbd2e5,0 13px 26px #244b6c20}.hero:after{content:"POKÃ‰DEX Â· TRAINER-LOGBUCH";position:absolute;right:18px;bottom:11px;font:800 8px 'DM Sans',sans-serif;letter-spacing:.14em;color:#e0f8ff99}.hero-orb{border:6px solid #fff9de;box-shadow:inset -14px -14px 0 #e77e3844,0 5px 0 #b77c37,0 12px 24px #07183344}.card{border:2px solid #d7e4f2;box-shadow:0 5px 0 #c5d8e9,0 10px 20px #244b6c12}.setup-card,.picker-card{border-top:6px solid #f3ca4b}.eyebrow{color:#5680a5}.hero .eyebrow{color:#ffdf72}.section-heading h2,.hunt-copy h2,.badges-card h2{color:#183653}.step-badge,.count-pill{background:#fff2bd;color:#9b6814}.primary-button{background:#e74744;box-shadow:0 4px 0 #b62d35,0 7px 12px #b62d3520}.primary-button:hover:not(:disabled){background:#d83c3a}.primary-button:disabled{box-shadow:none}.starter-choice{border:2px solid #e0e9f2;border-bottom-width:4px}.starter-choice.selected{border-color:#55a1d2;box-shadow:0 3px 0 #3787b5,0 0 0 3px #88c7e733}.choice-emoji{width:58px;height:58px;border-radius:18px;font-size:32px;box-shadow:inset 0 -5px 0 #ffffff77}.trainer-strip{border-left:6px solid #e74744}.trainer-avatar{background:#e0f2ff}.badge-count{background:#fff1bd;color:#986813}.pokemon-card{border:2px solid #e2ebf3;border-bottom-width:4px;transition:transform .2s,box-shadow .2s}.pokemon-card:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 7px 15px #254c6e18}.pokemon-art{height:84px;border:2px solid #ffffff;border-bottom-width:4px;box-shadow:0 2px 5px #203b5311;font-size:47px}.pokemon-card .type-tag{background:#fff;border:1px solid #e4eaf0}.pokemon-card strong{font-size:14px;color:#183653}.pokemon-card small{font-size:10px}.hunt-card{border-top:6px solid #6cb8dc}.hunt-icon{background:#ffedb2}.badges-card{border-top:5px solid #a68ae5}.badge{background:#f0f6fb;border:1px solid #e4edf4}.badge.earned{background:#fff2c9;border-color:#f2da83}.battle-dialog,.switch-dialog{border:5px solid #e74744;border-radius:24px;background:#f8fcff;box-shadow:0 8px 0 #a92534,0 25px 80px #0e1d3566}.battle-dialog::backdrop,.switch-dialog::backdrop{background:#183451bb;backdrop-filter:blur(4px)}.battle-dialog h2,.switch-dialog h2{color:#183653}.battlefield{position:relative;overflow:hidden;background-color:#cce9ef;background-image:radial-gradient(ellipse at 50% 105%,#8dcc81 0 28%,transparent 29%),linear-gradient(#b9e7f2 0 66%,#e8f6d4 67%);border:2px solid #b4dce4;min-height:190px}.fighter{position:relative;z-index:1}.fighter-art{position:relative;height:88px;width:88px;border:4px solid #fff;border-bottom-width:7px;border-radius:29px 29px 23px 23px;background:#fff;display:grid;place-items:center;font-size:51px;box-shadow:0 5px 0 #618a9766,0 8px 17px #18365322}.fighter strong{color:#173653}.fighter.attacking .fighter-art{animation:trainerAttack .42s ease-in-out}.fighter.taking-hit .fighter-art{animation:gotHit .4s ease-in-out}.damage-float{position:absolute;top:13px;left:50%;z-index:4;color:#e74744;font:900 26px Nunito,sans-serif;text-shadow:0 2px #fff,2px 0 #fff,-2px 0 #fff;animation:damagePop .78s ease-out forwards}.battle-message{background:#fff3bf;border:1px solid #f1d976;color:#674f1d;font-weight:700}.move-button{border:2px solid #dfe9f2;border-bottom-width:4px;background:#fff}.move-button:hover{border-color:#75b9d4;background:#eefaff}.move-button:disabled{opacity:.55;cursor:wait}.move-button strong{color:#234367;font-size:12px}.move-button:nth-child(1){border-top-color:#ffbf56}.move-button:nth-child(2){border-top-color:#78bfdf}.move-button:nth-child(3){border-top-color:#81ca8d}.move-button:nth-child(4){border-top-color:#b394df}.switch-dialog{padding:27px;width:min(100% - 28px,430px);color:#192b46}.profile-list{display:grid;gap:8px;margin:4px 0 15px;max-height:45vh;overflow:auto}.profile-choice{display:grid;grid-template-columns:36px 1fr;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;padding:10px 12px;border:2px solid #dce8f1;border-bottom-width:4px;border-radius:13px;background:#fff;color:#1a3858;cursor:pointer}.profile-choice>span{grid-row:span 2;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:#fff1bd;font-size:19px}.profile-choice strong{font:900 13px Nunito,sans-serif}.profile-choice small{font-size:10px;color:#71839a}.profile-choice:hover,.profile-choice.current{border-color:#69b6d5;background:#f2fbff}.picker-card{margin-top:20px;padding:25px 28px}.picker-card .section-heading{margin-bottom:13px}.picker-card .profile-list{grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}.picker-card .profile-choice{grid-template-columns:30px 1fr}.picker-card .profile-choice>span{width:28px;height:28px;font-size:16px}.full{width:100%}.icon-button{border-bottom-width:3px}.empty-state{background:#f7fbff;color:#58728d;border-color:#b9d3e5}
-@keyframes trainerAttack{0%,100%{transform:translateX(0) scale(1)}35%{transform:translate(35px,-5px) scale(1.12)}60%{transform:translate(18px,0) scale(1.05)}}
-@keyframes gotHit{0%,100%{transform:translateX(0)}25%{transform:translateX(-9px) rotate(-7deg);filter:brightness(1.7)}55%{transform:translateX(8px) rotate(6deg);filter:brightness(.8)}}
-@keyframes damagePop{0%{opacity:0;transform:translate(-50%,15px) scale(.5)}22%{opacity:1;transform:translate(-50%,-6px) scale(1.2)}75%{opacity:1}100%{opacity:0;transform:translate(-50%,-37px) scale(1)}}
-@media(max-width:560px){.hero:after{font-size:6px;right:12px}.hero-orb{border-width:4px}.battlefield{min-height:165px}.fighter-art{width:68px;height:68px;font-size:40px}.picker-card{padding:20px 17px}.picker-card .profile-list{grid-template-columns:1fr 1fr}.switch-button{padding:8px;font-size:10px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
-.collection-sprite{width:68px;height:68px;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 3px 1px #233c5422)}.battle-sprite{width:100%;height:100%;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 4px 2px #18365344)}.battle-title-sprite{width:38px;height:38px;object-fit:contain;vertical-align:middle;image-rendering:pixelated}.fighter-art{background:transparent;border:0;box-shadow:none;border-radius:0}.fighter-art img{animation:spriteIdle 1.2s ease-in-out infinite alternate}.fighter.attacking .fighter-art img{animation:spriteHop .42s ease-in-out}.fighter.taking-hit .fighter-art img{animation:spriteFlinch .4s ease-in-out}.battlefield .fighter:first-child .fighter-art{transform:scale(1.12)}.battle-dialog h2{display:flex;align-items:center;gap:7px}@keyframes spriteIdle{from{transform:translateY(1px)}to{transform:translateY(-3px)}}@keyframes spriteHop{0%,100%{transform:translate(0,0)}40%{transform:translate(14px,-13px)}70%{transform:translate(25px,-2px)}}@keyframes spriteFlinch{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px);filter:brightness(1.9)}55%{transform:translateX(7px) rotate(5deg);filter:brightness(.7)}}
-@media(max-width:560px){.collection-sprite{width:60px;height:60px}.battle-title-sprite{width:32px;height:32px}.fighter-art{width:76px;height:76px}}
-.center-card{margin-top:16px;padding:20px 23px;display:grid;grid-template-columns:47px 1fr;column-gap:14px;border-top:5px solid #79c994}.center-card form{grid-column:1/-1;margin-top:16px}.center-card .hunt-icon{background:#dcf5e2}.center-card h2{font:900 20px Nunito,sans-serif;margin:0;color:#183653}.active-card{border-color:#62b8d3;box-shadow:0 5px 0 #62b8d3,0 10px 20px #244b6c12}.battle-roster{margin-top:14px;padding-top:12px;border-top:1px dashed #bed3df;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.battle-roster>strong{grid-column:1/-1;font:900 11px Nunito,sans-serif;color:#50718d}.battle-roster-choice{border:1px solid #dce8f1;border-radius:10px;background:#fff;padding:7px;display:flex;align-items:center;gap:7px;text-align:left;color:#254363;cursor:pointer;min-width:0}.battle-roster-choice img{width:34px;height:34px;object-fit:contain;image-rendering:pixelated}.battle-roster-choice span{font:800 10px Nunito,sans-serif;display:flex;flex-direction:column;min-width:0}.battle-roster-choice small{font:500 9px 'DM Sans',sans-serif;color:#71839a}.battle-roster-choice b{margin-left:auto;font-size:8px;color:#3784a6}.battle-roster-choice:hover:not(:disabled){border-color:#62b8d3;background:#f2fbff}.battle-roster-choice:disabled{opacity:.55;cursor:not-allowed}.battle-roster-choice.current{border-color:#f0c951;background:#fff9df}.defeat-message{background:#ffe5df;border-color:#f3b2a3;color:#803f35}
-@media(max-width:560px){.center-card{padding:18px;grid-template-columns:40px 1fr;column-gap:10px}.battle-roster{gap:5px}.battle-roster-choice{padding:5px;gap:4px}.battle-roster-choice img{width:28px;height:28px}.battle-roster-choice span{font-size:9px}}
-.file-warning:not([hidden]){position:relative;z-index:20;display:flex;flex-direction:column;gap:6px;padding:14px max(18px,calc((100% - 760px)/2));background:#fff0c2;border-bottom:3px solid #e8b83b;color:#533f17;font-size:13px;line-height:1.45}.file-warning strong{font:900 15px Nunito,sans-serif}.file-warning span{max-width:760px}.file-warning b{white-space:nowrap}
-.pokemon-card{font:inherit;color:inherit;text-align:center;cursor:pointer;width:100%}.pokemon-card:focus-visible,.encounter-option:focus-visible,.battle-roster-choice:focus-visible{outline:3px solid #2d8db9;outline-offset:2px}.pokemon-card .dex-link{margin-top:5px;color:#327c9c;font-size:9px;font-weight:800}.pokemon-card:hover .dex-link{text-decoration:underline}.encounter-dialog,.pokedex-dialog{position:relative;overflow:visible;border:5px solid #e74744;border-radius:24px;background:#f8fcff;width:min(100% - 28px,460px);padding:27px;color:#192b46;box-shadow:0 8px 0 #a92534,0 25px 80px #0e1d3566}.encounter-dialog::backdrop,.pokedex-dialog::backdrop{background:#183451bb;backdrop-filter:blur(4px)}.encounter-dialog h2,.pokedex-dialog h2{font:900 24px Nunito,sans-serif;margin:2px 0;color:#183653}.encounter-mon{display:flex;align-items:center;gap:12px;padding:13px 18px;border-radius:18px;margin-top:12px;border:2px solid #fff;box-shadow:inset 0 -5px 0 #fff8}.encounter-mon img{width:75px;height:75px;object-fit:contain;image-rendering:pixelated}.encounter-mon div{display:flex;flex-direction:column;gap:3px}.encounter-mon span{font-size:10px;font-weight:800;color:#68809a;text-transform:uppercase;letter-spacing:.08em}.encounter-mon small{font-size:11px;color:#687b90}.encounter-question{margin:19px 0 10px;font:900 14px Nunito,sans-serif;color:#365675}.encounter-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.encounter-option{min-height:112px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:2px solid #dce7f1;border-bottom-width:5px;border-radius:15px;background:#fff;color:#213e5e;cursor:pointer}.encounter-option:hover{transform:translateY(-2px);box-shadow:0 5px 12px #203a5b15}.encounter-option>span{font-size:24px}.encounter-option strong{font:900 14px Nunito,sans-serif}.encounter-option small{font-size:10px;color:#70849a}.info-option{border-top-color:#83c3dd}.fight-option{border-top-color:#f2ca50}.pokedex-dialog{padding:22px 24px 24px}.pokedex-topline{display:flex;align-items:center;justify-content:space-between;padding-right:38px;color:#71869b;font-size:9px;letter-spacing:.15em;font-weight:900}.pokedex-topline strong{color:#e74744;font:900 11px Nunito,sans-serif;letter-spacing:.03em}.pokedex-hero{height:170px;border-radius:18px;margin:13px 0 12px;display:grid;place-items:center;border:3px solid #fff;box-shadow:inset 0 -7px 0 #fff8,0 2px 0 #d7e5ef}.pokedex-hero img{height:150px;width:150px;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 7px 3px #18365325);animation:dexFloat 1.8s ease-in-out infinite alternate}.pokedex-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.pokedex-title h2{font-size:24px}.pokedex-title>div:first-child>span{font-size:11px;color:#768ba0}.pokedex-types{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px}.type-chip{padding:6px 9px;border-radius:999px;color:#fff;font-size:9px;font-weight:900;letter-spacing:.04em;box-shadow:inset 0 -2px #0002}.type-electric{background:#e7b929}.type-fire{background:#e97542}.type-water{background:#4d9fdb}.type-grass{background:#5aaa64}.type-bug{background:#91a637}.type-fairy{background:#d879aa}.type-poison{background:#9d69b1}.type-flying{background:#879ac8}.type-dark{background:#5d5d6a}.type-normal{background:#9298a1}.pokedex-description{font-size:12px;line-height:1.65;color:#4e6680;background:#eef6fb;border-left:4px solid #6eb4d1;border-radius:0 10px 10px 0;margin:15px 0 12px;padding:11px 13px}.pokedex-facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pokedex-facts>div{background:#fff2bf;border-radius:11px;padding:9px 12px;display:flex;flex-direction:column;gap:3px}.pokedex-facts small{font-size:8px;letter-spacing:.12em;font-weight:900;color:#9b741b}.pokedex-facts strong{font:900 13px Nunito,sans-serif;color:#4c4b40}.pokedex-actions{display:flex;gap:8px;margin-top:15px}.pokedex-actions button{flex:1}.secondary-button{border:2px solid #d4e3ed;border-radius:11px;background:#fff;color:#355574;padding:10px;font:800 11px 'DM Sans',sans-serif;cursor:pointer}@keyframes dexFloat{from{transform:translateY(2px)}to{transform:translateY(-5px)}}
-.encounter-mon.yellow,.pokedex-hero.yellow{background:linear-gradient(145deg,#fff1b1,#ffe080)}.encounter-mon.orange,.pokedex-hero.orange{background:linear-gradient(145deg,#ffe0cd,#ffc396)}.encounter-mon.blue,.pokedex-hero.blue{background:linear-gradient(145deg,#d9f0ff,#aedcf5)}.encounter-mon.green,.pokedex-hero.green{background:linear-gradient(145deg,#e0f4d7,#bce1a7)}.encounter-mon.pink,.pokedex-hero.pink{background:linear-gradient(145deg,#ffe1ef,#f5c0d9)}.encounter-mon.purple,.pokedex-hero.purple{background:linear-gradient(145deg,#eee1ff,#ccb6f0)}
-@media(max-width:560px){.encounter-dialog,.pokedex-dialog{padding:23px 18px}.pokedex-hero{height:145px}.pokedex-hero img{height:130px;width:130px}.encounter-option{min-height:105px}.pokemon-card .dex-link{font-size:8px}}
-.pokedex-dialog{max-height:88vh;overflow-y:auto}.pokedex-moves{margin-top:14px}.moves-heading{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:7px}.moves-heading h3{margin:0;color:#234363;font:900 14px Nunito,sans-serif}.moves-heading small{font-size:9px;color:#8392a3}.pokedex-move-list{display:grid;gap:6px}.pokedex-move{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border:1px solid #e0eaf1;border-radius:10px;background:#fff}.pokedex-move>div{display:flex;flex-direction:column;gap:2px}.pokedex-move strong{font:900 11px Nunito,sans-serif;color:#254363}.pokedex-move small{font-size:9px;color:#78899b}.pokedex-move .type-chip{min-width:52px;text-align:center}.type-tactic{background:#8a94a2}
-.main-menu{margin-top:18px}.menu-welcome{padding:8px 2px 17px}.menu-welcome h2{margin:0;font:900 25px Nunito,sans-serif;color:#183653}.menu-welcome p:last-child{margin:4px 0 0;color:#6d8297;font-size:12px}.menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.menu-tile{position:relative;min-height:156px;display:grid;grid-template-columns:60px 1fr;grid-template-rows:auto auto 1fr;column-gap:12px;align-items:center;text-align:left;padding:18px;border:2px solid #fff;border-bottom:6px solid #25436326;border-radius:20px;color:#173653;cursor:pointer;box-shadow:0 5px 0 #bcd0df,0 10px 20px #244b6c12;transition:transform .17s,box-shadow .17s}.menu-tile:hover{transform:translateY(-3px);box-shadow:0 8px 0 #bcd0df,0 13px 22px #244b6c18}.menu-icon{grid-row:1/4;width:56px;height:56px;border:3px solid #ffffffc9;border-radius:18px;background:#ffffffa3;display:grid;place-items:center;font-size:29px;box-shadow:0 3px 0 #27415d18}.menu-tile strong{align-self:end;font:900 17px Nunito,sans-serif}.menu-tile small{align-self:start;max-width:210px;color:#496682;font-size:10px;line-height:1.35}.menu-tile b{align-self:end;justify-self:start;margin-top:13px;padding:6px 9px;border-radius:999px;background:#ffffffb8;font:900 9px 'DM Sans',sans-serif}.menu-trainer{background:linear-gradient(140deg,#fff0b1,#ffda70)}.menu-pokemon{background:linear-gradient(140deg,#c9efff,#98d8f0)}.menu-found{background:linear-gradient(140deg,#d8f3cd,#b5e3a2)}.menu-badges{background:linear-gradient(140deg,#f6dff2,#e7b9dc)}.menu-page{margin-top:15px}.back-menu{min-height:40px;border:0;border-radius:12px;background:#e7f1f8;color:#315875;padding:9px 13px;font:900 11px 'DM Sans',sans-serif;cursor:pointer}.back-menu:hover{background:#d7eaf5}.page-heading{padding:18px 2px 15px}.page-heading h2{margin:0;font:900 25px Nunito,sans-serif;color:#183653}.page-heading>p:last-child{margin:5px 0 0;max-width:540px;color:#6d8297;font-size:12px;line-height:1.5}.profile-summary{display:flex;align-items:center;gap:13px;padding:16px 19px;margin-bottom:14px;border-left:6px solid #e74744}.profile-summary>div{display:flex;flex-direction:column;gap:3px}.profile-summary small{color:#7188a0;font-size:8px;font-weight:900;letter-spacing:.13em}.profile-summary strong{font:900 17px Nunito,sans-serif;color:#183653}.profile-summary>div span{font-size:10px;color:#75879a}.menu-page .center-card,.menu-page .hunt-card,.menu-page .badges-card{margin-top:0}.menu-page .collection-grid{margin-top:2px}.menu-page .badges-card{padding:17px}.menu-page .badge-list{grid-template-columns:1fr}.menu-page .badge{padding:13px}
-@media(max-width:560px){.main-menu{margin-top:9px}.menu-welcome{padding:7px 2px 13px}.menu-welcome h2,.page-heading h2{font-size:22px}.menu-grid{grid-template-columns:1fr;gap:10px}.menu-tile{min-height:116px;grid-template-columns:59px 1fr;padding:14px 16px}.menu-icon{width:52px;height:52px}.menu-tile b{margin-top:7px}.menu-page{margin-top:9px}.page-heading{padding:14px 2px}.menu-page .collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.menu-center{background:linear-gradient(140deg,#c9f1d4,#96d9ad)}.menu-tile:active{transform:scale(.965);box-shadow:0 2px 0 #bcd0df}.trainer-info strong{font-size:16px}.pokedex-device{width:min(100%,580px);margin:4px auto 10px;padding:13px 14px 11px;background:linear-gradient(135deg,#f04b45,#c82434);border:4px solid #a82030;border-radius:25px;box-shadow:inset 0 0 0 2px #ff8d75,0 8px 0 #839eae,0 14px 28px #17365324;transform-origin:50% 12%;position:relative}.dex-device-top{height:38px;display:flex;align-items:center;gap:8px;padding:0 5px 8px;color:#fff}.dex-device-top strong{font:900 17px Nunito,sans-serif;letter-spacing:.12em;text-shadow:0 2px #9e2632}.dex-device-top small{margin-left:auto;font:800 8px 'DM Sans',sans-serif;letter-spacing:.12em;color:#ffd8cc}.dex-lens{width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#baf9ff 0 13%,#40c2d4 16% 45%,#16618b 49%);border:2px solid #fff;box-shadow:0 0 0 2px #a52333}.dex-screen-frame{position:relative;border:7px solid #303d43;border-radius:15px;background:#28353b;padding:7px;box-shadow:inset 0 0 0 2px #718088;overflow:hidden}.dex-screen-top,.dex-screen-bottom{display:flex;align-items:center;justify-content:space-between;background:#c9dca0;color:#3c5137;padding:7px 9px;font:900 9px 'DM Sans',sans-serif;letter-spacing:.08em}.dex-screen-top{border-radius:5px 5px 0 0;border-bottom:1px solid #a6ba7b}.dex-screen-top span{font:900 11px monospace;background:#eff8cf;border:1px solid #95aa6c;border-radius:3px;padding:2px 5px}.pokedex-list{min-height:120px;max-height:min(47vh,410px);overflow-y:auto;background:repeating-linear-gradient(0deg,#e9f1cd 0 27px,#e2ebc2 28px);scrollbar-color:#799b60 #dce8bd;scrollbar-width:thin}.dex-screen-bottom{border-top:1px solid #a6ba7b;border-radius:0 0 5px 5px;color:#667b56;font-size:8px}.dex-entry{width:100%;min-height:57px;display:grid;grid-template-columns:42px 52px minmax(0,1fr) 22px;align-items:center;gap:7px;padding:4px 9px;border:0;border-bottom:1px solid #c4d4a3;background:transparent;color:#344b3a;text-align:left;cursor:pointer;font:inherit}.dex-entry:hover,.dex-entry.active-entry{background:#cddd9f}.dex-entry:active{background:#b9d187}.dex-number{font:900 12px monospace;color:#607b4f}.dex-entry-sprite{height:47px;width:48px;display:grid;place-items:center;background:#f6f8df;border:1px solid #b7c894;border-radius:7px}.dex-entry-sprite img{width:43px;height:43px;object-fit:contain;image-rendering:pixelated}.dex-entry-data{display:flex;flex-direction:column;gap:3px;min-width:0}.dex-entry-data strong{font:900 13px monospace;text-transform:uppercase;letter-spacing:.03em;color:#344b3a}.dex-entry-data small{font:700 9px monospace;color:#617750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dex-entry-mark{font:900 19px monospace;color:#688752;text-align:center}.active-entry .dex-entry-mark{color:#ce9e24;font-size:14px}.dex-device-buttons{height:28px;display:flex;align-items:center;gap:8px;padding:8px 2px 0}.dex-device-buttons i{width:9px;height:9px;border-radius:50%;background:#75333e;border:1px solid #ff9180;box-shadow:inset 0 1px #431b25}.dex-device-buttons span{margin-left:auto;color:#ffd5c9;font:900 7px 'DM Sans',sans-serif;letter-spacing:.18em}.pokedex-device.opening{animation:dexDeviceOpen .72s cubic-bezier(.16,.75,.28,1.1)}.pokedex-device.opening .dex-screen-frame:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 25%,#fff9 48%,transparent 70%);transform:translateX(-120%);animation:dexScreenShine .66s .12s ease-out}.pokedex-list .empty-state{margin:8px;border:1px dashed #8da46f;background:#edf5d5;color:#536d43;font:700 11px monospace}.grass-transition{position:fixed;z-index:100;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;background:linear-gradient(#9ddbf2 0 48%,#d8efbe 49% 100%);opacity:1;transition:opacity .22s ease}.grass-transition.hidden{display:none}.grass-transition.fade-out{opacity:0}.grass-sky{height:min(56vh,440px);width:min(100%,560px);position:relative;overflow:hidden;border:6px solid #fff;border-radius:24px;background:linear-gradient(#8ed3ef 0 64%,#abd485 65%);box-shadow:0 9px 0 #79a856,0 18px 38px #1c486044}.grass-sun{position:absolute;top:13%;right:16%;width:75px;height:75px;border-radius:50%;background:#fff0a6;box-shadow:0 0 36px #fff0a6aa}.grass-blades{position:absolute;inset:43% -5% -12%;display:flex;align-items:flex-end;justify-content:space-around;z-index:2}.grass-blades i{display:block;width:11%;height:70%;border:3px solid #589750;border-bottom:0;border-radius:90% 0 0 0;background:linear-gradient(100deg,#7cbb65,#aad981);transform-origin:bottom center;transform:rotate(-9deg)}.grass-blades i:nth-child(2n){height:53%;transform:rotate(12deg);background:linear-gradient(100deg,#68a85b,#96cb6e)}.grass-blades i:nth-child(3n){height:80%;transform:rotate(-16deg)}.grass-transition.rustling .grass-blades i{animation:grassSway .34s ease-in-out infinite alternate}.grass-blades i:nth-child(2n){animation-delay:.12s}.grass-pokemon{position:absolute;z-index:1;bottom:15%;left:50%;transform:translateX(-50%);width:145px;height:135px;display:grid;place-items:center}.grass-pokemon img{width:125px;height:125px;object-fit:contain;image-rendering:pixelated;opacity:0;transform:scale(.25);filter:drop-shadow(0 6px 3px #24432655)}.grass-transition.flash .grass-pokemon img{opacity:1;animation:wildAppear .46s cubic-bezier(.2,1.5,.4,1) forwards}.grass-transition.flash:after{content:"";position:absolute;inset:0;background:#fff;animation:encounterFlash .48s ease-out forwards;pointer-events:none}.grass-transition>p{z-index:3;margin:0;padding:10px 18px;border:3px solid #fff;border-radius:14px;background:#fff9de;color:#284c37;text-align:center;font:900 15px Nunito,sans-serif;box-shadow:0 4px 0 #abc78e}
-@keyframes dexDeviceOpen{0%{opacity:.2;transform:perspective(700px) rotateX(-78deg) scale(.79)}55%{opacity:1;transform:perspective(700px) rotateX(10deg) scale(1.03)}100%{transform:perspective(700px) rotateX(0) scale(1)}}@keyframes dexScreenShine{to{transform:translateX(120%)}}@keyframes grassSway{to{transform:rotate(15deg) scaleY(.89)}}@keyframes wildAppear{to{opacity:1;transform:scale(1)}}@keyframes encounterFlash{0%{opacity:0}18%{opacity:.92}100%{opacity:0}}
-@media(max-width:560px){.pokedex-device{padding:10px;border-radius:21px}.dex-entry{grid-template-columns:35px 46px minmax(0,1fr) 18px;gap:5px;padding:4px 6px}.dex-entry-sprite{width:43px;height:43px}.dex-entry-sprite img{width:40px;height:40px}.dex-entry-data strong{font-size:11px}.dex-entry-data small{font-size:8px}.dex-device-top small{font-size:7px}.grass-sky{height:min(49vh,360px)}.grass-transition>p{font-size:13px}}
-@media(prefers-reduced-motion:reduce){.pokedex-device.opening,.grass-transition.rustling .grass-blades i,.grass-transition.flash .grass-pokemon img{animation:none!important}.grass-transition.flash .grass-pokemon img{opacity:1;transform:scale(1)}}
-.trainer-strip{transition:opacity .15s ease}.pokedex-device{width:min(100%,690px);padding:16px 18px 13px}.dex-screen-frame{padding:9px}.pokedex-list{max-height:min(62vh,520px);min-height:190px}.dex-loading{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;min-height:70px;padding:15px 12px;background:#dfeab8;color:#45583a;font:900 10px monospace;letter-spacing:.04em}.dex-loading-track{grid-column:1/2;height:16px;padding:3px;border:2px solid #708457;border-radius:2px;background:#c2d49a;box-shadow:inset 1px 1px #869a6c}.dex-loading-track i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,#547e45 0 9px,#739c55 9px 12px);transition:width .16s steps(4,end)}.dex-loading small{grid-column:2;grid-row:2;font:900 10px monospace;color:#52683d}.dex-screen-frame.dex-loading .pokedex-list{visibility:hidden}.dex-entry{opacity:1}.pokedex-list.entries-loaded .dex-entry{opacity:0;animation:dexEntryAppear .25s ease-out forwards;animation-delay:calc(var(--entry-index,0) * 85ms)}.pokedex-device.appearing{animation:dexDeviceAppear .38s cubic-bezier(.2,.8,.25,1)}.pokedex-device.opening{animation:none!important}.pokedex-list .empty-state{min-height:140px;display:grid;place-items:center;padding:24px;text-align:center}.main-menu .menu-center{border-bottom-color:#3d9260}
-@keyframes dexDeviceAppear{0%{opacity:0;transform:translateY(20px) scale(.96)}100%{opacity:1;transform:translateY(0) scale(1)}}@keyframes dexEntryAppear{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
-@media(max-width:560px){.pokedex-device{padding:11px 10px 9px;width:100%}.pokedex-list{max-height:61vh;min-height:180px}.dex-loading{min-height:66px;padding:12px 9px}.dex-screen-top{padding:7px}.dex-screen-top strong{font-size:8px}}
-@media(prefers-reduced-motion:reduce){.pokedex-device.appearing,.pokedex-list.entries-loaded .dex-entry{animation:none!important;opacity:1!important}.dex-loading-track i{transition:none}}
-.pokedex-detail-view{max-height:min(68vh,570px);overflow-y:auto;background:#e7efc9;color:#384c36;padding:7px;scrollbar-color:#79945f #d9e5b9;scrollbar-width:thin}.pokedex-detail-view #pokedexContent{max-width:550px;margin:0 auto;padding:4px 8px 10px}.pokedex-detail-view .pokedex-topline{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:2px 0 7px;border-bottom:1px solid #aebf87;color:#59704a;font:900 10px monospace;letter-spacing:0}.dex-detail-back{border:0;background:transparent;padding:4px 0;color:#476640;font:900 10px monospace;cursor:pointer}.dex-detail-back:hover{text-decoration:underline}.pokedex-detail-view .pokedex-hero{height:115px;margin:8px 0;background:#d5e6b1;border:2px solid #a4b980;border-radius:4px;box-shadow:inset 0 2px #f2f6dc}.pokedex-detail-view .pokedex-hero img{height:106px;width:106px}.pokedex-detail-view .pokedex-title h2{font:900 17px monospace;text-transform:uppercase;color:#344a33}.pokedex-detail-view .pokedex-title>div:first-child>span{font:700 9px monospace;color:#61784e}.pokedex-detail-view .type-chip{border-radius:3px;padding:4px 6px;font:900 8px monospace}.pokedex-detail-view .pokedex-description{margin:9px 0;padding:8px 9px;border-left:3px solid #7b9a5e;border-radius:2px;background:#dbe8ba;color:#485d3e;font:700 10px/1.5 monospace}.pokedex-detail-view .pokedex-facts{gap:5px}.pokedex-detail-view .pokedex-facts>div{border:1px solid #b4c78f;border-radius:3px;background:#e0eabc;padding:6px 8px;gap:2px}.pokedex-detail-view .pokedex-facts small{font:900 7px monospace;color:#728653}.pokedex-detail-view .pokedex-facts strong{font:900 10px monospace;color:#43583c}.pokedex-detail-view .pokedex-moves{margin-top:9px}.pokedex-detail-view .moves-heading{margin-bottom:4px}.pokedex-detail-view .moves-heading h3{font:900 10px monospace;text-transform:uppercase;color:#43583c}.pokedex-detail-view .moves-heading small{font:700 7px monospace;color:#75875c}.pokedex-detail-view .pokedex-move-list{gap:3px}.pokedex-detail-view .pokedex-move{padding:5px 7px;border:1px solid #c0cf9f;border-radius:3px;background:#edf3d8}.pokedex-detail-view .pokedex-move strong{font:900 9px monospace;color:#3f553a}.pokedex-detail-view .pokedex-move small{font:700 7px monospace;color:#71855c}.pokedex-detail-view .pokedex-actions{margin-top:8px;justify-content:flex-end}.pokedex-detail-view .pokedex-actions .primary-button{padding:7px 10px;border-radius:4px;font:900 9px monospace;box-shadow:0 2px #aa2630}.dex-screen-frame:has(.pokedex-detail-view:not(.hidden)) .dex-screen-top,.dex-screen-frame:has(.pokedex-detail-view:not(.hidden)) .dex-screen-bottom{display:none}
-@media(max-width:560px){.pokedex-detail-view{max-height:65vh;padding:5px}.pokedex-detail-view #pokedexContent{padding:3px 5px 7px}.pokedex-detail-view .pokedex-hero{height:95px}.pokedex-detail-view .pokedex-hero img{height:88px;width:88px}.pokedex-detail-view .pokedex-description{font-size:9px}.pokedex-detail-view .pokedex-title h2{font-size:14px}.pokedex-detail-view .pokedex-move strong{font-size:8px}}
-.game-message-dialog{position:fixed;top:auto;right:12px;bottom:18px;left:12px;margin:0 auto;width:min(100% - 24px,560px);max-width:none;max-height:45vh;overflow:visible;border:0;padding:0;background:transparent;color:#23354b;transform:none}.game-message-dialog::backdrop{background:#142a43ad;backdrop-filter:blur(2px)}.game-message-window{position:relative;padding:14px 18px 13px;border:4px solid #26384b;border-radius:15px;background:linear-gradient(145deg,#fffef0,#f0f3d7);box-shadow:0 6px 0 #16293c, inset 0 0 0 3px #cad8ad,0 14px 30px #101f3370;animation:messageWindowIn .18s ease-out}.game-message-header{display:flex;align-items:center;gap:8px;min-height:17px;padding-bottom:7px;border-bottom:2px solid #d0d9b5;color:#526945;font:900 9px monospace;letter-spacing:.12em}.game-message-header i{width:8px;height:8px;border:2px solid #617a4e;border-radius:50%;background:#a8cb76;box-shadow:0 0 0 2px #dce9c5}.game-message-window>p{margin:11px 0 9px;min-height:2.8em;color:#23354b;font:800 clamp(18px,4.8vw,22px)/1.4 Nunito,system-ui,sans-serif;letter-spacing:.005em;overflow-wrap:anywhere}.game-message-window form{display:flex;justify-content:flex-end;margin:0}.game-message-continue{min-height:40px;min-width:124px;padding:8px 13px;border:2px solid #526a47;border-bottom-width:4px;border-radius:8px;background:#d8e9b5;color:#30482e;font:900 14px Nunito,system-ui,sans-serif;cursor:pointer}.game-message-continue span{display:inline-block;margin-left:8px;color:#729348;animation:messageArrowBlink .7s steps(2,end) infinite}.game-message-continue:active{transform:translateY(2px);border-bottom-width:2px}.game-message-continue:focus-visible{outline:3px solid #3d91b8;outline-offset:3px}
-@keyframes messageWindowIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes messageArrowBlink{50%{opacity:.15}}
-@media(max-width:560px){.game-message-dialog{right:8px;bottom:12px;left:8px;width:calc(100% - 16px);max-height:50vh}.game-message-window{padding:12px 14px 11px;border-width:3px}.game-message-header{font-size:8px}.game-message-window>p{font-size:clamp(18px,5.2vw,21px);min-height:2.7em}.game-message-continue{min-height:43px;min-width:132px;font-size:15px}}
-@media(prefers-reduced-motion:reduce){.game-message-window,.game-message-continue span{animation:none!important}}
-.game-message-dialog{top:50%;right:auto;bottom:auto;left:50%;margin:0;transform:translate(-50%,-50%);max-height:80vh}
-@media(max-width:560px){.game-message-dialog{top:50%;right:auto;bottom:auto;left:50%;margin:0;transform:translate(-50%,-50%);max-height:82vh}}
 
-/* Keep the play menu focused on large, easy-to-scan choices. */
-.menu-grid{margin-top:10px}
-.menu-tile{min-height:118px;display:flex;align-items:center;gap:16px;padding:18px 20px}
-.menu-icon{flex:0 0 56px}
-.menu-tile strong{align-self:auto;font-size:21px}
-.center-card form{grid-column:2;margin-top:0}
-.hunt-card form{grid-column:2}
-.menu-page .badges-card{margin-top:12px}
-@media(max-width:560px){.menu-tile{min-height:92px;padding:13px 16px}.menu-tile strong{font-size:19px}.center-card form,.hunt-card form{grid-column:1/-1;margin-top:10px}}
+body {
+  background-color: #dce9f6;
+  background-image: radial-gradient(circle at 12% 10%,#ffdf74 0 4px,transparent 5px),radial-gradient(circle at 89% 18%,#ff917c 0 5px,transparent 6px),radial-gradient(circle at 9% 69%,#78c9ec 0 5px,transparent 6px),radial-gradient(circle at 94% 79%,#a4db90 0 6px,transparent 7px),linear-gradient(150deg,#edf6ff,#dce9f6);
+  background-attachment: fixed;
+}
 
-.dex-team-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid #c5d2a6;color:#61764e;font:900 9px monospace}
-.dex-team-button{border:1px solid #9eaf7d;border-radius:4px;background:#edf3d8;color:#43583c;padding:7px 9px;font:900 9px monospace;cursor:pointer}
-.dex-team-button:hover:not(:disabled){background:#d8e7b7}
-.dex-team-button:disabled{opacity:.42;cursor:default}
-@media(max-width:560px){.dex-team-nav{font-size:8px}.dex-team-button{padding:7px 6px;font-size:8px}}
+.topbar {
+  background: #faffff;
+  border-bottom: 4px solid #e74744;
+  box-shadow: 0 3px 0 #b82c36;
+}
 
-/* Keep the PokÃ©dex hardware still and slide only the entry when browsing. */
-#pokedexContent.dex-slide-next .dex-detail-content{animation:dexEntrySlideNext .2s ease-out}
-#pokedexContent.dex-slide-previous .dex-detail-content{animation:dexEntrySlidePrevious .2s ease-out}
-@keyframes dexEntrySlideNext{from{opacity:.35;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
-@keyframes dexEntrySlidePrevious{from{opacity:.35;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
-@media(prefers-reduced-motion:reduce){#pokedexContent.dex-slide-next .dex-detail-content,#pokedexContent.dex-slide-previous .dex-detail-content{animation:none}}
+.brand {
+  color: #173352;
+}
 
-/* Jedes Team-PokÃ©mon bekommt beim UmblÃ¤ttern eine eigene, kÃ¶rperliche Bewegung. */
-.pokedex-detail-view .dex-motion-pikachu img{animation:dexPikachuHop .78s ease-in-out both!important}
-.pokedex-detail-view .dex-motion-glumanda img{animation:dexGlumandaPounce .82s ease-in-out both!important}
-.pokedex-detail-view .dex-motion-schiggy img{animation:dexSchiggyShell .78s ease-in-out both!important}
-.pokedex-detail-view .dex-motion-bulbasaur img{animation:dexBulbasaurSway .86s ease-in-out both!important}
-.pokedex-detail-view .dex-motion-raupy img{animation:dexRaupyWiggle .9s ease-in-out both!important}
-.pokedex-detail-view .dex-motion-piepi img{animation:dexPiepiBounce .9s ease-in-out both!important}
-.pokedex-detail-view .dex-motion-zubat img{animation:dexZubatHover .8s ease-in-out both!important}
-@keyframes dexPikachuHop{0%,100%{transform:translateY(0)}25%{transform:translateY(3px) scale(.94,1.04)}55%{transform:translateY(-15px) rotate(-5deg) scale(1.05)}76%{transform:translateY(1px) rotate(4deg)}88%{transform:translateY(-4px)} }
-@keyframes dexGlumandaPounce{0%,100%{transform:translate(0,0) rotate(0)}22%{transform:translate(-5px,2px) rotate(-7deg) scale(.94)}52%{transform:translate(8px,-12px) rotate(8deg) scale(1.06)}72%{transform:translate(-2px,2px) rotate(-4deg)}86%{transform:translate(0,-4px) rotate(3deg)}}
-@keyframes dexSchiggyShell{0%,100%{transform:translateY(0) rotate(0) scale(1)}25%{transform:translateY(2px) rotate(-8deg) scale(.92,1.06)}58%{transform:translateY(-8px) rotate(8deg) scale(1.04)}78%{transform:translateY(1px) rotate(-4deg)}90%{transform:translateY(-3px) rotate(2deg)}}
-@keyframes dexBulbasaurSway{0%,100%{transform:translateX(0) rotate(0)}22%{transform:translateX(-5px) rotate(-7deg)}48%{transform:translateX(7px) rotate(8deg) scale(1.04)}68%{transform:translateX(-4px) rotate(-5deg)}86%{transform:translateX(2px) rotate(3deg)}}
-@keyframes dexRaupyWiggle{0%,100%{transform:translateX(0) rotate(0)}18%{transform:translateX(-6px) rotate(-8deg)}36%{transform:translateX(6px) rotate(8deg)}54%{transform:translateX(-5px) rotate(-7deg)}72%{transform:translateX(4px) rotate(6deg)}88%{transform:translateX(-2px) rotate(-3deg)}}
-@keyframes dexPiepiBounce{0%,100%{transform:translateY(0) scale(1,1)}18%{transform:translateY(2px) scale(1.08,.92)}42%{transform:translateY(-14px) scale(.96,1.05)}58%{transform:translateY(-12px) scale(1,1)}75%{transform:translateY(2px) scale(1.06,.94)}88%{transform:translateY(-5px) scale(.98,1.02)}}
-@keyframes dexZubatHover{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-5px) rotate(-12deg) scale(1.03,.96)}50%{transform:translateY(-12px) rotate(10deg) scale(.97,1.04)}75%{transform:translateY(-4px) rotate(-8deg) scale(1.02,.97)}}
-@media(prefers-reduced-motion:reduce){.pokedex-detail-view [class*="dex-motion-"] img{animation:none!important}}
+.pokeball {
+  box-shadow: 0 2px 4px #10223c33;
+}
 
-/* Classic handheld battle framing with readable status panels and a command window. */
-.battle-dialog{width:min(100% - 20px,610px);padding:15px;background:#f7f5e8;border:4px solid #354b56;border-radius:12px;box-shadow:0 7px 0 #172f3d,0 24px 70px #101e3566}
-.battle-dialog form{position:absolute;right:9px;top:8px;z-index:5}.battle-dialog .dialog-close{background:#e7eee6;border:2px solid #80918c;color:#354b56;font-weight:900}
-.battle-heading{display:flex;align-items:center;justify-content:space-between;padding:0 38px 8px 3px}.battle-heading>span{font:900 9px Nunito,sans-serif;letter-spacing:.11em;color:#63827a}.battle-heading h2{font:900 17px Nunito,sans-serif;color:#273e4a}
-.battlefield{height:clamp(230px,48vw,300px);min-height:230px;margin:0;padding:0;border:2px solid #a5b7a8;border-radius:4px;background:linear-gradient(#edf4fa 0 56%,#d9ecf0 57% 68%,#e9f1d8 69%);overflow:hidden}
-.battlefield:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 77% 49%,#b7d3e7 0 23%,transparent 23.5%),radial-gradient(ellipse at 26% 89%,#b6d3a1 0 30%,transparent 30.5%);opacity:.75}
-.battle-platform{position:absolute;border-radius:50%;background:linear-gradient(#b4d5a8,#7fb37c);border-bottom:4px solid #6e9c72;box-shadow:0 7px 0 #627f6255}.platform-wild{width:39%;height:42px;right:4%;top:43%}.platform-trainer{width:47%;height:48px;left:0;bottom:4%}
-.fighter{position:absolute;z-index:2}.trainer-fighter{left:7%;bottom:7%;width:39%;height:56%;display:flex;align-items:flex-end;justify-content:center}.wild-fighter{right:10%;top:27%;width:31%;height:41%;display:flex;align-items:flex-end;justify-content:center}.fighter-art{width:100%;height:100%;display:grid;place-items:end center;position:relative}.battle-sprite{width:100%;height:100%;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 3px 1px #20344b44)}.trainer-fighter .battle-sprite,.wild-fighter .battle-sprite{object-position:center bottom}
-.battle-status{position:absolute;z-index:3;width:min(43%,235px);padding:8px 10px 7px;background:#fffdf0;border:2px solid #53675d;border-radius:9px 3px 9px 3px;box-shadow:3px 4px 0 #425a4d44;color:#253a41;font-family:Nunito,sans-serif}.status-wild{left:3%;top:5%}.status-trainer{right:3%;bottom:5%}.battle-status>div:first-child{display:flex;align-items:center;justify-content:space-between;gap:4px}.battle-status strong{font-size:12px}.battle-status small{font-size:9px;font-weight:800;white-space:nowrap}.status-hp{display:flex;align-items:center;gap:5px;margin:4px 0 1px;padding-left:15px}.status-hp>span{font-size:8px;font-weight:1000;color:#d18c27}.status-hp i{height:7px;background:#d5ded0;border:1px solid #718673;border-radius:99px;flex:1;overflow:hidden}.status-hp b{display:block;height:100%;border-radius:99px;background:linear-gradient(#9de66e,#4dbb54);transition:width .5s ease}.battle-status>small{display:block;text-align:right;color:#64766e;font-size:8px}
-.battle-command{padding:7px 0 0}.battle-message{margin:0 0 6px;min-height:38px;padding:8px 10px;border:2px solid #778d86;border-radius:5px;background:#fffdf2;color:#263d43;font:800 12px/1.35 Nunito,sans-serif}.move-grid{gap:6px;margin:0 0 7px}.move-button{min-height:42px;padding:6px 9px;border:2px solid #85958a;border-bottom-width:3px;border-radius:5px;background:#fffdf1;text-align:left}.move-button strong{font:900 11px Nunito,sans-serif;color:#273c42}.move-button small{font-size:8px}.battle-roster{margin-top:6px}
-.fighter-art img{animation:none!important}.trainer-fighter .fighter-art img{animation:trainerBreath 1.7s ease-in-out infinite!important;transform-origin:50% 100%}.wild-fighter .fighter-art img{animation:wildBreath 1.45s ease-in-out infinite!important;transform-origin:50% 100%}.fighter.attacking .fighter-art img{animation:chargeHop .5s ease-out!important}.trainer-fighter.attacking .fighter-art img{--charge-x:20px}.wild-fighter.attacking .fighter-art img{--charge-x:-20px}.fighter.taking-hit .fighter-art img{animation:retroHit .42s steps(2,end)!important}
-.damage-float{top:5%;left:50%;font-size:22px}.attack-effect{position:absolute;z-index:4;left:50%;top:55%;width:70px;height:70px;pointer-events:none;transform:translate(-50%,-50%);animation:effectAppear .58s ease-out forwards}.attack-effect i{position:absolute;display:block;left:50%;top:50%;width:17px;height:17px;border-radius:50%;background:#fff;box-shadow:0 0 0 5px currentColor,0 0 20px 9px currentColor;transform:translate(-50%,-50%);animation:burst .48s ease-out forwards}.attack-effect i:nth-child(2){animation-delay:.06s}.attack-effect i:nth-child(3){animation-delay:.12s}.attack-effect b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:1000 13px Nunito,sans-serif;color:#fff;text-shadow:0 2px 4px #26313b;white-space:nowrap}
-.type-fire{color:#ff6c2f}.type-water{color:#48a8ee}.type-electric{color:#ffd43d}.type-grass{color:#63bd57}.type-ice{color:#75d8df}.type-fighting{color:#e45a52}.type-poison{color:#bd70d6}.type-ground{color:#c69b57}.type-flying{color:#95a9ee}.type-psychic{color:#ed70a8}.type-bug{color:#91b937}.type-rock{color:#b49b57}.type-ghost{color:#7864bf}.type-dragon{color:#7160e8}.type-dark{color:#776b70}.type-steel{color:#91a5b8}.type-fairy{color:#ee91bc}.type-normal{color:#a5a69b}
-.type-fire i{border-radius:70% 30% 65% 35%;transform:translate(-50%,-50%) rotate(45deg)}.type-water i{width:21px;height:21px;border-radius:50% 50% 55% 15%;transform:translate(-50%,-50%) rotate(-45deg)}.type-electric i{width:0;height:0;background:transparent;box-shadow:none;border-radius:0;border-left:9px solid transparent;border-right:5px solid transparent;border-top:20px solid currentColor;filter:drop-shadow(0 0 7px currentColor)}.type-grass i,.type-bug i,.type-fairy i{border-radius:2px 100% 2px 100%;width:20px;height:11px}.type-ice i,.type-psychic i,.type-ghost i{border-radius:3px;width:15px;height:15px}
-@keyframes trainerBreath{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}@keyframes wildBreath{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3px) scale(1.015)}}@keyframes chargeHop{0%{transform:translateX(0) translateY(0)}45%{transform:translateX(var(--charge-x,12px)) translateY(-11px)}100%{transform:translateX(0) translateY(0)}}@keyframes retroHit{0%,100%{transform:translateX(0);filter:brightness(1)}25%{transform:translateX(-7px);filter:brightness(2)}50%{transform:translateX(6px);filter:brightness(.5)}75%{transform:translateX(-3px);filter:brightness(1.7)}}@keyframes burst{0%{opacity:0;transform:translate(-50%,-50%) scale(.15)}45%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}100%{opacity:0;transform:translate(-50%,-50%) scale(.3)}}@keyframes effectAppear{0%,100%{opacity:0}18%,75%{opacity:1}}
-@media(max-width:560px){.battle-dialog{padding:11px}.battle-heading h2{font-size:14px}.battle-heading>span{font-size:8px}.battlefield{height:250px;min-height:225px}.battle-status{width:46%;padding:6px 7px}.battle-status strong{font-size:10px}.status-wild{left:2%;top:4%}.status-trainer{right:2%;bottom:4%}.trainer-fighter{left:3%;width:43%;height:53%}.wild-fighter{right:5%;width:34%;height:38%}.battle-message{font-size:11px}.move-button{min-height:39px}}
-@media(prefers-reduced-motion:reduce){.trainer-fighter .fighter-art img,.wild-fighter .fighter-art img,.fighter.attacking .fighter-art img,.fighter.taking-hit .fighter-art img{animation-duration:.01ms!important}.attack-effect{display:none}}
-.attack-effect.from-trainer{left:67%;top:42%}.attack-effect.from-wild{left:35%;top:69%}.attack-effect:before{content:"";position:absolute;left:12%;top:35%;width:48px;height:9px;border-radius:99px;background:currentColor;opacity:.78;filter:drop-shadow(0 0 6px currentColor);transform:rotate(-28deg);animation:moveTrail .42s ease-out both}.attack-effect.from-wild:before{transform:rotate(155deg);left:30%;top:60%}.attack-effect.type-electric:before{height:4px;border-radius:0;clip-path:polygon(0 35%,42% 35%,52% 0,61% 70%,100% 70%,100% 100%,56% 100%,48% 35%,41% 65%,0 65%)}.attack-effect.type-fire:before{height:14px;border-radius:70% 30% 70% 30%}.attack-effect.type-water:before{height:6px;box-shadow:0 6px 0 currentColor,0 -6px 0 currentColor}.attack-effect.type-grass:before,.attack-effect.type-bug:before{height:4px;box-shadow:0 9px 0 currentColor,0 -9px 0 currentColor;transform:rotate(-40deg)}@keyframes moveTrail{from{opacity:0;transform:translate(-28px,15px) rotate(-28deg) scaleX(.3)}to{opacity:.8;transform:translate(0,0) rotate(-28deg) scaleX(1)}}
-.attack-effect i:nth-child(2){--fx-x:-20px;--fx-y:-12px}.attack-effect i:nth-child(3){--fx-x:20px;--fx-y:13px}@keyframes burst{0%{opacity:0;transform:translate(-50%,-50%) scale(.15)}45%{opacity:1;transform:translate(calc(-50% + var(--fx-x,0px)),calc(-50% + var(--fx-y,0px))) scale(1.1)}100%{opacity:0;transform:translate(calc(-50% + var(--fx-x,0px)),calc(-50% + var(--fx-y,0px))) scale(.25)}}
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
 
-/* Larger PokÃ©dex artwork and location-specific retro battle scenes. */
-.dex-entry{min-height:76px;grid-template-columns:42px 68px minmax(0,1fr) 22px;gap:9px;padding:5px 10px}
-.dex-entry-sprite{width:64px;height:64px;border-radius:8px;background:#f7f8e9}
-.dex-entry-sprite img{width:60px;height:60px}
-.pokedex-detail-view .pokedex-hero{position:relative;height:208px;overflow:hidden;background-size:cover;background-position:center;border:2px solid #405b53;border-radius:4px;box-shadow:inset 0 -24px 0 #173f3344,0 3px 0 #c2d09c}
-.pokedex-detail-view .pokedex-hero:after{content:"";position:absolute;left:8%;right:8%;bottom:12px;height:20px;border-radius:50%;background:#162d2b55;filter:blur(5px)}
-.pokedex-detail-view .pokedex-hero img{position:relative;z-index:1;width:184px;height:184px;max-width:90%;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 5px 2px #17292270)}
-.battlefield[class*="habitat-"]{background-size:cover;background-position:center;background-repeat:no-repeat}
-.battlefield[class*="habitat-"]:before{display:none}
-.trainer-fighter{left:5%;width:46%;height:63%}.wild-fighter{right:7%;width:39%;height:48%}
-@media(max-width:560px){.dex-entry{min-height:72px;grid-template-columns:35px 62px minmax(0,1fr) 18px;gap:6px;padding:4px 6px}.dex-entry-sprite{width:60px;height:60px}.dex-entry-sprite img{width:57px;height:57px}.pokedex-detail-view .pokedex-hero{height:176px}.pokedex-detail-view .pokedex-hero img{width:156px;height:156px}.trainer-fighter{left:3%;width:47%;height:61%}.wild-fighter{right:4%;width:40%;height:47%}}
+.switch-button {
+  border: 1px solid #d8e4f2;
+  border-radius: 11px;
+  background: #fff;
+  padding: 9px 12px;
+  color: #254366;
+  font: 800 11px 'DM Sans',sans-serif;
+  cursor: pointer;
+}
 
-/* Use the detailed battlebacks used by PokÃ©mon Showdown's classic battle UI. */
-.battlefield[class*="habitat-"]{background-position:center 58%;background-size:cover;background-repeat:no-repeat}
-.battlefield .battle-platform{height:17px;border:0;border-radius:50%;box-shadow:0 5px 9px #152a2940;opacity:.6}
-.battlefield .platform-wild{width:31%;right:8%;top:55%;background:radial-gradient(ellipse,#293b2d77,#617b5555 55%,transparent 72%)}
-.battlefield .platform-trainer{width:37%;left:4%;bottom:2%;background:radial-gradient(ellipse,#293b2d88,#617b5555 55%,transparent 72%)}
-.pokedex-detail-view .pokedex-hero{background-position:center 58%;background-size:cover}
-.pokedex-detail-view .pokedex-hero.habitat-forest,.battlefield.habitat-forest{background-image:url('/assets/backgrounds/forest.png')}
-.pokedex-detail-view .pokedex-hero.habitat-route,.battlefield.habitat-route{background-image:url('/assets/backgrounds/route.png')}
-.pokedex-detail-view .pokedex-hero.habitat-meadow,.battlefield.habitat-meadow{background-image:url('/assets/backgrounds/meadow.png')}
-.pokedex-detail-view .pokedex-hero.habitat-river,.battlefield.habitat-river{background-image:url('/assets/backgrounds/river.png')}
-.pokedex-detail-view .pokedex-hero.habitat-beach,.battlefield.habitat-beach{background-image:url('/assets/backgrounds/beach.png')}
-.pokedex-detail-view .pokedex-hero.habitat-beachshore,.battlefield.habitat-beachshore{background-image:url('/assets/backgrounds/beachshore.png')}
-.pokedex-detail-view .pokedex-hero.habitat-deepsea,.battlefield.habitat-deepsea{background-image:url('/assets/backgrounds/deepsea.png')}
-.pokedex-detail-view .pokedex-hero.habitat-dampcave,.battlefield.habitat-dampcave{background-image:url('/assets/backgrounds/dampcave.png')}
-.pokedex-detail-view .pokedex-hero.habitat-earthycave,.battlefield.habitat-earthycave{background-image:url('/assets/backgrounds/earthycave.png')}
-.pokedex-detail-view .pokedex-hero.habitat-icecave,.battlefield.habitat-icecave{background-image:url('/assets/backgrounds/icecave.png')}
-.pokedex-detail-view .pokedex-hero.habitat-mountain,.battlefield.habitat-mountain{background-image:url('/assets/backgrounds/mountain.png')}
-.pokedex-detail-view .pokedex-hero.habitat-city,.battlefield.habitat-city{background-image:url('/assets/backgrounds/city.png')}
-.pokedex-detail-view .pokedex-hero.habitat-desert,.battlefield.habitat-desert{background-image:url('/assets/backgrounds/desert.png')}
-.pokedex-detail-view .pokedex-hero.habitat-volcanocave,.battlefield.habitat-volcanocave{background-image:url('/assets/backgrounds/volcanocave.png')}
-.pokedex-detail-view .pokedex-hero.habitat-thunderplains,.battlefield.habitat-thunderplains{background-image:url('/assets/backgrounds/thunderplains.png')}
-.pokedex-detail-view .pokedex-hero.habitat-gen3-arena,.battlefield.habitat-gen3-arena{background-image:url('/assets/backgrounds/gen3-arena.png')}
-.pokedex-detail-view .pokedex-hero.habitat-gen3-forest,.battlefield.habitat-gen3-forest{background-image:url('/assets/backgrounds/gen3-forest.png')}
-.pokedex-detail-view .pokedex-hero.habitat-gen3-cave,.battlefield.habitat-gen3-cave{background-image:url('/assets/backgrounds/gen3-cave.png')}
-.pokedex-detail-view .pokedex-hero.habitat-gen3-ocean,.battlefield.habitat-gen3-ocean{background-image:url('/assets/backgrounds/gen3-ocean.png')}
+.switch-button:hover {
+  background: #edf5ff;
+  border-color: #93b9e3;
+}
+
+.hero {
+  border: 4px solid #f5c84c;
+  border-radius: 22px;
+  background: linear-gradient(125deg,#1b4775,#287eac 70%,#45a8c7);
+  box-shadow: 0 7px 0 #bbd2e5,0 13px 26px #244b6c20;
+}
+
+.hero:after {
+  content: "POKÃ‰DEX Â· TRAINER-LOGBUCH";
+  position: absolute;
+  right: 18px;
+  bottom: 11px;
+  font: 800 8px 'DM Sans',sans-serif;
+  letter-spacing: .14em;
+  color: #e0f8ff99;
+}
+
+.hero-orb {
+  border: 6px solid #fff9de;
+  box-shadow: inset -14px -14px 0 #e77e3844,0 5px 0 #b77c37,0 12px 24px #07183344;
+}
+
+.card {
+  border: 2px solid #d7e4f2;
+  box-shadow: 0 5px 0 #c5d8e9,0 10px 20px #244b6c12;
+}
+
+.setup-card,.picker-card {
+  border-top: 6px solid #f3ca4b;
+}
+
+.eyebrow {
+  color: #5680a5;
+}
+
+.hero .eyebrow {
+  color: #ffdf72;
+}
+
+.section-heading h2,.hunt-copy h2,.badges-card h2 {
+  color: #183653;
+}
+
+.step-badge,.count-pill {
+  background: #fff2bd;
+  color: #9b6814;
+}
+
+.primary-button {
+  background: #e74744;
+  box-shadow: 0 4px 0 #b62d35,0 7px 12px #b62d3520;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #d83c3a;
+}
+
+.primary-button:disabled {
+  box-shadow: none;
+}
+
+.starter-choice {
+  border: 2px solid #e0e9f2;
+  border-bottom-width: 4px;
+}
+
+.starter-choice.selected {
+  border-color: #55a1d2;
+  box-shadow: 0 3px 0 #3787b5,0 0 0 3px #88c7e733;
+}
+
+.choice-emoji {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  font-size: 32px;
+  box-shadow: inset 0 -5px 0 #ffffff77;
+}
+
+.trainer-strip {
+  border-left: 6px solid #e74744;
+}
+
+.trainer-avatar {
+  background: #e0f2ff;
+}
+
+.badge-count {
+  background: #fff1bd;
+  color: #986813;
+}
+
+.pokemon-card {
+  border: 2px solid #e2ebf3;
+  border-bottom-width: 4px;
+  transition: transform .2s,box-shadow .2s;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-3px) rotate(-1deg);
+  box-shadow: 0 7px 15px #254c6e18;
+}
+
+.pokemon-art {
+  height: 84px;
+  border: 2px solid #ffffff;
+  border-bottom-width: 4px;
+  box-shadow: 0 2px 5px #203b5311;
+  font-size: 47px;
+}
+
+.pokemon-card .type-tag {
+  background: #fff;
+  border: 1px solid #e4eaf0;
+}
+
+.pokemon-card strong {
+  font-size: 14px;
+  color: #183653;
+}
+
+.pokemon-card small {
+  font-size: 10px;
+}
+
+.hunt-card {
+  border-top: 6px solid #6cb8dc;
+}
+
+.hunt-icon {
+  background: #ffedb2;
+}
+
+.badges-card {
+  border-top: 5px solid #a68ae5;
+}
+
+.badge {
+  background: #f0f6fb;
+  border: 1px solid #e4edf4;
+}
+
+.badge.earned {
+  background: #fff2c9;
+  border-color: #f2da83;
+}
+
+.battle-dialog,.switch-dialog {
+  border: 5px solid #e74744;
+  border-radius: 24px;
+  background: #f8fcff;
+  box-shadow: 0 8px 0 #a92534,0 25px 80px #0e1d3566;
+}
+
+.battle-dialog::backdrop,.switch-dialog::backdrop {
+  background: #183451bb;
+  backdrop-filter: blur(4px);
+}
+
+.battle-dialog h2,.switch-dialog h2 {
+  color: #183653;
+}
+
+.battlefield {
+  position: relative;
+  overflow: hidden;
+  background-color: #cce9ef;
+  background-image: radial-gradient(ellipse at 50% 105%,#8dcc81 0 28%,transparent 29%),linear-gradient(#b9e7f2 0 66%,#e8f6d4 67%);
+  border: 2px solid #b4dce4;
+  min-height: 190px;
+}
+
+.fighter {
+  position: relative;
+  z-index: 1;
+}
+
+.fighter-art {
+  position: relative;
+  height: 88px;
+  width: 88px;
+  border: 4px solid #fff;
+  border-bottom-width: 7px;
+  border-radius: 29px 29px 23px 23px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 51px;
+  box-shadow: 0 5px 0 #618a9766,0 8px 17px #18365322;
+}
+
+.fighter strong {
+  color: #173653;
+}
+
+.fighter.attacking .fighter-art {
+  animation: trainerAttack .42s ease-in-out;
+}
+
+.fighter.taking-hit .fighter-art {
+  animation: gotHit .4s ease-in-out;
+}
+
+.damage-float {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  z-index: 4;
+  color: #e74744;
+  font: 900 26px Nunito,sans-serif;
+  text-shadow: 0 2px #fff,2px 0 #fff,-2px 0 #fff;
+  animation: damagePop .78s ease-out forwards;
+}
+
+.battle-message {
+  background: #fff3bf;
+  border: 1px solid #f1d976;
+  color: #674f1d;
+  font-weight: 700;
+}
+
+.move-button {
+  border: 2px solid #dfe9f2;
+  border-bottom-width: 4px;
+  background: #fff;
+}
+
+.move-button:hover {
+  border-color: #75b9d4;
+  background: #eefaff;
+}
+
+.move-button:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+.move-button strong {
+  color: #234367;
+  font-size: 12px;
+}
+
+.move-button:nth-child(1) {
+  border-top-color: #ffbf56;
+}
+
+.move-button:nth-child(2) {
+  border-top-color: #78bfdf;
+}
+
+.move-button:nth-child(3) {
+  border-top-color: #81ca8d;
+}
+
+.move-button:nth-child(4) {
+  border-top-color: #b394df;
+}
+
+.switch-dialog {
+  padding: 27px;
+  width: min(100% - 28px,430px);
+  color: #192b46;
+}
+
+.profile-list {
+  display: grid;
+  gap: 8px;
+  margin: 4px 0 15px;
+  max-height: 45vh;
+  overflow: auto;
+}
+
+.profile-choice {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  align-items: center;
+  text-align: left;
+  padding: 10px 12px;
+  border: 2px solid #dce8f1;
+  border-bottom-width: 4px;
+  border-radius: 13px;
+  background: #fff;
+  color: #1a3858;
+  cursor: pointer;
+}
+
+.profile-choice>span {
+  grid-row: span 2;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: #fff1bd;
+  font-size: 19px;
+}
+
+.profile-choice strong {
+  font: 900 13px Nunito,sans-serif;
+}
+
+.profile-choice small {
+  font-size: 10px;
+  color: #71839a;
+}
+
+.profile-choice:hover,.profile-choice.current {
+  border-color: #69b6d5;
+  background: #f2fbff;
+}
+
+.picker-card {
+  margin-top: 20px;
+  padding: 25px 28px;
+}
+
+.picker-card .section-heading {
+  margin-bottom: 13px;
+}
+
+.picker-card .profile-list {
+  grid-template-columns: repeat(auto-fit,minmax(145px,1fr));
+}
+
+.picker-card .profile-choice {
+  grid-template-columns: 30px 1fr;
+}
+
+.picker-card .profile-choice>span {
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+}
+
+.full {
+  width: 100%;
+}
+
+.icon-button {
+  border-bottom-width: 3px;
+}
+
+.empty-state {
+  background: #f7fbff;
+  color: #58728d;
+  border-color: #b9d3e5;
+}
+
+@keyframes trainerAttack {
+  0%,100% {
+    transform: translateX(0) scale(1);
+  }
+
+  35% {
+    transform: translate(35px,-5px) scale(1.12);
+  }
+
+  60% {
+    transform: translate(18px,0) scale(1.05);
+  }
+}
+
+@keyframes gotHit {
+  0%,100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-9px) rotate(-7deg);
+    filter: brightness(1.7);
+  }
+
+  55% {
+    transform: translateX(8px) rotate(6deg);
+    filter: brightness(.8);
+  }
+}
+
+@keyframes damagePop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%,15px) scale(.5);
+  }
+
+  22% {
+    opacity: 1;
+    transform: translate(-50%,-6px) scale(1.2);
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%,-37px) scale(1);
+  }
+}
+
+@media (max-width:560px) {
+  .hero:after {
+    font-size: 6px;
+    right: 12px;
+  }
+
+  .hero-orb {
+    border-width: 4px;
+  }
+
+  .battlefield {
+    min-height: 165px;
+  }
+
+  .fighter-art {
+    width: 68px;
+    height: 68px;
+    font-size: 40px;
+  }
+
+  .picker-card {
+    padding: 20px 17px;
+  }
+
+  .picker-card .profile-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .switch-button {
+    padding: 8px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.collection-sprite {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 3px 1px #233c5422);
+}
+
+.battle-sprite {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 4px 2px #18365344);
+}
+
+.battle-title-sprite {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  vertical-align: middle;
+  image-rendering: pixelated;
+}
+
+.fighter-art {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.fighter-art img {
+  animation: spriteIdle 1.2s ease-in-out infinite alternate;
+}
+
+.fighter.attacking .fighter-art img {
+  animation: spriteHop .42s ease-in-out;
+}
+
+.fighter.taking-hit .fighter-art img {
+  animation: spriteFlinch .4s ease-in-out;
+}
+
+.battlefield .fighter:first-child .fighter-art {
+  transform: scale(1.12);
+}
+
+.battle-dialog h2 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+@keyframes spriteIdle {
+  from {
+    transform: translateY(1px);
+  }
+
+  to {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes spriteHop {
+  0%,100% {
+    transform: translate(0,0);
+  }
+
+  40% {
+    transform: translate(14px,-13px);
+  }
+
+  70% {
+    transform: translate(25px,-2px);
+  }
+}
+
+@keyframes spriteFlinch {
+  0%,100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-8px);
+    filter: brightness(1.9);
+  }
+
+  55% {
+    transform: translateX(7px) rotate(5deg);
+    filter: brightness(.7);
+  }
+}
+
+@media (max-width:560px) {
+  .collection-sprite {
+    width: 60px;
+    height: 60px;
+  }
+
+  .battle-title-sprite {
+    width: 32px;
+    height: 32px;
+  }
+
+  .fighter-art {
+    width: 76px;
+    height: 76px;
+  }
+}
+
+.center-card {
+  margin-top: 16px;
+  padding: 20px 23px;
+  display: grid;
+  grid-template-columns: 47px 1fr;
+  column-gap: 14px;
+  border-top: 5px solid #79c994;
+}
+
+.center-card form {
+  grid-column: 1/-1;
+  margin-top: 16px;
+}
+
+.center-card .hunt-icon {
+  background: #dcf5e2;
+}
+
+.center-card h2 {
+  font: 900 20px Nunito,sans-serif;
+  margin: 0;
+  color: #183653;
+}
+
+.active-card {
+  border-color: #62b8d3;
+  box-shadow: 0 5px 0 #62b8d3,0 10px 20px #244b6c12;
+}
+
+.battle-roster {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed #bed3df;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 7px;
+}
+
+.battle-roster>strong {
+  grid-column: 1/-1;
+  font: 900 11px Nunito,sans-serif;
+  color: #50718d;
+}
+
+.battle-roster-choice {
+  border: 1px solid #dce8f1;
+  border-radius: 10px;
+  background: #fff;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-align: left;
+  color: #254363;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.battle-roster-choice img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.battle-roster-choice span {
+  font: 800 10px Nunito,sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.battle-roster-choice small {
+  font: 500 9px 'DM Sans',sans-serif;
+  color: #71839a;
+}
+
+.battle-roster-choice b {
+  margin-left: auto;
+  font-size: 8px;
+  color: #3784a6;
+}
+
+.battle-roster-choice:hover:not(:disabled) {
+  border-color: #62b8d3;
+  background: #f2fbff;
+}
+
+.battle-roster-choice:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.battle-roster-choice.current {
+  border-color: #f0c951;
+  background: #fff9df;
+}
+
+.defeat-message {
+  background: #ffe5df;
+  border-color: #f3b2a3;
+  color: #803f35;
+}
+
+@media (max-width:560px) {
+  .center-card {
+    padding: 18px;
+    grid-template-columns: 40px 1fr;
+    column-gap: 10px;
+  }
+
+  .battle-roster {
+    gap: 5px;
+  }
+
+  .battle-roster-choice {
+    padding: 5px;
+    gap: 4px;
+  }
+
+  .battle-roster-choice img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .battle-roster-choice span {
+    font-size: 9px;
+  }
+}
+
+.file-warning:not([hidden]) {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px max(18px,calc((100% - 760px)/2));
+  background: #fff0c2;
+  border-bottom: 3px solid #e8b83b;
+  color: #533f17;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.file-warning strong {
+  font: 900 15px Nunito,sans-serif;
+}
+
+.file-warning span {
+  max-width: 760px;
+}
+
+.file-warning b {
+  white-space: nowrap;
+}
+
+.pokemon-card {
+  font: inherit;
+  color: inherit;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.pokemon-card:focus-visible,.encounter-option:focus-visible,.battle-roster-choice:focus-visible {
+  outline: 3px solid #2d8db9;
+  outline-offset: 2px;
+}
+
+.pokemon-card .dex-link {
+  margin-top: 5px;
+  color: #327c9c;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.pokemon-card:hover .dex-link {
+  text-decoration: underline;
+}
+
+.encounter-dialog,.pokedex-dialog {
+  position: relative;
+  overflow: visible;
+  border: 5px solid #e74744;
+  border-radius: 24px;
+  background: #f8fcff;
+  width: min(100% - 28px,460px);
+  padding: 27px;
+  color: #192b46;
+  box-shadow: 0 8px 0 #a92534,0 25px 80px #0e1d3566;
+}
+
+.encounter-dialog::backdrop,.pokedex-dialog::backdrop {
+  background: #183451bb;
+  backdrop-filter: blur(4px);
+}
+
+.encounter-dialog h2,.pokedex-dialog h2 {
+  font: 900 24px Nunito,sans-serif;
+  margin: 2px 0;
+  color: #183653;
+}
+
+.encounter-mon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 18px;
+  border-radius: 18px;
+  margin-top: 12px;
+  border: 2px solid #fff;
+  box-shadow: inset 0 -5px 0 #fff8;
+}
+
+.encounter-mon img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.encounter-mon div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.encounter-mon span {
+  font-size: 10px;
+  font-weight: 800;
+  color: #68809a;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.encounter-mon small {
+  font-size: 11px;
+  color: #687b90;
+}
+
+.encounter-question {
+  margin: 19px 0 10px;
+  font: 900 14px Nunito,sans-serif;
+  color: #365675;
+}
+
+.encounter-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.encounter-option {
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 2px solid #dce7f1;
+  border-bottom-width: 5px;
+  border-radius: 15px;
+  background: #fff;
+  color: #213e5e;
+  cursor: pointer;
+}
+
+.encounter-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px #203a5b15;
+}
+
+.encounter-option>span {
+  font-size: 24px;
+}
+
+.encounter-option strong {
+  font: 900 14px Nunito,sans-serif;
+}
+
+.encounter-option small {
+  font-size: 10px;
+  color: #70849a;
+}
+
+.info-option {
+  border-top-color: #83c3dd;
+}
+
+.fight-option {
+  border-top-color: #f2ca50;
+}
+
+.pokedex-dialog {
+  padding: 22px 24px 24px;
+}
+
+.pokedex-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 38px;
+  color: #71869b;
+  font-size: 9px;
+  letter-spacing: .15em;
+  font-weight: 900;
+}
+
+.pokedex-topline strong {
+  color: #e74744;
+  font: 900 11px Nunito,sans-serif;
+  letter-spacing: .03em;
+}
+
+.pokedex-hero {
+  height: 170px;
+  border-radius: 18px;
+  margin: 13px 0 12px;
+  display: grid;
+  place-items: center;
+  border: 3px solid #fff;
+  box-shadow: inset 0 -7px 0 #fff8,0 2px 0 #d7e5ef;
+}
+
+.pokedex-hero img {
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 7px 3px #18365325);
+  animation: dexFloat 1.8s ease-in-out infinite alternate;
+}
+
+.pokedex-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.pokedex-title h2 {
+  font-size: 24px;
+}
+
+.pokedex-title>div:first-child>span {
+  font-size: 11px;
+  color: #768ba0;
+}
+
+.pokedex-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.type-chip {
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  box-shadow: inset 0 -2px #0002;
+}
+
+.type-electric {
+  background: #e7b929;
+}
+
+.type-fire {
+  background: #e97542;
+}
+
+.type-water {
+  background: #4d9fdb;
+}
+
+.type-grass {
+  background: #5aaa64;
+}
+
+.type-bug {
+  background: #91a637;
+}
+
+.type-fairy {
+  background: #d879aa;
+}
+
+.type-poison {
+  background: #9d69b1;
+}
+
+.type-flying {
+  background: #879ac8;
+}
+
+.type-dark {
+  background: #5d5d6a;
+}
+
+.type-normal {
+  background: #9298a1;
+}
+
+.pokedex-description {
+  font-size: 12px;
+  line-height: 1.65;
+  color: #4e6680;
+  background: #eef6fb;
+  border-left: 4px solid #6eb4d1;
+  border-radius: 0 10px 10px 0;
+  margin: 15px 0 12px;
+  padding: 11px 13px;
+}
+
+.pokedex-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.pokedex-facts>div {
+  background: #fff2bf;
+  border-radius: 11px;
+  padding: 9px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pokedex-facts small {
+  font-size: 8px;
+  letter-spacing: .12em;
+  font-weight: 900;
+  color: #9b741b;
+}
+
+.pokedex-facts strong {
+  font: 900 13px Nunito,sans-serif;
+  color: #4c4b40;
+}
+
+.pokedex-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.pokedex-actions button {
+  flex: 1;
+}
+
+.secondary-button {
+  border: 2px solid #d4e3ed;
+  border-radius: 11px;
+  background: #fff;
+  color: #355574;
+  padding: 10px;
+  font: 800 11px 'DM Sans',sans-serif;
+  cursor: pointer;
+}
+
+@keyframes dexFloat {
+  from {
+    transform: translateY(2px);
+  }
+
+  to {
+    transform: translateY(-5px);
+  }
+}
+
+.encounter-mon.yellow,.pokedex-hero.yellow {
+  background: linear-gradient(145deg,#fff1b1,#ffe080);
+}
+
+.encounter-mon.orange,.pokedex-hero.orange {
+  background: linear-gradient(145deg,#ffe0cd,#ffc396);
+}
+
+.encounter-mon.blue,.pokedex-hero.blue {
+  background: linear-gradient(145deg,#d9f0ff,#aedcf5);
+}
+
+.encounter-mon.green,.pokedex-hero.green {
+  background: linear-gradient(145deg,#e0f4d7,#bce1a7);
+}
+
+.encounter-mon.pink,.pokedex-hero.pink {
+  background: linear-gradient(145deg,#ffe1ef,#f5c0d9);
+}
+
+.encounter-mon.purple,.pokedex-hero.purple {
+  background: linear-gradient(145deg,#eee1ff,#ccb6f0);
+}
+
+@media (max-width:560px) {
+  .encounter-dialog,.pokedex-dialog {
+    padding: 23px 18px;
+  }
+
+  .pokedex-hero {
+    height: 145px;
+  }
+
+  .pokedex-hero img {
+    height: 130px;
+    width: 130px;
+  }
+
+  .encounter-option {
+    min-height: 105px;
+  }
+
+  .pokemon-card .dex-link {
+    font-size: 8px;
+  }
+}
+
+.pokedex-dialog {
+  max-height: 88vh;
+  overflow-y: auto;
+}
+
+.pokedex-moves {
+  margin-top: 14px;
+}
+
+.moves-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.moves-heading h3 {
+  margin: 0;
+  color: #234363;
+  font: 900 14px Nunito,sans-serif;
+}
+
+.moves-heading small {
+  font-size: 9px;
+  color: #8392a3;
+}
+
+.pokedex-move-list {
+  display: grid;
+  gap: 6px;
+}
+
+.pokedex-move {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid #e0eaf1;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.pokedex-move>div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pokedex-move strong {
+  font: 900 11px Nunito,sans-serif;
+  color: #254363;
+}
+
+.pokedex-move small {
+  font-size: 9px;
+  color: #78899b;
+}
+
+.pokedex-move .type-chip {
+  min-width: 52px;
+  text-align: center;
+}
+
+.type-tactic {
+  background: #8a94a2;
+}
+
+.main-menu {
+  margin-top: 18px;
+}
+
+.menu-welcome {
+  padding: 8px 2px 17px;
+}
+
+.menu-welcome h2 {
+  margin: 0;
+  font: 900 25px Nunito,sans-serif;
+  color: #183653;
+}
+
+.menu-welcome p:last-child {
+  margin: 4px 0 0;
+  color: #6d8297;
+  font-size: 12px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 13px;
+}
+
+.menu-tile {
+  position: relative;
+  min-height: 156px;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  grid-template-rows: auto auto 1fr;
+  column-gap: 12px;
+  align-items: center;
+  text-align: left;
+  padding: 18px;
+  border: 2px solid #fff;
+  border-bottom: 6px solid #25436326;
+  border-radius: 20px;
+  color: #173653;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #bcd0df,0 10px 20px #244b6c12;
+  transition: transform .17s,box-shadow .17s;
+}
+
+.menu-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 #bcd0df,0 13px 22px #244b6c18;
+}
+
+.menu-icon {
+  grid-row: 1/4;
+  width: 56px;
+  height: 56px;
+  border: 3px solid #ffffffc9;
+  border-radius: 18px;
+  background: #ffffffa3;
+  display: grid;
+  place-items: center;
+  font-size: 29px;
+  box-shadow: 0 3px 0 #27415d18;
+}
+
+.menu-tile strong {
+  align-self: end;
+  font: 900 17px Nunito,sans-serif;
+}
+
+.menu-tile small {
+  align-self: start;
+  max-width: 210px;
+  color: #496682;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.menu-tile b {
+  align-self: end;
+  justify-self: start;
+  margin-top: 13px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #ffffffb8;
+  font: 900 9px 'DM Sans',sans-serif;
+}
+
+.menu-trainer {
+  background: linear-gradient(140deg,#fff0b1,#ffda70);
+}
+
+.menu-pokemon {
+  background: linear-gradient(140deg,#c9efff,#98d8f0);
+}
+
+.menu-found {
+  background: linear-gradient(140deg,#d8f3cd,#b5e3a2);
+}
+
+.menu-badges {
+  background: linear-gradient(140deg,#f6dff2,#e7b9dc);
+}
+
+.menu-page {
+  margin-top: 15px;
+}
+
+.back-menu {
+  min-height: 40px;
+  border: 0;
+  border-radius: 12px;
+  background: #e7f1f8;
+  color: #315875;
+  padding: 9px 13px;
+  font: 900 11px 'DM Sans',sans-serif;
+  cursor: pointer;
+}
+
+.back-menu:hover {
+  background: #d7eaf5;
+}
+
+.page-heading {
+  padding: 18px 2px 15px;
+}
+
+.page-heading h2 {
+  margin: 0;
+  font: 900 25px Nunito,sans-serif;
+  color: #183653;
+}
+
+.page-heading>p:last-child {
+  margin: 5px 0 0;
+  max-width: 540px;
+  color: #6d8297;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.profile-summary {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 16px 19px;
+  margin-bottom: 14px;
+  border-left: 6px solid #e74744;
+}
+
+.profile-summary>div {
+  display: flex;
+  flex-direction: column;
+  gasotÖÚ$z{-®éÜj×ÜXÚ]NˆÂˆB‚ˆN	HÂˆÜXÚ]NˆŽLŽÂˆB‚ˆL	HÂˆÜXÚ]NˆÂˆBŸB‚YYXH
+X^]ÚYMŒ
+HÂˆœÚÙY^Y]šXÙHÂˆY[™ÎˆLÂˆ›Ü™\‹\˜Y]\ÎˆŒ\ÂˆB‚ˆ™^Y[žHÂˆÜšY][\]KXÛÛ[[œÎˆÍ\œZ[›X^
+YœŠHNÂˆØ\ˆ\ÂˆY[™ÎˆœÂˆB‚ˆ™^Y[žK\Üš]HÂˆÚYˆÜÂˆZYÚˆÜÂˆB‚ˆ™^Y[žK\Üš]H[YÈÂˆÚYˆÂˆZYÚˆÂˆB‚ˆ™^Y[žKY]HÝ›Û™ÈÂˆ›Û\Ú^™NˆL\ÂˆB‚ˆ™^Y[žKY]HÛX[Âˆ›Û\Ú^™NˆÂˆB‚ˆ™^Y]šXÙK]ÜÛX[Âˆ›Û\Ú^™NˆÜÂˆB‚ˆ™Ü˜\ÜË\ÚÞHÂˆZYÚˆZ[Š]šÍŒ
+NÂˆB‚ˆ™Ü˜\ÜË]˜[œÚ][ÛœÂˆ›Û\Ú^™NˆLÜÂˆBŸB‚YYXH
+™Y™\œË\™YXÙY[[Ý[ÛŽœ™YXÙJHÂˆœÚÙY^Y]šXÙK›Ü[š[™Ë™Ü˜\ÜË]˜[œÚ][Û‹œ\Ý[™È™Ü˜\ÜËX›Y\ÈK™Ü˜\ÜË]˜[œÚ][Û‹™›\Ú™Ü˜\ÜË\ÚÙ[[Ûˆ[YÈÂˆ[š[X][ÛŽˆ›Û™HZ[\Ü[ÂˆB‚ˆ™Ü˜\ÜË]˜[œÚ][Û‹™›\Ú™Ü˜\ÜË\ÚÙ[[Ûˆ[YÈÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›NˆØØ[JJNÂˆBŸB‚‹Êˆ™YÙYÛ[™Ù[ŽˆÝ\ž™\‹^[YÙ\ˆÐKRØ[\˜]YZÝZ]Ü˜\È›Üˆ[HÚðê[[Û‹ˆ
+‹Â‚‹™Ü˜\ÜË]˜[œÚ][ÛˆÂˆØ\ˆÂˆ˜XÚÙÜ›Ý[™ˆÌLLLÂˆ˜[œÚ][ÛŽˆÜXÚ]HŒŽÈÝ\ÊJNÂŸB‚‹™Ü˜\ÜË\ÚÞHÂˆZYÚˆZ[ŠŒšÌ
+NÂˆ›Ü™\ŽˆÛÛYÙXÌNÂˆ›Ü™\‹\˜Y]\ÎˆœÂˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+ÍŽYŽL‰KÎ˜ÍØÙHL‰H	KÍÍXNH	HMÉKÍLØMˆMÉJNÂˆ›Þ\ÚYÝÎˆ[œÙ]ÍMŽMKÌŒØŒÎLœÌŒØŒÎÂˆ[XYÙK\™[™\š[™Îˆ^[]YÂŸB‚‹™Ü˜\ÜË\Ý[ˆÂˆÚYˆÌÂˆZYÚˆÌÂˆÜˆMINÂˆšYÚˆMÉNÂˆ›Ü™\‹\˜Y]\ÎˆÂˆ˜XÚÙÜ›Ý[™ˆÙ™NMNÂˆ›Þ\ÚYÝÎˆLœÙ™NMKLLœÙ™NMKLœÙ™NMKLLœÙ™NMK\ÙNXNÂŸB‚‹™Ü˜\ÜËX›Y\ÈÂˆ[œÙ]ˆÉHL‰HMINÂˆ[YÛ‹Z][\ÎˆÝ™]ÚÂˆØ\ˆÂŸB‚‹™Ü˜\ÜËX›Y\ÈHÂˆÚYˆINÂˆZYÚˆŒ	NÂˆ›Ü™\ŽˆÂˆ›Ü™\‹\˜Y]\ÎˆÂˆ˜XÚÙÜ›Ý[™ˆÍ™˜ŽNÂˆÛ\\]ˆÛYÛÛŠL	KÍÉKÌ	HÍÉKÌ	HN	HN	HŽ	KL	HŽ	KL	HL	JNÂˆ˜[œÙ›Ü›Nˆ›Û™NÂˆ˜[œÙ›Ü›K[ÜšYÚ[Žˆ›ÝÛNÂŸB‚‹™Ü˜\ÜËX›Y\ÈN›XÚ[
+›ŠHÂˆZYÚˆ	NÂˆ˜XÚÙÜ›Ý[™ˆÍMŒÙNÂˆÛ\\]ˆÛYÛÛŠL	KIKÍIHIKÍIHIHIHÎ	KL	HÎ	KL	HL	JNÂˆ˜[œÙ›Ü›Nˆ›Û™NÂŸB‚‹™Ü˜\ÜËX›Y\ÈN›XÚ[
+ÛŠHÂˆZYÚˆÌ	NÂˆ˜XÚÙÜ›Ý[™ˆÎØMLÎÂˆ˜[œÙ›Ü›Nˆ›Û™NÂŸB‚‹™Ü˜\ÜË]˜[œÚ][Û‹œ\Ý[™È™Ü˜\ÜËX›Y\ÈHÂˆ[š[X][ÛŽˆ^[Ü˜\ÜÈŒÈÝ\ÊŠH[™š[š]H[\›˜]NÂŸB‚‹™Ü˜\ÜË\ÚÙ[[ÛˆÂˆ›ÝÛNˆNINÂˆÚYˆNÂˆZYÚˆMÌÂŸB‚‹™Ü˜\ÜË\ÚÙ[[Ûˆ[YÈÂˆÚYˆMNÂˆZYÚˆMNÂˆ[XYÙK\™[™\š[™Îˆ^[]YÂˆš[\Žˆ›Ü\ÚYÝÊ\œÌÍLÎJNÂŸB‚‹™Ü˜\ÜË]˜[œÚ][Û‹™›\Ú˜Y\ˆÂˆ˜XÚÙÜ›Ý[™ˆ™\X][™Ë[[™X\‹YÜ˜YY[
+YËÙ™™ˆÙY™ˆMœ
+NÂˆ[š[X][ÛŽˆ[˜ÛÝ[\‘›\ÚÈÝ\ÊJH›ÜØ\™ÎÂŸB‚‹™Ü˜\ÜË]˜[œÚ][ÛœÂˆX\™Ú[‹]ÜˆÂˆ›Ü™\ŽˆÛÛYØÍØÎYNÂˆ›Ü™\‹\˜Y]\ÎˆœÂˆ˜XÚÙÜ›Ý[™ˆÙ™ŒÙÂˆÛÛÜŽˆÌÌØŒØŽÂˆ›Þ\ÚYÝÎˆ[œÙ]ÜÙ™™‹\ÌÍMŽÂˆ›ÛˆLM[Û›ÜÜXÙNÂˆ]\‹\ÜXÚ[™ÎˆŒ™[NÂŸB‚Ù^Yœ˜[Y\È^[Ü˜\ÜÈÂˆœ›ÛHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+LÜ
+HÚÙ]Ö
+MYÊNÂˆB‚ˆÈÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+Ü
+HÚÙ]Ö
+YYÊNÂˆBŸB‚‹ÊˆÙ[\‹TÞ™[™NˆÐKT^[Ø[[‹ØÚØ\ž˜›[™K0ïˆ[™›[šÙ[™HZ[X\ØÚ[™Kˆ
+‹Â‚‹˜Ù[\‹]˜[œÚ][ÛˆÂˆÜÚ][ÛŽˆš^YÂˆ‹Z[™^ˆLŒÂˆ[œÙ]ˆÂˆ\Ü^NˆÜšYÂˆXÙKZ][\ÎˆÙ[\ŽÂˆ˜XÚÙÜ›Ý[™ˆÌÌLÎÂˆÜXÚ]NˆNÂˆ˜[œÚ][ÛŽˆÜXÚ]HŒÜÈÝ\ÊJNÂŸB‚‹˜Ù[\‹]˜[œÚ][Û‹šY[ˆÂˆ\Ü^Nˆ›Û™NÂŸB‚‹˜Ù[\‹]˜[œÚ][Û‹˜Ù[\‹Y˜YHÂˆÜXÚ]NˆÂŸB‚‹˜Ù[\‹\ØÙ[™HÂˆÜÚ][ÛŽˆ™[]]™NÂˆÚYˆZ[ŠËÌ
+NÂˆZYÚˆZ[ŠŒšÍL
+NÂˆÝ™\™›ÝÎˆY[ŽÂˆ›Ü™\ŽˆÛÛYÙYXÍÂˆÝ][™NˆÛÛYÌÍÙØÎÂˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+ÌÍMYMÎHL‰KØYÌØ™L‰HN	KÙØ™N	H	KÎXNXÎÈ	JNÂˆ›Þ\ÚYÝÎˆ\ÌLLNÂˆ[XYÙK\™[™\š[™Îˆ^[]YÂŸB‚‹˜Ù[\‹\ØÙ[™N˜™Y›Ü™HÂˆÛÛ[ˆˆŽÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ[œÙ]ˆ]]ÎÂˆZYÚˆMINÂˆ˜XÚÙÜ›Ý[™ˆ™\X][™Ë[[™X\‹YÜ˜YY[
+LYËÙNMØHMœØÌ˜ÍØÈMœŒ
+NÂˆ›Ü™\‹X›ÝÛNˆ\ÛÛYÍLÍ™ØÎÂŸB‚‹˜Ù[\‹\ØÙ[™K]]HÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆÜˆÉNÂˆYˆL	NÂˆ‹Z[™^ˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+ML	JNÂˆY[™Îˆ\\Âˆ˜XÚÙÜ›Ý[™ˆÙŒÙŒNÂˆ›Ü™\ŽˆÜÛÛYÍÌÍ˜NÂˆÛÛÜŽˆÌÍŽÂˆ›ÛˆLL\[Û›ÜÜXÙNÂˆÚ]K\ÜXÙNˆ›ÝÜ˜\ÂŸB‚‹˜Ù[\‹YÛÜˆÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆYˆL‰NÂˆÜˆŽINÂˆÚYˆ	NÂˆZYÚˆ	NÂˆ˜XÚÙÜ›Ý[™ˆÎXÍNÂˆ›Ü™\ŽˆœÛÛYÙM˜ÌÎÂˆ›Þ\ÚYÝÎˆ[œÙ]\ÍÌÌØÌØNÂŸB‚‹˜Ù[\‹YÛÜŽ˜™Y›Ü™HÂˆÛÛ[ˆˆŽÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ[œÙ]ˆÂˆ˜XÚÙÜ›Ý[™ˆÌLNŒÂˆ˜[œÙ›Ü›K[ÜšYÚ[ŽˆYÂˆ[š[X][ÛŽˆÙ[\‘ÛÜ“Ü[ˆœÈÝ\Ê
+HŒ\È›ÝÂŸB‚‹˜Ù[\‹YÛÜˆÜ[ˆÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ‹Z[™^ˆŽÂˆ›ÝÛNˆœÂˆYˆL	NÂˆÚYˆNÂˆZYÚˆŽÂˆ˜XÚÙÜ›Ý[™ˆÙŒXØLNÂˆ›Ü™\ŽˆÛÛYÎMNÂˆÜXÚ]NˆÂˆ[š[X][ÛŽˆ˜Z[™\‘[\ˆM\ÈÝ\Ê
+HŒÜÈ›ÝÂŸB‚‹˜Ù[\‹[XXÚ[™HÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆšYÚˆL	NÂˆÜˆÍ‰NÂˆÚYˆ‰NÂˆZYÚˆÎ	NÂˆ›Ü™\ŽˆÜÛÛYÍNM™ÌŽÂˆ˜XÚÙÜ›Ý[™ˆÙ™ÌNÂˆ›Þ\ÚYÝÎˆ[œÙ]\ÙŒYYÙ‹ÍØNÙŽÂŸB‚‹˜Ù[\‹[XXÚ[™N˜™Y›Ü™HÂˆÛÛ[ˆˆŽÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆÜˆLŒœÂˆYˆLLÜÂˆšYÚˆLLÜÂˆZYÚˆMœÂˆ›Ü™\ŽˆÛÛYÍNM™ÌŽÂˆ˜XÚÙÜ›Ý[™ˆÙÍLÍŽÂŸB‚‹˜Ù[\‹[XXÚ[™K\ØÜ™Y[ˆÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆÜˆL	NÂˆYˆL‰NÂˆšYÚˆL‰NÂˆZYÚˆINÂˆ›Ü™\ŽˆÛÛYÍL˜MŽÂˆ˜XÚÙÜ›Ý[™ˆÎL˜ÍØLÎÂˆ›Þ\ÚYÝÎˆ[œÙ]ÜÙ™ŒÙÂŸB‚‹˜Ù[\‹X˜[ÈÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆYˆ	NÂˆšYÚˆ	NÂˆ›ÝÛNˆLÉNÂˆ\Ü^Nˆ›^Âˆ\ÝYžKXÛÛ[ˆÜXÙKX\›Ý[™ÂŸB‚‹˜Ù[\‹X˜[ÈHÂˆÜÚ][ÛŽˆ™[]]™NÂˆÚYˆ\ÂˆZYÚˆ\Âˆ›Ü™\ŽˆÜÛÛYÍNMYNÂˆ›Ü™\‹\˜Y]\ÎˆL	NÂˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+ÙNMLÍIKÍLÍŒMXˆIHM‰KÙYYNXÙHM‰JNÂˆ›Þ\ÚYÝÎˆœÎŽÍÙÂŸB‚‹˜Ù[\‹\ØÙ[™K[Y\ÜØYÙHÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ›ÝÛNˆÉNÂˆYˆ	NÂˆšYÚˆ	NÂˆY[™ÎˆÂˆ›Ü™\ŽˆÛÛYÍÌÙÌNÂˆ˜XÚÙÜ›Ý[™ˆÙŒŽÂˆÛÛÜŽˆÌÍÎÂˆ^X[YÛŽˆÙ[\ŽÂˆ›ÛˆLLœ[Û›ÜÜXÙNÂˆ›Þ\ÚYÝÎˆ[œÙ]ÜÙ™™ŽÂŸB‚‹˜Ù[\‹Y[\š[™È˜Ù[\‹\ØÙ[™HÂˆ[š[X][ÛŽˆÙ[\”™]™X[ŽÈÝ\ÊŠH›ÝÂŸB‚‹˜Ù[\‹ZX[[™È˜Ù[\‹[XXÚ[™K\ØÜ™Y[ˆÂˆ[š[X][ÛŽˆX[ØÜ™Y[ˆ\ÈÝ\ÊŠH[™š[š]H[\›˜]NÂŸB‚‹˜Ù[\‹ZX[[™È˜Ù[\‹X˜[ÈHÂˆ[š[X][ÛŽˆX[˜[\ÈÝ\ÊŠH[™š[š]H[\›˜]NÂŸB‚‹˜Ù[\‹ZX[[™È˜Ù[\‹X˜[ÈN›XÚ[
+ŠHÂˆ[š[X][Û‹Y[^NˆŒM\ÎÂŸB‚‹˜Ù[\‹ZX[[™È˜Ù[\‹X˜[ÈN›XÚ[
+ÊHÂˆ[š[X][Û‹Y[^NˆŒÜÎÂŸB‚Ù^Yœ˜[Y\ÈÙ[\‘ÛÜ“Ü[ˆÂˆÈÂˆ˜[œÙ›Ü›Nˆ\œÜXÝ]™J
+H›Ý]VJMÌ™YÊNÂˆÜXÚ]NˆŒNÂˆBŸB‚Ù^Yœ˜[Y\È˜Z[™\‘[\ˆÂˆ	HÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJŒ
+NÂˆB‚ˆ	HÂˆÜXÚ]NˆNÂˆB‚ˆL	HÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJLÌ
+NÂˆBŸB‚Ù^Yœ˜[Y\ÈÙ[\”™]™X[Âˆ	HÂˆÜXÚ]NˆŒMNÂˆš[\ŽˆœšYÚ™\ÜÊŒJNÂˆ˜[œÙ›Ü›NˆØØ[JŽLŠNÂˆB‚ˆL	HÂˆÜXÚ]NˆNÂˆš[\ŽˆœšYÚ™\ÜÊJNÂˆ˜[œÙ›Ü›NˆØØ[JJNÂˆBŸB‚Ù^Yœ˜[Y\ÈX[ØÜ™Y[ˆÂˆœ›ÛHÂˆ˜XÚÙÜ›Ý[™ˆÎXÍÎLŽÂˆ›Þ\ÚYÝÎˆ\Î™˜ŒÂˆB‚ˆÈÂˆ˜XÚÙÜ›Ý[™ˆÙÙŒÎMÎÂˆ›Þ\ÚYÝÎˆŒœÎXÙ™˜ŒÂˆBŸB‚Ù^Yœ˜[Y\ÈX[˜[Âˆœ›ÛHÂˆš[\ŽˆœšYÚ™\ÜÊJNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ
+NÂˆB‚ˆÈÂˆš[\ŽˆœšYÚ™\ÜÊKŽ
+NÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJM
+NÂˆBŸB‚YYXH
+™Y™\œË\™YXÙY[[Ý[ÛŽœ™YXÙJHÂˆ™Ü˜\ÜË]˜[œÚ][Û‹œ\Ý[™È™Ü˜\ÜËX›Y\ÈK˜Ù[\‹YÛÜŽ˜™Y›Ü™K˜Ù[\‹YÛÜˆÜ[‹˜Ù[\‹ZX[[™È˜Ù[\‹[XXÚ[™K\ØÜ™Y[‹˜Ù[\‹ZX[[™È˜Ù[\‹X˜[ÈHÂˆ[š[X][Û‹Y\˜][ÛŽˆŒ[\ÈZ[\Ü[ÂˆBŸB‚‹Êˆ[HØXÚ[U[\œÙZ][ˆ™ZÛÛ[Y[ˆ[ˆ[šÛ[ˆÚðêY^KÒØ[\˜š[ØÚ\›KSÛÚËˆ
+‹Â‚˜›ÙKœYÙK[Ü[ˆÂˆ˜XÚÙÜ›Ý[™ˆ˜YX[YÜ˜YY[
+[\ÙH]L	HLMIKÌŒÌÙŒˆÌLYÌH	KÌŒXˆL	JNÂˆÛÛÜŽˆÙYÎÂˆZ[‹ZZYÚˆLšÂŸB‚˜›ÙKœYÙK[Ü[ˆÜ˜\ˆÂˆ˜XÚÙÜ›Ý[™ˆÌLXŒ˜™ÎÂˆ›Ü™\‹X›ÝÛKXÛÛÜŽˆÍLŽNÂˆÛÛÜŽˆÙ™™ŽÂŸB‚˜›ÙKœYÙK[Ü[ˆ˜œ˜[™ÂˆÛÛÜŽˆÙ™™ŽÂŸB‚‹œYÙK[Ü[ˆ›Y[K\YÙHÂˆÛÛÜŽˆÙYÎÂŸB‚‹œYÙK[Ü[ˆ˜Ø\™Âˆ›Ü™\‹XÛÛÜŽˆÍLÍÍØŽÂˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+MYYËÌŒØL‹ÌXL˜
+NÂˆÛÛÜŽˆÙ™ŽÂˆ›Þ\ÚYÝÎˆ\ÌLXŒŽKLœ\ÌNÂŸB‚‹œYÙK[Ü[ˆ™šY[[X™[ÂˆÛÛÜŽˆÙYMXŽÂŸB‚‹œYÙK[Ü[ˆ[œ]Âˆ›Ü™\‹XÛÛÜŽˆÍØŽNÂˆ˜XÚÙÜ›Ý[™ˆÌLXŒ˜NÂˆÛÛÜŽˆÙ™™ŽÂŸB‚‹œYÙK[Ü[ˆ[œ]ŽœXÙZÛ\ˆÂˆÛÛÜŽˆØLØŒ˜™ÂŸB‚‹˜˜XÚË[Y[HÂˆZ[‹ZZYÚˆLœÂˆX\™Ú[ŽˆMÂˆY[™ÎˆLœŒœÂˆ›Ü™\ŽˆÜÛÛYÙ™™MŽNÂˆ›Ü™\‹X›ÝÛK]ÚYˆœÂˆ›Ü™\‹\˜Y]\Îˆ\Âˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+NYËÙ™ŒXËÙMLÍÙÌ‰KØ™ŒŒÌÍJNÂˆÛÛÜŽˆÙ™™ŽÂˆ›ÛˆLM\[š]Ë	ÑHØ[œÉËØ[œË\Ù\šYŽÂˆ]\‹\ÜXÚ[™ÎˆŒ™[NÂˆ^\ÚYÝÎˆœÎXLLÍÂˆ›Þ\ÚYÝÎˆÍÎLŽLÍ‹ÜÌLLXÌ˜NÂˆÝ\œÛÜŽˆÚ[\ŽÂŸB‚‹˜˜XÚË[Y[NšÝ™\ˆÂˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+NYËÙ™ŽMÌÙŒÙMÈÌ‰KØØLŽLØŠNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJL\
+NÂŸB‚‹˜˜XÚË[Y[N˜XÝ]™HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJÜ
+NÂˆ›Ü™\‹X›ÝÛK]ÚYˆÜÂˆ›Þ\ÚYÝÎˆ\ÍÎLŽLÍ‹ÌLLXÌ˜NÂŸB‚‹œYÙK]˜[œÚ][ÛˆÂˆÜÚ][ÛŽˆš^YÂˆ‹Z[™^ˆLÌÂˆ[œÙ]ˆÂˆ\Ü^NˆÜšYÂˆXÙKZ][\ÎˆÙ[\ŽÂˆ˜XÚÙÜ›Ý[™ˆÌÌŒNÂˆÛ\\]ˆ[œÙ]
+L	H
+NÂˆÚ[\‹Y]™[Îˆ›Û™NÂŸB‚‹œYÙK]˜[œÚ][Û‹šY[ˆÂˆ\Ü^Nˆ›Û™NÂŸB‚‹œYÙK]˜[œÚ][Û‹œYÙK]˜[œÚ][Û‹XXÝ]™HÂˆ[š[X][ÛŽˆYÙPÝ\Z[”›ÛÍœÈÝXšXËX™^šY\ŠÌ‹ŒŽJH›ÝÂŸB‚‹˜[œÚ][Û‹\ÚÙX˜[ÂˆÜÚ][ÛŽˆ™[]]™NÂˆÚYˆLÂˆZYÚˆLÂˆ›Ü™\Žˆ\ÛÛYÙM™MØÎÂˆ›Ü™\‹\˜Y]\ÎˆL	NÂˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+ÙYMˆ	KÌÌÎMˆIHM‰KÙŒÙŒHMÉJNÂˆ›Þ\ÚYÝÎˆ\ÌÌMÎÂŸB‚‹˜[œÚ][Û‹\ÚÙX˜[˜Y\ˆÂˆÛÛ[ˆˆŽÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆYˆL	NÂˆÜˆL	NÂˆÚYˆLœÂˆZYÚˆLœÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JNÂˆ›Ü™\ŽˆÛÛYÌØÍLÂˆ›Ü™\‹\˜Y]\ÎˆL	NÂˆ˜XÚÙÜ›Ý[™ˆÙŒYNÂŸB‚‹›Y[K\YÙKœYÙK\™]™X[ÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ
+NÂˆ˜[œÚ][ÛŽˆÜXÚ]HŒÌœÈX\ÙK˜[œÙ›Ü›HŒÌœÈX\ÙNÂŸB‚‹›Y[K\YÙKœYÙK\™]™X[œYÙK\™]™X[YÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ
+NÂŸB‚Ù^Yœ˜[Y\ÈYÙPÝ\Z[”›ÛÂˆ	HÂˆÛ\\]ˆ[œÙ]
+L	H
+NÂˆB‚ˆÍ	HÂˆÛ\\]ˆ[œÙ]
+
+NÂˆB‚ˆN	HÂˆÛ\\]ˆ[œÙ]
+
+NÂˆB‚ˆL	HÂˆÛ\\]ˆ[œÙ]
+L	H
+NÂˆBŸB‚YYXH
+™Y™\œË\™YXÙY[[Ý[ÛŽœ™YXÙJHÂˆœYÙK]˜[œÚ][Û‹œYÙK]˜[œÚ][Û‹XXÝ]™HÂˆ[š[X][Û‹Y\˜][ÛŽˆŒLœÎÂˆBŸB‚‹˜Ø\\™K\ØÙ[™HÂˆÜÚ][ÛŽˆ™[]]™NÂˆZYÚˆLNÂˆX\™Ú[Žˆ\]]È\ÂˆÝ™\™›ÝÎˆY[ŽÂˆ›Ü™\ŽˆÜÛÛYÍÌŽM˜ŽÂˆ›Ü™\‹\˜Y]\ÎˆÜÂˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+ÙYMØÍÙŒJNÂˆ›Þ\ÚYÝÎˆ[œÙ]ÜÙ™™ŽÂŸB‚‹˜Ø\\™K\ØÙ[™KšY[ˆÂˆ\Ü^Nˆ›Û™NÂŸB‚‹˜Ø\\™K\ÚÙ[[Û‹\Üš]HÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ‹Z[™^ˆŽÂˆÜˆÂˆYˆL	NÂˆÚYˆÍœÂˆZYÚˆÍœÂˆØš™XÝYš]ˆÛÛZ[ŽÂˆ[XYÙK\™[™\š[™Îˆ^[]YÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+ML	JNÂˆš[\Žˆ›Ü\ÚYÝÊÜ\ÌŽØÌÍÌÌÊNÂŸB‚‹˜Ø\\™K\ÚÙX˜[ÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ‹Z[™^ˆNÂˆ›ÝÛNˆÜÂˆYˆL	NÂˆÚYˆÜÂˆZYÚˆÜÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+ML	JNÂˆ›Ü™\ŽˆÛÛYÌÍNÂˆ›Ü™\‹\˜Y]\ÎˆL	NÂˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+ÙYMˆÉKÌÍH	HM‰KÙŽŒÙÈMÉJNÂˆ›Þ\ÚYÝÎˆÜÍÌÎMÍÂŸB‚‹˜Ø\\™K\ÚÙX˜[HÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆYˆL	NÂˆÜˆL	NÂˆÚYˆLÜÂˆZYÚˆLÜÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JNÂˆ›Ü™\ŽˆÜÛÛYÌÍNÂˆ›Ü™\‹\˜Y]\ÎˆL	NÂˆ˜XÚÙÜ›Ý[™ˆÙŽŒÙÎÂŸB‚‹˜Ø\\™K\Ý\œÈÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ[œÙ]ˆÂˆÚ[\‹Y]™[Îˆ›Û™NÂŸB‚‹˜Ø\\™K\Ý\œÈHÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ‹Z[™^ˆÎÂˆÜˆÎINÂˆYˆL	NÂˆÛÛÜŽˆÙLXYŒÌÎÂˆ›ÛˆLN[Û›ÜÜXÙNÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JHØØ[JŒŠNÂŸB‚‹˜Ø\\™K\Ý\œÈN›XÚ[
+ŠHÂˆYˆÍ	NÂˆÜˆ	NÂˆ›Û\Ú^™NˆMÂŸB‚‹˜Ø\\™K\Ý\œÈN›XÚ[
+ÊHÂˆYˆÉNÂˆÜˆÉNÂˆ›Û\Ú^™NˆM\ÂŸB‚‹˜Ø\\™KXXÝ]™H˜Ø\\™K\ÚÙ[[Û‹\Üš]HÂˆ[š[X][ÛŽˆØ\\™TÝXÚÈM\ÈÝXšXËX™^šY\ŠMKŽ‹ŒÍJHŒ\È›ÜØ\™ÎÂŸB‚‹˜Ø\\™KXXÝ]™H˜Ø\\™K\ÚÙX˜[ÂˆÜXÚ]NˆÂˆ[š[X][ÛŽˆØ\\™TÚZÙHKŽM\ÈÝ\Ê‹[™
+HŽÈ›ÜØ\™ÎÂŸB‚‹˜Ø\\™KXXÝ]™H˜Ø\\™K\Ý\œÈHÂˆ[š[X][ÛŽˆØ\\™TÜ\šÛHœÈX\ÙK[Ý]‹ŒÎÈ›ÜØ\™ÎÂŸB‚‹˜Ø\\™KXXÝ]™H˜Ø\\™K\Ý\œÈN›XÚ[
+ŠHÂˆ[š[X][Û‹Y[^Nˆ‹ÎÂŸB‚‹˜Ø\\™KXXÝ]™H˜Ø\\™K\Ý\œÈN›XÚ[
+ÊHÂˆ[š[X][Û‹Y[^Nˆ‹M\ÎÂŸB‚Ù^Yœ˜[Y\ÈØ\\™TÝXÚÈÂˆ	HÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	K
+HØØ[JJNÂˆB‚ˆÌ‰HÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KÎ
+HØØ[JŒŒŠNÂˆB‚ˆL	HÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	Kœ
+HØØ[JŒJNÂˆBŸB‚Ù^Yœ˜[Y\ÈØ\\™TÚZÙHÂˆ	HÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+ML	JHØØ[JJNÂˆB‚ˆL	HÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+ML	JHØØ[JJNÂˆB‚ˆŒ‰HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+Ø[ÊML	HH
+JH›Ý]JLMÙYÊNÂˆB‚ˆÌIHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+Ø[ÊML	H
+È
+JH›Ý]JMÙYÊNÂˆB‚ˆ	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+Ø[ÊML	HHÜ
+JH›Ý]JLMYÊNÂˆB‚ˆIHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+Ø[ÊML	H
+ÈÜ
+JH›Ý]JMYÊNÂˆB‚ˆN	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+Ø[ÊML	HH\
+JH›Ý]JNYYÊNÂˆB‚ˆÉHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+Ø[ÊML	H
+È\
+JH›Ý]JYYÊNÂˆB‚ˆÍ‰KL	HÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+ML	JH›Ý]J
+NÂˆBŸB‚Ù^Yœ˜[Y\ÈØ\\™TÜ\šÛHÂˆ	HÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JHØØ[JŒŠNÂˆB‚ˆIHÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JHØØ[JKJNÂˆB‚ˆL	HÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KMÌ	JHØØ[JŽ
+NÂˆBŸB‚YYXH
+™Y™\œË\™YXÙY[[Ý[ÛŽœ™YXÙJHÂˆ˜Ø\\™KXXÝ]™H˜Ø\\™K\ÚÙ[[Û‹\Üš]K˜Ø\\™KXXÝ]™H˜Ø\\™K\ÚÙX˜[˜Ø\\™KXXÝ]™H˜Ø\\™K\Ý\œÈHÂˆ[š[X][Û‹Y\˜][ÛŽˆŒ[\ÈZ[\Ü[Âˆ[š[X][Û‹Y[^NˆÈZ[\Ü[ÂˆBŸB‚‹˜Z[™\‹\Ýš\Âˆ˜[œÚ][ÛŽˆÜXÚ]HŒM\ÈX\ÙNÂŸB‚‹œÚÙY^Y]šXÙHÂˆÚYˆZ[ŠL	KŽL
+NÂˆY[™ÎˆMœNLÜÂŸB‚‹™^\ØÜ™Y[‹Yœ˜[YHÂˆY[™Îˆ\ÂŸB‚‹œÚÙY^[\ÝÂˆX^ZZYÚˆZ[ŠŒšLŒ
+NÂˆZ[‹ZZYÚˆNLÂŸB‚‹™^[ØY[™ÈÂˆ\Ü^NˆÜšYÂˆÜšY][\]KXÛÛ[[œÎˆYœˆ]]ÎÂˆØ\ˆLœÂˆ[YÛ‹Z][\ÎˆÙ[\ŽÂˆZ[‹ZZYÚˆÌÂˆY[™ÎˆM\LœÂˆ˜XÚÙÜ›Ý[™ˆÙ™XXŽÂˆÛÛÜŽˆÍMNØNÂˆ›ÛˆLL[Û›ÜÜXÙNÂˆ]\‹\ÜXÚ[™ÎˆŒ[NÂŸB‚‹™^[ØY[™Ë]˜XÚÈÂˆÜšYXÛÛ[[ŽˆKÌŽÂˆZYÚˆMœÂˆY[™ÎˆÜÂˆ›Ü™\ŽˆœÛÛYÍÌMÎÂˆ›Ü™\‹\˜Y]\ÎˆœÂˆ˜XÚÙÜ›Ý[™ˆØÌ™XNÂˆ›Þ\ÚYÝÎˆ[œÙ]\\ÎŽXM˜ÎÂŸB‚‹™^[ØY[™Ë]˜XÚÈHÂˆ\Ü^Nˆ›ØÚÎÂˆZYÚˆL	NÂˆÚYˆÂˆ˜XÚÙÜ›Ý[™ˆ™\X][™Ë[[™X\‹YÜ˜YY[
+LYËÍMÙMH\ÍÌÎXÍMH\Lœ
+NÂˆ˜[œÚ][ÛŽˆÚYŒMœÈÝ\Ê[™
+NÂŸB‚‹™^[ØY[™ÈÛX[ÂˆÜšYXÛÛ[[ŽˆŽÂˆÜšY\›ÝÎˆŽÂˆ›ÛˆLL[Û›ÜÜXÙNÂˆÛÛÜŽˆÍLŽÙÂŸB‚‹™^\ØÜ™Y[‹Yœ˜[YK™^[ØY[™ÈœÚÙY^[\ÝÂˆš\ÚXš[]NˆY[ŽÂŸB‚‹™^Y[žHÂˆÜXÚ]NˆNÂŸB‚‹œÚÙY^[\Ý™[šY\Ë[ØYY™^Y[žHÂˆÜXÚ]NˆÂˆ[š[X][ÛŽˆ^[žP\X\ˆŒ\ÈX\ÙK[Ý]›ÜØ\™ÎÂˆ[š[X][Û‹Y[^NˆØ[Ê˜\ŠKY[žKZ[™^
+H
+ˆ[\ÊNÂŸB‚‹œÚÙY^Y]šXÙK˜\X\š[™ÈÂˆ[š[X][ÛŽˆ^]šXÙP\X\ˆŒÎÈÝXšXËX™^šY\ŠŒ‹ŽŒKJNÂŸB‚‹œÚÙY^Y]šXÙK›Ü[š[™ÈÂˆ[š[X][ÛŽˆ›Û™HZ[\Ü[ÂŸB‚‹œÚÙY^[\Ý™[\K\Ý]HÂˆZ[‹ZZYÚˆMÂˆ\Ü^NˆÜšYÂˆXÙKZ][\ÎˆÙ[\ŽÂˆY[™ÎˆÂˆ^X[YÛŽˆÙ[\ŽÂŸB‚‹›XZ[‹[Y[H›Y[KXÙ[\ˆÂˆ›Ü™\‹X›ÝÛKXÛÛÜŽˆÌÙLŒÂŸB‚Ù^Yœ˜[Y\È^]šXÙP\X\ˆÂˆ	HÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJŒ
+HØØ[JŽMŠNÂˆB‚ˆL	HÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ
+HØØ[JJNÂˆBŸB‚Ù^Yœ˜[Y\È^[žP\X\ˆÂˆœ›ÛHÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+LLœ
+NÂˆB‚ˆÈÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+
+NÂˆBŸB‚YYXH
+X^]ÚYMŒ
+HÂˆœÚÙY^Y]šXÙHÂˆY[™ÎˆL\L\ÂˆÚYˆL	NÂˆB‚ˆœÚÙY^[\ÝÂˆX^ZZYÚˆŒ]šÂˆZ[‹ZZYÚˆNÂˆB‚ˆ™^[ØY[™ÈÂˆZ[‹ZZYÚˆœÂˆY[™ÎˆLœ\ÂˆB‚ˆ™^\ØÜ™Y[‹]ÜÂˆY[™ÎˆÜÂˆB‚ˆ™^\ØÜ™Y[‹]ÜÝ›Û™ÈÂˆ›Û\Ú^™NˆÂˆBŸB‚YYXH
+™Y™\œË\™YXÙY[[Ý[ÛŽœ™YXÙJHÂˆœÚÙY^Y]šXÙK˜\X\š[™ËœÚÙY^[\Ý™[šY\Ë[ØYY™^Y[žHÂˆ[š[X][ÛŽˆ›Û™HZ[\Ü[ÂˆÜXÚ]NˆHZ[\Ü[ÂˆB‚ˆ™^[ØY[™Ë]˜XÚÈHÂˆ˜[œÚ][ÛŽˆ›Û™NÂˆBŸB‚‹œÚÙY^Y]Z[]šY]ÈÂˆX^ZZYÚˆZ[ŠŽšMÌ
+NÂˆÝ™\™›ÝË^Nˆ]]ÎÂˆ˜XÚÙÜ›Ý[™ˆÙMÙY˜ÎNÂˆÛÛÜŽˆÌÎÌÍŽÂˆY[™ÎˆÜÂˆØÜ›Û˜\‹XÛÛÜŽˆÍÎNMYˆÙYMXŽNÂˆØÜ›Û˜\‹]ÚYˆ[ŽÂŸB‚‹œÚÙY^Y]Z[]šY]ÈÜÚÙY^ÛÛ[ÂˆX^]ÚYˆMLÂˆX\™Ú[Žˆ]]ÎÂˆY[™ÎˆLÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^]Ü[™HÂˆ\Ü^Nˆ›^Âˆ\ÝYžKXÛÛ[ˆÜXÙKX™]ÙY[ŽÂˆ[YÛ‹Z][\ÎˆÙ[\ŽÂˆØ\ˆÂˆY[™ÎˆœÜÂˆ›Ü™\‹X›ÝÛNˆ\ÛÛYØYX™ŽÎÂˆÛÛÜŽˆÍNMÌNÂˆ›ÛˆLL[Û›ÜÜXÙNÂˆ]\‹\ÜXÚ[™ÎˆÂŸB‚‹™^Y]Z[X˜XÚÈÂˆ›Ü™\ŽˆÂˆ˜XÚÙÜ›Ý[™ˆ˜[œÜ\™[ÂˆY[™ÎˆÂˆÛÛÜŽˆÍÍÂˆ›ÛˆLL[Û›ÜÜXÙNÂˆÝ\œÛÜŽˆÚ[\ŽÂŸB‚‹™^Y]Z[X˜XÚÎšÝ™\ˆÂˆ^YXÛÜ˜][ÛŽˆ[™\›[™NÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ÈÂˆZYÚˆLM\ÂˆX\™Ú[ŽˆÂˆ˜XÚÙÜ›Ý[™ˆÙYM˜ŒNÂˆ›Ü™\ŽˆœÛÛYØMŽNÂˆ›Ü™\‹\˜Y]\ÎˆÂˆ›Þ\ÚYÝÎˆ[œÙ]œÙŒ™™ÎÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›È[YÈÂˆZYÚˆLœÂˆÚYˆLœÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^]]HˆÂˆ›ÛˆLMÜ[Û›ÜÜXÙNÂˆ^]˜[œÙ›Ü›Nˆ\\˜Ø\ÙNÂˆÛÛÜŽˆÌÍLÌÎÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^]]O™]Ž™š\œÝXÚ[œÜ[ˆÂˆ›ÛˆÌ\[Û›ÜÜXÙNÂˆÛÛÜŽˆÍŒMÎNÂŸB‚‹œÚÙY^Y]Z[]šY]È\KXÚ\Âˆ›Ü™\‹\˜Y]\ÎˆÜÂˆY[™ÎˆœÂˆ›ÛˆL[Û›ÜÜXÙNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Y\ØÜš\[ÛˆÂˆX\™Ú[Žˆ\ÂˆY[™Îˆ\Âˆ›Ü™\‹[YˆÜÛÛYÍØŽXMYNÂˆ›Ü™\‹\˜Y]\ÎˆœÂˆ˜XÚÙÜ›Ý[™ˆÙ™N˜NÂˆÛÛÜŽˆÍYÙNÂˆ›ÛˆÌLÌKH[Û›ÜÜXÙNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Y˜XÝÈÂˆØ\ˆ\ÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Y˜XÝÏ™]ˆÂˆ›Ü™\Žˆ\ÛÛYØÍÎŽÂˆ›Ü™\‹\˜Y]\ÎˆÜÂˆ˜XÚÙÜ›Ý[™ˆÙLXX˜ÎÂˆY[™ÎˆœÂˆØ\ˆœÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Y˜XÝÈÛX[Âˆ›ÛˆLÜ[Û›ÜÜXÙNÂˆÛÛÜŽˆÍÌŽLÎÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Y˜XÝÈÝ›Û™ÈÂˆ›ÛˆLL[Û›ÜÜXÙNÂˆÛÛÜŽˆÍÍNØÎÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^[[Ý™\ÈÂˆX\™Ú[‹]Üˆ\ÂŸB‚‹œÚÙY^Y]Z[]šY]È›[Ý™\ËZXY[™ÈÂˆX\™Ú[‹X›ÝÛNˆÂŸB‚‹œÚÙY^Y]Z[]šY]È›[Ý™\ËZXY[™ÈÈÂˆ›ÛˆLL[Û›ÜÜXÙNÂˆ^]˜[œÙ›Ü›Nˆ\\˜Ø\ÙNÂˆÛÛÜŽˆÍÍNØÎÂŸB‚‹œÚÙY^Y]Z[]šY]È›[Ý™\ËZXY[™ÈÛX[Âˆ›ÛˆÌÜ[Û›ÜÜXÙNÂˆÛÛÜŽˆÍÍNÍXÎÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^[[Ý™K[\ÝÂˆØ\ˆÜÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^[[Ý™HÂˆY[™Îˆ\ÜÂˆ›Ü™\Žˆ\ÛÛYØÌÙŽYŽÂˆ›Ü™\‹\˜Y]\ÎˆÜÂˆ˜XÚÙÜ›Ý[™ˆÙYŒÙÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^[[Ý™HÝ›Û™ÈÂˆ›ÛˆL\[Û›ÜÜXÙNÂˆÛÛÜŽˆÌÙMLØNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^[[Ý™HÛX[Âˆ›ÛˆÌÜ[Û›ÜÜXÙNÂˆÛÛÜŽˆÍÌNMXÎÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^XXÝ[ÛœÈÂˆX\™Ú[‹]ÜˆÂˆ\ÝYžKXÛÛ[ˆ›^Y[™ÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^XXÝ[ÛœÈœš[X\žKX]ÛˆÂˆY[™ÎˆÜLÂˆ›Ü™\‹\˜Y]\ÎˆÂˆ›ÛˆL\[Û›ÜÜXÙNÂˆ›Þ\ÚYÝÎˆœØXLŒÌÂŸB‚‹™^\ØÜ™Y[‹Yœ˜[YNš\ÊœÚÙY^Y]Z[]šY]Î››Ý
+šY[ŠJH™^\ØÜ™Y[‹]Ü™^\ØÜ™Y[‹Yœ˜[YNš\ÊœÚÙY^Y]Z[]šY]Î››Ý
+šY[ŠJH™^\ØÜ™Y[‹X›ÝÛHÂˆ\Ü^Nˆ›Û™NÂŸB‚YYXH
+X^]ÚYMŒ
+HÂˆœÚÙY^Y]Z[]šY]ÈÂˆX^ZZYÚˆ]šÂˆY[™Îˆ\ÂˆB‚ˆœÚÙY^Y]Z[]šY]ÈÜÚÙY^ÛÛ[ÂˆY[™ÎˆÜ\ÜÂˆB‚ˆœÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ÈÂˆZYÚˆM\ÂˆB‚ˆœÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›È[YÈÂˆZYÚˆÂˆÚYˆÂˆB‚ˆœÚÙY^Y]Z[]šY]ÈœÚÙY^Y\ØÜš\[ÛˆÂˆ›Û\Ú^™Nˆ\ÂˆB‚ˆœÚÙY^Y]Z[]šY]ÈœÚÙY^]]HˆÂˆ›Û\Ú^™NˆMÂˆB‚ˆœÚÙY^Y]Z[]šY]ÈœÚÙY^[[Ý™HÝ›Û™ÈÂˆ›Û\Ú^™NˆÂˆBŸB‚‹™Ø[YK[Y\ÜØYÙKYX[ÙÈÂˆÜÚ][ÛŽˆš^YÂˆÜˆ]]ÎÂˆšYÚˆLœÂˆ›ÝÛNˆNÂˆYˆLœÂˆX\™Ú[Žˆ]]ÎÂˆÚYˆZ[ŠL	HHMŒ
+NÂˆX^]ÚYˆ›Û™NÂˆX^ZZYÚˆ]šÂˆÝ™\™›ÝÎˆš\ÚX›NÂˆ›Ü™\ŽˆÂˆY[™ÎˆÂˆ˜XÚÙÜ›Ý[™ˆ˜[œÜ\™[ÂˆÛÛÜŽˆÌŒÌÍMŽÂˆ˜[œÙ›Ü›Nˆ›Û™NÂŸB‚‹™Ø[YK[Y\ÜØYÙKYX[ÙÎŽ˜˜XÚÙ›ÜÂˆ˜XÚÙÜ›Ý[™ˆÌM˜MØYÂˆ˜XÚÙ›ÜYš[\Žˆ›\Šœ
+NÂŸB‚‹™Ø[YK[Y\ÜØYÙK]Ú[™ÝÈÂˆÜÚ][ÛŽˆ™[]]™NÂˆY[™ÎˆMNLÜÂˆ›Ü™\ŽˆÛÛYÌŒÎŽÂˆ›Ü™\‹\˜Y]\ÎˆM\Âˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+MYYËÙ™™™YŒÙŒŒÙÊNÂˆ›Þ\ÚYÝÎˆœÌMŒŽLØË[œÙ]ÜØØYYMÌÌLYŒÌÍÌÂˆ[š[X][ÛŽˆY\ÜØYÙUÚ[™ÝÒ[ˆŒNÈX\ÙK[Ý]ÂŸB‚‹™Ø[YK[Y\ÜØYÙKZXY\ˆÂˆ\Ü^Nˆ›^Âˆ[YÛ‹Z][\ÎˆÙ[\ŽÂˆØ\ˆÂˆZ[‹ZZYÚˆMÜÂˆY[™ËX›ÝÛNˆÜÂˆ›Ü™\‹X›ÝÛNˆœÛÛYÙXNÂˆÛÛÜŽˆÍLŽMNÂˆ›ÛˆL\[Û›ÜÜXÙNÂˆ]\‹\ÜXÚ[™ÎˆŒL™[NÂŸB‚‹™Ø[YK[Y\ÜØYÙKZXY\ˆHÂˆÚYˆÂˆZYÚˆÂˆ›Ü™\ŽˆœÛÛYÍŒMØMNÂˆ›Ü™\‹\˜Y]\ÎˆL	NÂˆ˜XÚÙÜ›Ý[™ˆØNØÍŽÂˆ›Þ\ÚYÝÎˆœÙÙNXÍNÂŸB‚‹™Ø[YK[Y\ÜØYÙK]Ú[™ÝÏœÂˆX\™Ú[ŽˆL\\ÂˆZ[‹ZZYÚˆ‹Ž[NÂˆÛÛÜŽˆÌŒÌÍMŽÂˆ›ÛˆÛ[\
+NŽËŒœ
+KÌK[š]ËÞ\Ý[K]ZKØ[œË\Ù\šYŽÂˆ]\‹\ÜXÚ[™ÎˆŒY[NÂˆÝ™\™›ÝË]Ü˜\ˆ[ž]Ú\™NÂŸB‚‹™Ø[YK[Y\ÜØYÙK]Ú[™ÝÈ›Ü›HÂˆ\Ü^Nˆ›^Âˆ\ÝYžKXÛÛ[ˆ›^Y[™ÂˆX\™Ú[ŽˆÂŸB‚‹™Ø[YK[Y\ÜØYÙKXÛÛ[YHÂˆZ[‹ZZYÚˆÂˆZ[‹]ÚYˆLÂˆY[™ÎˆLÜÂˆ›Ü™\ŽˆœÛÛYÍL˜MÎÂˆ›Ü™\‹X›ÝÛK]ÚYˆÂˆ›Ü™\‹\˜Y]\ÎˆÂˆ˜XÚÙÜ›Ý[™ˆÙNXNÂˆÛÛÜŽˆÌÌ™NÂˆ›ÛˆLM[š]ËÞ\Ý[K]ZKØ[œË\Ù\šYŽÂˆÝ\œÛÜŽˆÚ[\ŽÂŸB‚‹™Ø[YK[Y\ÜØYÙKXÛÛ[YHÜ[ˆÂˆ\Ü^Nˆ[›[™KX›ØÚÎÂˆX\™Ú[‹[YˆÂˆÛÛÜŽˆÍÌŽLÍÂˆ[š[X][ÛŽˆY\ÜØYÙP\œ›ÝÐ›[šÈÜÈÝ\Ê‹[™
+H[™š[š]NÂŸB‚‹™Ø[YK[Y\ÜØYÙKXÛÛ[YN˜XÝ]™HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJœ
+NÂˆ›Ü™\‹X›ÝÛK]ÚYˆœÂŸB‚‹™Ø[YK[Y\ÜØYÙKXÛÛ[YN™›ØÝ\Ë]š\ÚX›HÂˆÝ][™NˆÜÛÛYÌÙLXŽÂˆÝ][™K[Ù™œÙ]ˆÜÂŸB‚Ù^Yœ˜[Y\ÈY\ÜØYÙUÚ[™ÝÒ[ˆÂˆœ›ÛHÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJM
+HØØ[JŽN
+NÂˆB‚ˆÈÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ
+HØØ[JJNÂˆBŸB‚Ù^Yœ˜[Y\ÈY\ÜØYÙP\œ›ÝÐ›[šÈÂˆL	HÂˆÜXÚ]NˆŒMNÂˆBŸB‚YYXH
+X^]ÚYMŒ
+HÂˆ™Ø[YK[Y\ÜØYÙKYX[ÙÈÂˆšYÚˆÂˆ›ÝÛNˆLœÂˆYˆÂˆÚYˆØ[ÊL	HHMœ
+NÂˆX^ZZYÚˆLšÂˆB‚ˆ™Ø[YK[Y\ÜØYÙK]Ú[™ÝÈÂˆY[™ÎˆLœML\Âˆ›Ü™\‹]ÚYˆÜÂˆB‚ˆ™Ø[YK[Y\ÜØYÙKZXY\ˆÂˆ›Û\Ú^™NˆÂˆB‚ˆ™Ø[YK[Y\ÜØYÙK]Ú[™ÝÏœÂˆ›Û\Ú^™NˆÛ[\
+NKŒËŒ\
+NÂˆZ[‹ZZYÚˆ‹Ù[NÂˆB‚ˆ™Ø[YK[Y\ÜØYÙKXÛÛ[YHÂˆZ[‹ZZYÚˆÜÂˆZ[‹]ÚYˆLÌœÂˆ›Û\Ú^™NˆM\ÂˆBŸB‚YYXH
+™Y™\œË\™YXÙY[[Ý[ÛŽœ™YXÙJHÂˆ™Ø[YK[Y\ÜØYÙK]Ú[™ÝË™Ø[YK[Y\ÜØYÙKXÛÛ[YHÜ[ˆÂˆ[š[X][ÛŽˆ›Û™HZ[\Ü[ÂˆBŸB‚‹™Ø[YK[Y\ÜØYÙKYX[ÙÈÂˆÜˆL	NÂˆšYÚˆ]]ÎÂˆ›ÝÛNˆ]]ÎÂˆYˆL	NÂˆX\™Ú[ŽˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JNÂˆX^ZZYÚˆšÂŸB‚YYXH
+X^]ÚYMŒ
+HÂˆ™Ø[YK[Y\ÜØYÙKYX[ÙÈÂˆÜˆL	NÂˆšYÚˆ]]ÎÂˆ›ÝÛNˆ]]ÎÂˆYˆL	NÂˆX\™Ú[ŽˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JNÂˆX^ZZYÚˆšÂˆBŸB‚‹ÊˆÙY\H^HY[H›ØÝ\ÙYÛˆ\™ÙKX\ÞK]Ë\ØØ[ˆÚÚXÙ\Ëˆ
+‹Â‚‹›Y[KYÜšYÂˆX\™Ú[‹]ÜˆLÂŸB‚‹›Y[K][HÂˆZ[‹ZZYÚˆLNÂˆ\Ü^Nˆ›^Âˆ[YÛ‹Z][\ÎˆÙ[\ŽÂˆØ\ˆMœÂˆY[™ÎˆNŒÂŸB‚‹›Y[KZXÛÛˆÂˆ›^ˆMœÂŸB‚‹›Y[K][HÝ›Û™ÈÂˆ[YÛ‹\Ù[Žˆ]]ÎÂˆ›Û\Ú^™NˆŒ\ÂŸB‚‹˜Ù[\‹XØ\™›Ü›HÂˆÜšYXÛÛ[[ŽˆŽÂˆX\™Ú[‹]ÜˆÂŸB‚‹š[XØ\™›Ü›HÂˆÜšYXÛÛ[[ŽˆŽÂŸB‚‹›Y[K\YÙH˜˜YÙ\ËXØ\™ÂˆX\™Ú[‹]ÜˆLœÂŸB‚YYXH
+X^]ÚYMŒ
+HÂˆ›Y[K][HÂˆZ[‹ZZYÚˆLœÂˆY[™ÎˆLÜMœÂˆB‚ˆ›Y[K][HÝ›Û™ÈÂˆ›Û\Ú^™NˆN\ÂˆB‚ˆ˜Ù[\‹XØ\™›Ü›Kš[XØ\™›Ü›HÂˆÜšYXÛÛ[[ŽˆKËLNÂˆX\™Ú[‹]ÜˆLÂˆBŸB‚‹™^]X[K[˜]ˆÂˆ\Ü^Nˆ›^Âˆ[YÛ‹Z][\ÎˆÙ[\ŽÂˆ\ÝYžKXÛÛ[ˆÜXÙKX™]ÙY[ŽÂˆØ\ˆÂˆY[™ÎˆœÂˆ›Ü™\‹X›ÝÛNˆ\ÛÛYØÍY˜MŽÂˆÛÛÜŽˆÍŒMÍNÂˆ›ÛˆL\[Û›ÜÜXÙNÂŸB‚‹™^]X[KX]ÛˆÂˆ›Ü™\Žˆ\ÛÛYÎYXYÙÂˆ›Ü™\‹\˜Y]\ÎˆÂˆ˜XÚÙÜ›Ý[™ˆÙYŒÙÂˆÛÛÜŽˆÍÍNØÎÂˆY[™ÎˆÜ\Âˆ›ÛˆL\[Û›ÜÜXÙNÂˆÝ\œÛÜŽˆÚ[\ŽÂŸB‚‹™^]X[KX]ÛŽšÝ™\Ž››Ý
+™\ØX›Y
+HÂˆ˜XÚÙÜ›Ý[™ˆÙMØÎÂŸB‚‹™^]X[KX]ÛŽ™\ØX›YÂˆÜXÚ]NˆŽÂˆÝ\œÛÜŽˆY˜][ÂŸB‚YYXH
+X^]ÚYMŒ
+HÂˆ™^]X[K[˜]ˆÂˆ›Û\Ú^™NˆÂˆB‚ˆ™^]X[KX]ÛˆÂˆY[™ÎˆÜœÂˆ›Û\Ú^™NˆÂˆBŸB‚‹ÊˆÙY\HÚðêY^\™Ø\™HÝ[[™ÛYHÛ›HH[žHÚ[ˆœ›ÝÜÚ[™Ëˆ
+‹Â‚ˆÜÚÙY^ÛÛ[™^\ÛYK[™^™^Y]Z[XÛÛ[Âˆ[š[X][ÛŽˆ^[žTÛYS™^ŒœÈX\ÙK[Ý]ÂŸB‚ˆÜÚÙY^ÛÛ[™^\ÛYK\™]š[Ý\È™^Y]Z[XÛÛ[Âˆ[š[X][ÛŽˆ^[žTÛYT™]š[Ý\ÈŒœÈX\ÙK[Ý]ÂŸB‚Ù^Yœ˜[Y\È^[žTÛYS™^Âˆœ›ÛHÂˆÜXÚ]NˆŒÍNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+
+NÂˆB‚ˆÈÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+
+NÂˆBŸB‚Ù^Yœ˜[Y\È^[žTÛYT™]š[Ý\ÈÂˆœ›ÛHÂˆÜXÚ]NˆŒÍNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+L
+NÂˆB‚ˆÈÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+
+NÂˆBŸB‚YYXH
+™Y™\œË\™YXÙY[[Ý[ÛŽœ™YXÙJHÂˆÜÚÙY^ÛÛ[™^\ÛYK[™^™^Y]Z[XÛÛ[ÜÚÙY^ÛÛ[™^\ÛYK\™]š[Ý\È™^Y]Z[XÛÛ[Âˆ[š[X][ÛŽˆ›Û™NÂˆBŸB‚‹Êˆ™Y\ÈX[KTÚðê[[Ûˆ™ZÛÛ[]™Z[H[X›0é\›ˆZ[™HZYÙ[™Kðíœœ\›XÚH™]ÙYÝ[™Ëˆ
+‹Â‚‹œÚÙY^Y]Z[]šY]È™^[[Ý[Û‹\ZØXÚH[YÈÂˆ[š[X][ÛŽˆ^ZØXÚRÜÎÈX\ÙKZ[‹[Ý]›ÝZ[\Ü[ÂŸB‚‹œÚÙY^Y]Z[]šY]È™^[[Ý[Û‹YÛ[X[™H[YÈÂˆ[š[X][ÛŽˆ^Û[X[™TÝ[˜ÙHŽœÈX\ÙKZ[‹[Ý]›ÝZ[\Ü[ÂŸB‚‹œÚÙY^Y]Z[]šY]È™^[[Ý[Û‹\ØÚYÙÞH[YÈÂˆ[š[X][ÛŽˆ^ØÚYÙÞTÚ[ÎÈX\ÙKZ[‹[Ý]›ÝZ[\Ü[ÂŸB‚‹œÚÙY^Y]Z[]šY]È™^[[Ý[Û‹X[˜\Ø]\ˆ[YÈÂˆ[š[X][ÛŽˆ^[˜\Ø]\”ÝØ^HŽœÈX\ÙKZ[‹[Ý]›ÝZ[\Ü[ÂŸB‚‹œÚÙY^Y]Z[]šY]È™^[[Ý[Û‹\˜]\H[YÈÂˆ[š[X][ÛŽˆ^˜]\UÚYÙÛHŽ\ÈX\ÙKZ[‹[Ý]›ÝZ[\Ü[ÂŸB‚‹œÚÙY^Y]Z[]šY]È™^[[Ý[Û‹\Y\H[YÈÂˆ[š[X][ÛŽˆ^Y\P›Ý[˜ÙHŽ\ÈX\ÙKZ[‹[Ý]›ÝZ[\Ü[ÂŸB‚‹œÚÙY^Y]Z[]šY]È™^[[Ý[Û‹^X˜][YÈÂˆ[š[X][ÛŽˆ^X˜]Ý™\ˆŽÈX\ÙKZ[‹[Ý]›ÝZ[\Ü[ÂŸB‚Ù^Yœ˜[Y\È^ZØXÚRÜÂˆ	KL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ
+NÂˆB‚ˆIHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJÜ
+HØØ[JŽMKŒ
+NÂˆB‚ˆMIHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJLM\
+H›Ý]JMYYÊHØØ[JKŒJNÂˆB‚ˆÍ‰HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ\
+H›Ý]JYÊNÂˆB‚ˆ	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJM
+NÂˆBŸB‚Ù^Yœ˜[Y\È^Û[X[™TÝ[˜ÙHÂˆ	KL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]J
+H›Ý]J
+NÂˆB‚ˆŒ‰HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JM\œ
+H›Ý]JMÙYÊHØØ[JŽM
+NÂˆB‚ˆL‰HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JLLœ
+H›Ý]JYÊHØØ[JKŒŠNÂˆB‚ˆÌ‰HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JLœœ
+H›Ý]JMYÊNÂˆB‚ˆ‰HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JM
+H›Ý]JÙYÊNÂˆBŸB‚Ù^Yœ˜[Y\È^ØÚYÙÞTÚ[Âˆ	KL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ
+H›Ý]J
+HØØ[JJNÂˆB‚ˆIHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJœ
+H›Ý]JNYÊHØØ[JŽL‹KŒŠNÂˆB‚ˆN	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJN
+H›Ý]JYÊHØØ[JKŒ
+NÂˆB‚ˆÎ	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ\
+H›Ý]JMYÊNÂˆB‚ˆL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJLÜ
+H›Ý]J™YÊNÂˆBŸB‚Ù^Yœ˜[Y\È^[˜\Ø]\”ÝØ^HÂˆ	KL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+
+H›Ý]J
+NÂˆB‚ˆŒ‰HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+M\
+H›Ý]JMÙYÊNÂˆB‚ˆ	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+Ü
+H›Ý]JYÊHØØ[JKŒ
+NÂˆB‚ˆŽ	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+M
+H›Ý]JMYYÊNÂˆB‚ˆ‰HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+œ
+H›Ý]JÙYÊNÂˆBŸB‚Ù^Yœ˜[Y\È^˜]\UÚYÙÛHÂˆ	KL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+
+H›Ý]J
+NÂˆB‚ˆN	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+Mœ
+H›Ý]JNYÊNÂˆB‚ˆÍ‰HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+œ
+H›Ý]JYÊNÂˆB‚ˆM	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+M\
+H›Ý]JMÙYÊNÂˆB‚ˆÌ‰HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+
+H›Ý]J™YÊNÂˆB‚ˆ	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+Lœ
+H›Ý]JLÙYÊNÂˆBŸB‚Ù^Yœ˜[Y\È^Y\P›Ý[˜ÙHÂˆ	KL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ
+HØØ[JKJNÂˆB‚ˆN	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJœ
+HØØ[JKŒŽLŠNÂˆB‚ˆ‰HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJLM
+HØØ[JŽM‹KŒJNÂˆB‚ˆN	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJLLœ
+HØØ[JKJNÂˆB‚ˆÍIHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJœ
+HØØ[JKŒ‹ŽM
+NÂˆB‚ˆ	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJM\
+HØØ[JŽNKŒŠNÂˆBŸB‚Ù^Yœ˜[Y\È^X˜]Ý™\ˆÂˆ	KL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ
+H›Ý]J
+NÂˆB‚ˆIHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJM\
+H›Ý]JLL™YÊHØØ[JKŒËŽMŠNÂˆB‚ˆL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJLLœ
+H›Ý]JLYÊHØØ[JŽMËKŒ
+NÂˆB‚ˆÍIHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJM
+H›Ý]JNYÊHØØ[JKŒ‹ŽMÊNÂˆBŸB‚YYXH
+™Y™\œË\™YXÙY[[Ý[ÛŽœ™YXÙJHÂˆœÚÙY^Y]Z[]šY]ÈØÛ\ÜÊH™^[[Ý[Û‹H—H[YÈÂˆ[š[X][ÛŽˆ›Û™HZ[\Ü[ÂˆBŸB‚‹ÊˆÛ\ÜÚXÈ[™[˜]Hœ˜[Z[™ÈÚ]™XYX›HÝ]\È[™[È[™HÛÛ[X[™Ú[™ÝËˆ
+‹Â‚‹˜˜]KYX[ÙÈÂˆÚYˆZ[ŠL	HHŒŒL
+NÂˆY[™ÎˆM\Âˆ˜XÚÙÜ›Ý[™ˆÙÙYNÂˆ›Ü™\ŽˆÛÛYÌÍMMŽÂˆ›Ü™\‹\˜Y]\ÎˆLœÂˆ›Þ\ÚYÝÎˆÜÌMÌ™ŒÙÌÌLYLÍMŽÂŸB‚‹˜˜]KYX[ÙÈ›Ü›HÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆšYÚˆ\ÂˆÜˆÂˆ‹Z[™^ˆNÂŸB‚‹˜˜]KYX[ÙÈ™X[ÙËXÛÜÙHÂˆ˜XÚÙÜ›Ý[™ˆÙMÙYYMŽÂˆ›Ü™\ŽˆœÛÛYÎLNÎÂˆÛÛÜŽˆÌÍMMŽÂˆ›Û]ÙZYÚˆLÂŸB‚‹˜˜]KZXY[™ÈÂˆ\Ü^Nˆ›^Âˆ[YÛ‹Z][\ÎˆÙ[\ŽÂˆ\ÝYžKXÛÛ[ˆÜXÙKX™]ÙY[ŽÂˆY[™ÎˆÎÜÂŸB‚‹˜˜]KZXY[™ÏœÜ[ˆÂˆ›ÛˆL\[š]ËØ[œË\Ù\šYŽÂˆ]\‹\ÜXÚ[™ÎˆŒLY[NÂˆÛÛÜŽˆÍŒÎØNÂŸB‚‹˜˜]KZXY[™ÈˆÂˆ›ÛˆLMÜ[š]ËØ[œË\Ù\šYŽÂˆÛÛÜŽˆÌÌÙMNÂŸB‚‹˜˜]YšY[ÂˆZYÚˆÛ[\
+ŒÌËÌ
+NÂˆZ[‹ZZYÚˆŒÌÂˆX\™Ú[ŽˆÂˆY[™ÎˆÂˆ›Ü™\ŽˆœÛÛYØMXØNÂˆ›Ü™\‹\˜Y]\ÎˆÂˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+ÙY˜HM‰KÙYXÙŒMÉHŽ	KÙNYŒYŽIJNÂˆÝ™\™›ÝÎˆY[ŽÂŸB‚‹˜˜]YšY[˜™Y›Ü™HÂˆÛÛ[ˆˆŽÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ[œÙ]ˆÂˆ˜XÚÙÜ›Ý[™ˆ˜YX[YÜ˜YY[
+[\ÙH]ÍÉHIKØÙÙMÈŒÉK˜[œÜ\™[ŒËIJK˜YX[YÜ˜YY[
+[\ÙH]‰HIKØ™ØLHÌ	K˜[œÜ\™[ÌIJNÂˆÜXÚ]NˆÍNÂŸB‚‹˜˜]K\]›Ü›HÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ›Ü™\‹\˜Y]\ÎˆL	NÂˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+ØXNÍÙ˜ŒÍØÊNÂˆ›Ü™\‹X›ÝÛNˆÛÛYÍ™NXÍÌŽÂˆ›Þ\ÚYÝÎˆÜÍŒÙŒMNÂŸB‚‹œ]›Ü›K]Ú[ÂˆÚYˆÎINÂˆZYÚˆœÂˆšYÚˆ	NÂˆÜˆÉNÂŸB‚‹œ]›Ü›K]˜Z[™\ˆÂˆÚYˆÉNÂˆZYÚˆÂˆYˆÂˆ›ÝÛNˆ	NÂŸB‚‹™šYÚ\ˆÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ‹Z[™^ˆŽÂŸB‚‹˜Z[™\‹YšYÚ\ˆÂˆYˆÉNÂˆ›ÝÛNˆÉNÂˆÚYˆÎINÂˆZYÚˆM‰NÂˆ\Ü^Nˆ›^Âˆ[YÛ‹Z][\Îˆ›^Y[™Âˆ\ÝYžKXÛÛ[ˆÙ[\ŽÂŸB‚‹Ú[YšYÚ\ˆÂˆšYÚˆL	NÂˆÜˆÉNÂˆÚYˆÌINÂˆZYÚˆINÂˆ\Ü^Nˆ›^Âˆ[YÛ‹Z][\Îˆ›^Y[™Âˆ\ÝYžKXÛÛ[ˆÙ[\ŽÂŸB‚‹™šYÚ\‹X\ÂˆÚYˆL	NÂˆZYÚˆL	NÂˆ\Ü^NˆÜšYÂˆXÙKZ][\Îˆ[™Ù[\ŽÂˆÜÚ][ÛŽˆ™[]]™NÂŸB‚‹˜˜]K\Üš]HÂˆÚYˆL	NÂˆZYÚˆL	NÂˆØš™XÝYš]ˆÛÛZ[ŽÂˆ[XYÙK\™[™\š[™Îˆ^[]YÂˆš[\Žˆ›Ü\ÚYÝÊÜ\ÌŒÍ
+NÂŸB‚‹˜Z[™\‹YšYÚ\ˆ˜˜]K\Üš]KÚ[YšYÚ\ˆ˜˜]K\Üš]HÂˆØš™XÝ\ÜÚ][ÛŽˆÙ[\ˆ›ÝÛNÂŸB‚‹˜˜]K\Ý]\ÈÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ‹Z[™^ˆÎÂˆÚYˆZ[ŠÉKŒÍ\
+NÂˆY[™ÎˆLÜÂˆ˜XÚÙÜ›Ý[™ˆÙ™™™ŒÂˆ›Ü™\ŽˆœÛÛYÍLÍÍYÂˆ›Ü™\‹\˜Y]\Îˆ\Ü\ÜÂˆ›Þ\ÚYÝÎˆÜÍXMÂˆÛÛÜŽˆÌLØMNÂˆ›ÛY˜[Z[Nˆ[š]ËØ[œË\Ù\šYŽÂŸB‚‹œÝ]\Ë]Ú[ÂˆYˆÉNÂˆÜˆINÂŸB‚‹œÝ]\Ë]˜Z[™\ˆÂˆšYÚˆÉNÂˆ›ÝÛNˆINÂŸB‚‹˜˜]K\Ý]\Ï™]Ž™š\œÝXÚ[Âˆ\Ü^Nˆ›^Âˆ[YÛ‹Z][\ÎˆÙ[\ŽÂˆ\ÝYžKXÛÛ[ˆÜXÙKX™]ÙY[ŽÂˆØ\ˆÂŸB‚‹˜˜]K\Ý]\ÈÝ›Û™ÈÂˆ›Û\Ú^™NˆLœÂŸB‚‹˜˜]K\Ý]\ÈÛX[Âˆ›Û\Ú^™Nˆ\Âˆ›Û]ÙZYÚˆÂˆÚ]K\ÜXÙNˆ›ÝÜ˜\ÂŸB‚‹œÝ]\ËZÂˆ\Ü^Nˆ›^Âˆ[YÛ‹Z][\ÎˆÙ[\ŽÂˆØ\ˆ\ÂˆX\™Ú[Žˆ\ÂˆY[™Ë[YˆM\ÂŸB‚‹œÝ]\ËZœÜ[ˆÂˆ›Û\Ú^™NˆÂˆ›Û]ÙZYÚˆLÂˆÛÛÜŽˆÙNÌÎÂŸB‚‹œÝ]\ËZHÂˆZYÚˆÜÂˆ˜XÚÙÜ›Ý[™ˆÙYYÂˆ›Ü™\Žˆ\ÛÛYÍÌNÌÎÂˆ›Ü™\‹\˜Y]\ÎˆN\Âˆ›^ˆNÂˆÝ™\™›ÝÎˆY[ŽÂŸB‚‹œÝ]\ËZˆÂˆ\Ü^Nˆ›ØÚÎÂˆZYÚˆL	NÂˆ›Ü™\‹\˜Y]\ÎˆN\Âˆ˜XÚÙÜ›Ý[™ˆ[™X\‹YÜ˜YY[
+ÎYM™KÍ˜M
+NÂˆ˜[œÚ][ÛŽˆÚY\ÈX\ÙNÂŸB‚‹˜˜]K\Ý]\ÏœÛX[Âˆ\Ü^Nˆ›ØÚÎÂˆ^X[YÛŽˆšYÚÂˆÛÛÜŽˆÍÍ™NÂˆ›Û\Ú^™NˆÂŸB‚‹˜˜]KXÛÛ[X[™ÂˆY[™ÎˆÜÂŸB‚‹˜˜]K[Y\ÜØYÙHÂˆX\™Ú[ŽˆœÂˆZ[‹ZZYÚˆÎÂˆY[™ÎˆLÂˆ›Ü™\ŽˆœÛÛYÍÍÎŽÂˆ›Ü™\‹\˜Y]\Îˆ\Âˆ˜XÚÙÜ›Ý[™ˆÙ™™™ŒŽÂˆÛÛÜŽˆÌŒÙÎÂˆ›ÛˆLœÌKŒÍH[š]ËØ[œË\Ù\šYŽÂŸB‚‹›[Ý™KYÜšYÂˆØ\ˆœÂˆX\™Ú[ŽˆÜÂŸB‚‹›[Ý™KX]ÛˆÂˆZ[‹ZZYÚˆœÂˆY[™Îˆœ\Âˆ›Ü™\ŽˆœÛÛYÎNMNNÂˆ›Ü™\‹X›ÝÛK]ÚYˆÜÂˆ›Ü™\‹\˜Y]\Îˆ\Âˆ˜XÚÙÜ›Ý[™ˆÙ™™™ŒNÂˆ^X[YÛŽˆYÂŸB‚‹›[Ý™KX]ÛˆÝ›Û™ÈÂˆ›ÛˆLL\[š]ËØ[œË\Ù\šYŽÂˆÛÛÜŽˆÌÌØÍŽÂŸB‚‹›[Ý™KX]ÛˆÛX[Âˆ›Û\Ú^™NˆÂŸB‚‹˜˜]K\›ÜÝ\ˆÂˆX\™Ú[‹]ÜˆœÂŸB‚‹™šYÚ\‹X\[YÈÂˆ[š[X][ÛŽˆ›Û™HZ[\Ü[ÂŸB‚‹˜Z[™\‹YšYÚ\ˆ™šYÚ\‹X\[YÈÂˆ[š[X][ÛŽˆ˜Z[™\œ™X]KÜÈX\ÙKZ[‹[Ý][™š[š]HZ[\Ü[Âˆ˜[œÙ›Ü›K[ÜšYÚ[ŽˆL	HL	NÂŸB‚‹Ú[YšYÚ\ˆ™šYÚ\‹X\[YÈÂˆ[š[X][ÛŽˆÚ[œ™X]K\ÈX\ÙKZ[‹[Ý][™š[š]HZ[\Ü[Âˆ˜[œÙ›Ü›K[ÜšYÚ[ŽˆL	HL	NÂŸB‚‹™šYÚ\‹˜]XÚÚ[™È™šYÚ\‹X\[YÈÂˆ[š[X][ÛŽˆÚ\™ÙRÜ\ÈX\ÙK[Ý]Z[\Ü[ÂŸB‚‹˜Z[™\‹YšYÚ\‹˜]XÚÚ[™È™šYÚ\‹X\[YÈÂˆKXÚ\™ÙK^ˆŒÂŸB‚‹Ú[YšYÚ\‹˜]XÚÚ[™È™šYÚ\‹X\[YÈÂˆKXÚ\™ÙK^ˆLŒÂŸB‚‹™šYÚ\‹ZÚ[™ËZ]™šYÚ\‹X\[YÈÂˆ[š[X][ÛŽˆ™]›Ò]œÈÝ\Ê‹[™
+HZ[\Ü[ÂŸB‚‹™[XYÙKY›Ø]ÂˆÜˆINÂˆYˆL	NÂˆ›Û\Ú^™NˆŒœÂŸB‚‹˜]XÚËYY™™XÝÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ‹Z[™^ˆÂˆYˆL	NÂˆÜˆMINÂˆÚYˆÌÂˆZYÚˆÌÂˆÚ[\‹Y]™[Îˆ›Û™NÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JNÂˆ[š[X][ÛŽˆY™™XÝ\X\ˆNÈX\ÙK[Ý]›ÜØ\™ÎÂŸB‚‹˜]XÚËYY™™XÝHÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆ\Ü^Nˆ›ØÚÎÂˆYˆL	NÂˆÜˆL	NÂˆÚYˆMÜÂˆZYÚˆMÜÂˆ›Ü™\‹\˜Y]\ÎˆL	NÂˆ˜XÚÙÜ›Ý[™ˆÙ™™ŽÂˆ›Þ\ÚYÝÎˆ\Ý\œ™[ÛÛÜ‹Œ\Ý\œ™[ÛÛÜŽÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JNÂˆ[š[X][ÛŽˆ\œÝÈX\ÙK[Ý]›ÜØ\™ÎÂŸB‚‹˜]XÚËYY™™XÝN›XÚ[
+ŠHÂˆ[š[X][Û‹Y[^NˆŒœÎÂŸB‚‹˜]XÚËYY™™XÝN›XÚ[
+ÊHÂˆ[š[X][Û‹Y[^NˆŒLœÎÂŸB‚‹˜]XÚËYY™™XÝˆÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆYˆL	NÂˆÜˆL	NÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JNÂˆ›ÛˆLLÜ[š]ËØ[œË\Ù\šYŽÂˆÛÛÜŽˆÙ™™ŽÂˆ^\ÚYÝÎˆœÌŒÌLØŽÂˆÚ]K\ÜXÙNˆ›ÝÜ˜\ÂŸB‚‹\KYš\™HÂˆÛÛÜŽˆÙ™˜Ì™ŽÂŸB‚‹\K]Ø]\ˆÂˆÛÛÜŽˆÍNYNÂŸB‚‹\KY[XÝšXÈÂˆÛÛÜŽˆÙ™™ÙÂŸB‚‹\KYÜ˜\ÜÈÂˆÛÛÜŽˆÍŒØ™MÎÂŸB‚‹\KZXÙHÂˆÛÛÜŽˆÍÍYŽÂŸB‚‹\KYšYÚ[™ÈÂˆÛÛÜŽˆÙMXMLŽÂŸB‚‹\K\Ú\ÛÛˆÂˆÛÛÜŽˆØ™ÌŽÂŸB‚‹\KYÜ›Ý[™ÂˆÛÛÜŽˆØÍŽXMÎÂŸB‚‹\KY›Z[™ÈÂˆÛÛÜŽˆÎMXNYYNÂŸB‚‹\K\ÞXÚXÈÂˆÛÛÜŽˆÙYÌNÂŸB‚‹\KXYÈÂˆÛÛÜŽˆÎLXŽLÍÎÂŸB‚‹\K\›ØÚÈÂˆÛÛÜŽˆØXMÎÂŸB‚‹\KYÚÜÝÂˆÛÛÜŽˆÍÎ™ŽÂŸB‚‹\KY˜YÛÛˆÂˆÛÛÜŽˆÍÌMŒNÂŸB‚‹\KY\šÈÂˆÛÛÜŽˆÍÍÍ˜ÌÂŸB‚‹\K\ÝY[ÂˆÛÛÜŽˆÎLXMXŽÂŸB‚‹\KY˜Z\žHÂˆÛÛÜŽˆÙYNLX˜ÎÂŸB‚‹\K[›Ü›X[ÂˆÛÛÜŽˆØMXMŽXŽÂŸB‚‹\KYš\™HHÂˆ›Ü™\‹\˜Y]\ÎˆÌ	HÌ	HIHÍINÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JH›Ý]JYYÊNÂŸB‚‹\K]Ø]\ˆHÂˆÚYˆŒ\ÂˆZYÚˆŒ\Âˆ›Ü™\‹\˜Y]\ÎˆL	HL	HMIHMINÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JH›Ý]JMYYÊNÂŸB‚‹\KY[XÝšXÈHÂˆÚYˆÂˆZYÚˆÂˆ˜XÚÙÜ›Ý[™ˆ˜[œÜ\™[Âˆ›Þ\ÚYÝÎˆ›Û™NÂˆ›Ü™\‹\˜Y]\ÎˆÂˆ›Ü™\‹[Yˆ\ÛÛY˜[œÜ\™[Âˆ›Ü™\‹\šYÚˆ\ÛÛY˜[œÜ\™[Âˆ›Ü™\‹]ÜˆŒÛÛYÝ\œ™[ÛÛÜŽÂˆš[\Žˆ›Ü\ÚYÝÊÜÝ\œ™[ÛÛÜŠNÂŸB‚‹\KYÜ˜\ÜÈK\KXYÈK\KY˜Z\žHHÂˆ›Ü™\‹\˜Y]\ÎˆœL	HœL	NÂˆÚYˆŒÂˆZYÚˆL\ÂŸB‚‹\KZXÙHK\K\ÞXÚXÈK\KYÚÜÝHÂˆ›Ü™\‹\˜Y]\ÎˆÜÂˆÚYˆM\ÂˆZYÚˆM\ÂŸB‚Ù^Yœ˜[Y\È˜Z[™\œ™X]Âˆ	KL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ
+NÂˆB‚ˆL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJLÜ
+NÂˆBŸB‚Ù^Yœ˜[Y\ÈÚ[œ™X]Âˆ	KL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJ
+HØØ[JJNÂˆB‚ˆL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]VJLÜ
+HØØ[JKŒMJNÂˆBŸB‚Ù^Yœ˜[Y\ÈÚ\™ÙRÜÂˆ	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+
+H˜[œÛ]VJ
+NÂˆB‚ˆIHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+˜\ŠKXÚ\™ÙK^Lœ
+JH˜[œÛ]VJLL\
+NÂˆB‚ˆL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+
+H˜[œÛ]VJ
+NÂˆBŸB‚Ù^Yœ˜[Y\È™]›Ò]Âˆ	KL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+
+NÂˆš[\ŽˆœšYÚ™\ÜÊJNÂˆB‚ˆIHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+MÜ
+NÂˆš[\ŽˆœšYÚ™\ÜÊŠNÂˆB‚ˆL	HÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+œ
+NÂˆš[\ŽˆœšYÚ™\ÜÊJNÂˆB‚ˆÍIHÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]V
+LÜ
+NÂˆš[\ŽˆœšYÚ™\ÜÊKÊNÂˆBŸB‚Ù^Yœ˜[Y\È\œÝÂˆ	HÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JHØØ[JŒMJNÂˆB‚ˆIHÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JHØØ[JKŒMJNÂˆB‚ˆL	HÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JHØØ[JŒÊNÂˆBŸB‚Ù^Yœ˜[Y\ÈY™™XÝ\X\ˆÂˆ	KL	HÂˆÜXÚ]NˆÂˆB‚ˆN	KÍIHÂˆÜXÚ]NˆNÂˆBŸB‚YYXH
+X^]ÚYMŒ
+HÂˆ˜˜]KYX[ÙÈÂˆY[™ÎˆL\ÂˆB‚ˆ˜˜]KZXY[™ÈˆÂˆ›Û\Ú^™NˆMÂˆB‚ˆ˜˜]KZXY[™ÏœÜ[ˆÂˆ›Û\Ú^™NˆÂˆB‚ˆ˜˜]YšY[ÂˆZYÚˆLÂˆZ[‹ZZYÚˆŒ\ÂˆB‚ˆ˜˜]K\Ý]\ÈÂˆÚYˆ‰NÂˆY[™ÎˆœÜÂˆB‚ˆ˜˜]K\Ý]\ÈÝ›Û™ÈÂˆ›Û\Ú^™NˆLÂˆB‚ˆœÝ]\Ë]Ú[ÂˆYˆ‰NÂˆÜˆ	NÂˆB‚ˆœÝ]\Ë]˜Z[™\ˆÂˆšYÚˆ‰NÂˆ›ÝÛNˆ	NÂˆB‚ˆ˜Z[™\‹YšYÚ\ˆÂˆYˆÉNÂˆÚYˆÉNÂˆZYÚˆLÉNÂˆB‚ˆÚ[YšYÚ\ˆÂˆšYÚˆINÂˆÚYˆÍ	NÂˆZYÚˆÎ	NÂˆB‚ˆ˜˜]K[Y\ÜØYÙHÂˆ›Û\Ú^™NˆL\ÂˆB‚ˆ›[Ý™KX]ÛˆÂˆZ[‹ZZYÚˆÎ\ÂˆBŸB‚YYXH
+™Y™\œË\™YXÙY[[Ý[ÛŽœ™YXÙJHÂˆ˜Z[™\‹YšYÚ\ˆ™šYÚ\‹X\[YËÚ[YšYÚ\ˆ™šYÚ\‹X\[YË™šYÚ\‹˜]XÚÚ[™È™šYÚ\‹X\[YË™šYÚ\‹ZÚ[™ËZ]™šYÚ\‹X\[YÈÂˆ[š[X][Û‹Y\˜][ÛŽˆŒ[\ÈZ[\Ü[ÂˆB‚ˆ˜]XÚËYY™™XÝÂˆ\Ü^Nˆ›Û™NÂˆBŸB‚‹˜]XÚËYY™™XÝ™œ›ÛK]˜Z[™\ˆÂˆYˆÉNÂˆÜˆ‰NÂŸB‚‹˜]XÚËYY™™XÝ™œ›ÛK]Ú[ÂˆYˆÍINÂˆÜˆŽINÂŸB‚‹˜]XÚËYY™™XÝ˜™Y›Ü™HÂˆÛÛ[ˆˆŽÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆYˆL‰NÂˆÜˆÍINÂˆÚYˆÂˆZYÚˆ\Âˆ›Ü™\‹\˜Y]\ÎˆN\Âˆ˜XÚÙÜ›Ý[™ˆÝ\œ™[ÛÛÜŽÂˆÜXÚ]NˆÎÂˆš[\Žˆ›Ü\ÚYÝÊœÝ\œ™[ÛÛÜŠNÂˆ˜[œÙ›Ü›Nˆ›Ý]JLŽYÊNÂˆ[š[X][ÛŽˆ[Ý™U˜Z[œÈX\ÙK[Ý]›ÝÂŸB‚‹˜]XÚËYY™™XÝ™œ›ÛK]Ú[˜™Y›Ü™HÂˆ˜[œÙ›Ü›Nˆ›Ý]JMMYYÊNÂˆYˆÌ	NÂˆÜˆŒ	NÂŸB‚‹˜]XÚËYY™™XÝ\KY[XÝšXÎ˜™Y›Ü™HÂˆZYÚˆÂˆ›Ü™\‹\˜Y]\ÎˆÂˆÛ\\]ˆÛYÛÛŠÍIK‰HÍIKL‰HŒIHÌ	KL	HÌ	KL	HL	KM‰HL	K	HÍIKIHIKIJNÂŸB‚‹˜]XÚËYY™™XÝ\KYš\™N˜™Y›Ü™HÂˆZYÚˆMÂˆ›Ü™\‹\˜Y]\ÎˆÌ	HÌ	HÌ	HÌ	NÂŸB‚‹˜]XÚËYY™™XÝ\K]Ø]\Ž˜™Y›Ü™HÂˆZYÚˆœÂˆ›Þ\ÚYÝÎˆœÝ\œ™[ÛÛÜ‹MœÝ\œ™[ÛÛÜŽÂŸB‚‹˜]XÚËYY™™XÝ\KYÜ˜\ÜÎ˜™Y›Ü™K˜]XÚËYY™™XÝ\KXYÎ˜™Y›Ü™HÂˆZYÚˆÂˆ›Þ\ÚYÝÎˆ\Ý\œ™[ÛÛÜ‹N\Ý\œ™[ÛÛÜŽÂˆ˜[œÙ›Ü›Nˆ›Ý]JMYÊNÂŸB‚Ù^Yœ˜[Y\È[Ý™U˜Z[Âˆœ›ÛHÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JLŽM\
+H›Ý]JLŽYÊHØØ[V
+ŒÊNÂˆB‚ˆÈÂˆÜXÚ]NˆŽÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]J
+H›Ý]JLŽYÊHØØ[V
+JNÂˆBŸB‚‹˜]XÚËYY™™XÝN›XÚ[
+ŠHÂˆKYž^ˆLŒÂˆKYž^NˆLLœÂŸB‚‹˜]XÚËYY™™XÝN›XÚ[
+ÊHÂˆKYž^ˆŒÂˆKYž^NˆLÜÂŸB‚Ù^Yœ˜[Y\È\œÝÂˆ	HÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JML	KML	JHØØ[JŒMJNÂˆB‚ˆIHÂˆÜXÚ]NˆNÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JØ[ÊML	H
+È˜\ŠKYž^
+JKØ[ÊML	H
+È˜\ŠKYž^K
+JJHØØ[JKŒJNÂˆB‚ˆL	HÂˆÜXÚ]NˆÂˆ˜[œÙ›Ü›Nˆ˜[œÛ]JØ[ÊML	H
+È˜\ŠKYž^
+JKØ[ÊML	H
+È˜\ŠKYž^K
+JJHØØ[JŒJNÂˆBŸB‚‹Êˆ\™Ù\ˆÚðêY^\ÛÜšÈ[™ØØ][Û‹\ÜXÚYšXÈ™]›È˜]HØÙ[™\Ëˆ
+‹Â‚‹™^Y[žHÂˆZ[‹ZZYÚˆÍœÂˆÜšY][\]KXÛÛ[[œÎˆœŽZ[›X^
+YœŠHŒœÂˆØ\ˆ\ÂˆY[™Îˆ\LÂŸB‚‹™^Y[žK\Üš]HÂˆÚYˆÂˆZYÚˆÂˆ›Ü™\‹\˜Y]\ÎˆÂˆ˜XÚÙÜ›Ý[™ˆÙÙŽNNÂŸB‚‹™^Y[žK\Üš]H[YÈÂˆÚYˆŒÂˆZYÚˆŒÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ÈÂˆÜÚ][ÛŽˆ™[]]™NÂˆZYÚˆŒÂˆÝ™\™›ÝÎˆY[ŽÂˆ˜XÚÙÜ›Ý[™\Ú^™NˆÛÝ™\ŽÂˆ˜XÚÙÜ›Ý[™\ÜÚ][ÛŽˆÙ[\ŽÂˆ›Ü™\ŽˆœÛÛYÍXLÎÂˆ›Ü™\‹\˜Y]\ÎˆÂˆ›Þ\ÚYÝÎˆ[œÙ]LÌMÌÙŒÌÍÜØÌ™XÎÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›Î˜Y\ˆÂˆÛÛ[ˆˆŽÂˆÜÚ][ÛŽˆXœÛÛ]NÂˆYˆ	NÂˆšYÚˆ	NÂˆ›ÝÛNˆLœÂˆZYÚˆŒÂˆ›Ü™\‹\˜Y]\ÎˆL	NÂˆ˜XÚÙÜ›Ý[™ˆÌMŒ™˜MNÂˆš[\Žˆ›\Š\
+NÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›È[YÈÂˆÜÚ][ÛŽˆ™[]]™NÂˆ‹Z[™^ˆNÂˆÚYˆNÂˆZYÚˆNÂˆX^]ÚYˆL	NÂˆØš™XÝYš]ˆÛÛZ[ŽÂˆ[XYÙK\™[™\š[™Îˆ^[]YÂˆš[\Žˆ›Ü\ÚYÝÊ\œÌMÌŽLŒÌ
+NÂŸB‚‹˜˜]YšY[ØÛ\ÜÊHšXš]]H—HÂˆ˜XÚÙÜ›Ý[™\Ú^™NˆÛÝ™\ŽÂˆ˜XÚÙÜ›Ý[™\ÜÚ][ÛŽˆÙ[\ŽÂˆ˜XÚÙÜ›Ý[™\™\X]ˆ›Ë\™\X]ÂŸB‚‹˜˜]YšY[ØÛ\ÜÊHšXš]]H—N˜™Y›Ü™HÂˆ\Ü^Nˆ›Û™NÂŸB‚‹˜Z[™\‹YšYÚ\ˆÂˆYˆINÂˆÚYˆ‰NÂˆZYÚˆŒÉNÂŸB‚‹Ú[YšYÚ\ˆÂˆšYÚˆÉNÂˆÚYˆÎINÂˆZYÚˆ	NÂŸB‚YYXH
+X^]ÚYMŒ
+HÂˆ™^Y[žHÂˆZ[‹ZZYÚˆÌœÂˆÜšY][\]KXÛÛ[[œÎˆÍ\ŒœZ[›X^
+YœŠHNÂˆØ\ˆœÂˆY[™ÎˆœÂˆB‚ˆ™^Y[žK\Üš]HÂˆÚYˆŒÂˆZYÚˆŒÂˆB‚ˆ™^Y[žK\Üš]H[YÈÂˆÚYˆMÜÂˆZYÚˆMÜÂˆB‚ˆœÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ÈÂˆZYÚˆMÍœÂˆB‚ˆœÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›È[YÈÂˆÚYˆMMœÂˆZYÚˆMMœÂˆB‚ˆ˜Z[™\‹YšYÚ\ˆÂˆYˆÉNÂˆÚYˆÉNÂˆZYÚˆŒINÂˆB‚ˆÚ[YšYÚ\ˆÂˆšYÚˆ	NÂˆÚYˆ	NÂˆZYÚˆÉNÂˆBŸB‚‹Êˆ\ÙHH]Z[Y˜]X˜XÚÜÈ\ÙYžHÚðê[[ÛˆÚÝÙÝÛ‰ÜÈÛ\ÜÚXÈ˜]HRKˆ
+‹Â‚‹˜˜]YšY[ØÛ\ÜÊHšXš]]H—HÂˆ˜XÚÙÜ›Ý[™\ÜÚ][ÛŽˆÙ[\ˆN	NÂˆ˜XÚÙÜ›Ý[™\Ú^™NˆÛÝ™\ŽÂˆ˜XÚÙÜ›Ý[™\™\X]ˆ›Ë\™\X]ÂŸB‚‹˜˜]YšY[˜˜]K\]›Ü›HÂˆZYÚˆMÜÂˆ›Ü™\ŽˆÂˆ›Ü™\‹\˜Y]\ÎˆL	NÂˆ›Þ\ÚYÝÎˆ\\ÌML˜LŽMÂˆÜXÚ]NˆŽÂŸB‚‹˜˜]YšY[œ]›Ü›K]Ú[ÂˆÚYˆÌINÂˆšYÚˆ	NÂˆÜˆMINÂˆ˜XÚÙÜ›Ý[™ˆ˜YX[YÜ˜YY[
+[\ÙKÌŽLØŒ™ÍËÍŒMØMMMHMIK˜[œÜ\™[Ì‰JNÂŸB‚‹˜˜]YšY[œ]›Ü›K]˜Z[™\ˆÂˆÚYˆÍÉNÂˆYˆ	NÂˆ›ÝÛNˆ‰NÂˆ˜XÚÙÜ›Ý[™ˆ˜YX[YÜ˜YY[
+[\ÙKÌŽLØŒ™ÍŒMØMMMHMIK˜[œÜ\™[Ì‰JNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ÈÂˆ˜XÚÙÜ›Ý[™\ÜÚ][ÛŽˆÙ[\ˆN	NÂˆ˜XÚÙÜ›Ý[™\Ú^™NˆÛÝ™\ŽÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]Y›Ü™\Ý˜˜]YšY[šXš]]Y›Ü™\ÝÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÙ›Ü™\Ýœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]\›Ý]K˜˜]YšY[šXš]]\›Ý]HÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÜ›Ý]Kœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]][YXYÝË˜˜]YšY[šXš]][YXYÝÈÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÛYXYÝËœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]\š]™\‹˜˜]YšY[šXš]]\š]™\ˆÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÜš]™\‹œ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]X™XXÚ˜˜]YšY[šXš]]X™XXÚÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËØ™XXÚœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]X™XXÚÚÜ™K˜˜]YšY[šXš]]X™XXÚÚÜ™HÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËØ™XXÚÚÜ™Kœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]YY\ÙXK˜˜]YšY[šXš]]YY\ÙXHÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÙY\ÙXKœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]Y[\Ø]™K˜˜]YšY[šXš]]Y[\Ø]™HÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÙ[\Ø]™Kœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]YX\XØ]™K˜˜]YšY[šXš]]YX\XØ]™HÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÙX\XØ]™Kœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]ZXÙXØ]™K˜˜]YšY[šXš]]ZXÙXØ]™HÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÚXÙXØ]™Kœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]][[Ý[Z[‹˜˜]YšY[šXš]][[Ý[Z[ˆÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÛ[Ý[Z[‹œ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]XÚ]K˜˜]YšY[šXš]]XÚ]HÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËØÚ]Kœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]Y\Ù\˜˜]YšY[šXš]]Y\Ù\Âˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÙ\Ù\œ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]]›ÛØ[›ØØ]™K˜˜]YšY[šXš]]]›ÛØ[›ØØ]™HÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÝ›ÛØ[›ØØ]™Kœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]][™\œZ[œË˜˜]YšY[šXš]]][™\œZ[œÈÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÝ[™\œZ[œËœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]YÙ[ŒËX\™[˜K˜˜]YšY[šXš]]YÙ[ŒËX\™[˜HÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÙÙ[ŒËX\™[˜Kœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]YÙ[ŒËY›Ü™\Ý˜˜]YšY[šXš]]YÙ[ŒËY›Ü™\ÝÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÙÙ[ŒËY›Ü™\Ýœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]YÙ[ŒËXØ]™K˜˜]YšY[šXš]]YÙ[ŒËXØ]™HÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÙÙ[ŒËXØ]™Kœ™ÉÊNÂŸB‚‹œÚÙY^Y]Z[]šY]ÈœÚÙY^Z\›ËšXš]]YÙ[ŒË[ØÙX[‹˜˜]YšY[šXš]]YÙ[ŒË[ØÙX[ˆÂˆ˜XÚÙÜ›Ý[™Z[XYÙNˆ\›
+	ËØ\ÜÙ]ËØ˜XÚÙÜ›Ý[™ËÙÙ[ŒË[ØÙX[‹œ™ÉÊNÂŸB
